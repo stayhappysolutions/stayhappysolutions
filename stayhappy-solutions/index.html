@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stayhappy Solutions - Your Trusted Tech Agency</title>
+  <meta name="description" content="Stayhappy Solutions - Your one-stop destination for IT services, e-learning, training, and internships. Explore our comprehensive solutions and boost your skills in the ever-evolving tech landscape. Visit us at stayhappysolutions.com.">
+  <meta name="keywords" content="IT services, e-learning, training, internship, technology solutions, skill development, digital advertisement">
+  <meta name="author" content="stayhappysolutions">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #35424a;
+      color: #ffffff;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .project {
+      background-color: #ffffff;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, background-color 0.2s;
+    }
+    .project:hover {
+      transform: scale(1.05);
+      background-color:rgba(242, 237, 237, 0.1); /* Change the background color to blue (#007bff) on hover */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .containerimage {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .myimage {
+      max-width: 100%;
+      border: 2px solid black;
+      border-radius: 50px;
+    }
+    /* Media query for screens with a maximum width of 767px (typical for mobile screens) */
+@media (max-width: 767px) {
+  .project {
+    /* Add mobile-specific styles for .project here */
+    background-color: rgba(242, 237, 237, 0.1); /* Change the background color to blue (#007bff) on hover for mobile screens */
+  }
+  .myimage {
+    max-width: 40%; 
+    margin-left:90px;
+  }
+}
+
+   
+    .project h2 {
+      margin-top: 0;
+    }
+
+    .picheight {
+      height: 300px;
+      transition: transform 0.3s;
+    }
+    .picheight:hover {
+     transform: scale(1.05); /* Scale the element up by 10% on hover */
+    }
+
+    footer {
+      background-color: #35424a;
+      color: #ffffff;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .footer-nav {
+      list-style: none;
+      margin: 0;
+      
+      display: flex;
+    }
+
+    .footer-nav li {
+      margin-right: 20px;
+    }
+
+    .footer-nav li:last-child {
+      margin-right: 0;
+    }
+
+    .footer-contact {
+      font-size: 14px;
+    }
+
+    .icon i {
+      font-size: 48px;
+      color: white;
+      padding: 10px;
+      transition: all 0.3s;
+    }
+    .icon i:hover {
+      background-color: #333; /* Change the background color on hover */
+      transform: scale(1.1); /* Scale the element up on hover */
+    }
+
+    .picheightlogo {
+      height: 100px;
+      border-radius: 50px;
+    }
+
+    .about-section {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .about-heading {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .about-content {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .container1 {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+
+    .welcome-container {
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      height: 40vh;
+    }
+
+    #welcome-message {
+      font-size: 36px;
+      color: #dbdfe2;
+    }
+
+
+    .statistics-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: space-around;
+      /* Horizontal alignment */
+    }
+
+    .statistic-item {
+      text-align: center;
+      margin: 0 10px;
+      /* Adjust spacing between items */
+    }
+
+    .count {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    span {
+      font-size: 14px;
+    }
+    @media (max-width: 768px) {
+    span {
+        font-size: 10px; /* Adjust the font size for mobile screens */
+    }
+    .picheightlogo {
+      max-height: 60px;
+    }
+    .footer-contact {
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    span.count{
+      font-size:15px;
+    }
+}
+    .button {
+      display: block;
+      width: 100px;
+      /* Adjust the button width to your liking */
+      padding: 15px;
+      /* Adjust the padding to your liking */
+      background-color: #0074D9;
+      /* Initial background color */
+      color: #fff;
+      /* Text color */
+      text-decoration: none;
+      /* Remove the default underline for links */
+      border-radius: 20px;
+      /* No border radius for a flat button */
+      font-weight: bold;
+      text-align: center;
+      transition: background-color 0.3s ease;
+      /* Smooth color transition on hover */
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      margin: 10px;
+      /* Add a margin to keep it from the edges */
+      animation: colorChange 2s alternate infinite;
+      /* Apply the colorChange animation */
+      z-index:9999;
+    }
+
+    @keyframes colorChange {
+      0% {
+        background-color: #0056b3;
+      }
+
+      100% {
+        background-color: #00b359;
+        /* Change to green */
+      }
+    }
+
+    .button:hover {
+      background-color: #0056b3;
+      /* Color change on hover */
+    }
+
+    /* Responsive Styles for Smaller Screens (Mobile) */
+    @media screen and (max-width: 768px) {
+      .button {
+        font-size: x-small;
+        width: 80px;
+        padding:12px;
+      }
+    }
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.image {
+    flex: 1;
+    max-height: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.image img {
+    height: 300px;
+    width: 100%;
+    object-fit: cover; /* or contain, based on your preference */
+    transition: transform 0.3s;
+}
+
+.image:hover img {
+  transform: scale(1.1); /* Scale the image up by 10% on hover */
+}
+
+.data {
+    flex: 1;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: justify;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image,
+    .data {
+        flex: none;
+        max-width: 100%;
+    }
+
+    .image img {
+        height: auto;
+    }
+}
+/* Default styles for all screens */
+.mypara {
+    margin-top: 120px;
+    margin-bottom:50px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Media query for mobile devices with a maximum width of, for example, 767px */
+@media (max-width: 768px) {
+    .mypara {
+        margin-top: 20px; /* Adjust the margin for mobile devices */
+    }
+}
+
+
+@media (max-width: 767px) {
+  /* Add mobile-specific styles here if needed */
+  .footer-nav li {
+    margin-bottom: 5px; /* Adjust spacing between list items for smaller screens */
+  }
+  .icon i {
+    font-size: 32px; /* Reduce icon size for mobile screens if necessary */
+  }
+}
+
+  </style>
+</head>
+
+<body>
+  <a href="form.html" class="button">Contact Us</a>
+  <header>
+    <h1>STAY HAPPY SOLUTIONS</h1>
+    <p> IT services |consulting & training | e-learnig & support</p>
+    <img class="picheight" src="media\mylogo.svg" alt="logophoto">
+    <div class="social-icons">
+      <a href="https://wa.me/+919000992655" class="icon"><i class="fab fa-whatsapp"></i></a>
+      <a href="#" class="icon"><i class="fab fa-youtube" onclick="showAlert()"></i></a>
+      <a href="#" class="icon"><i class="fab fa-instagram" onclick="showAlert()"></i></a>
+      <a href="#" class="icon"><i class="fas fa-comments" onclick="showAlert()"></i></a>
+    </div>
+    <div class="welcome-container">
+      <h1 id="welcome-message"></h1>
+    </div>
+  </header>
+  <div class="container1">
+    <div class="about-section">
+      <h2 class="about-heading">About Us</h2>
+      <p class="about-content">
+        "At Stayhappy Solutions , we're passionate about harnessing the power of Python to drive digital transformation.
+        With a deep-rooted expertise in custom software development, our dedicated team excels in creating tailored IT
+        solutions that meet the unique needs of businesses across various industries.
+
+        But we're more than just a development company; we're your strategic technology partner. Our consultancy
+        services offer insights and guidance to help you make informed decisions, while our comprehensive training
+        programs empower your teams to master Python and its diverse applications. We're committed to your success every
+        step of the way, from planning and development to deployment and ongoing support.
+
+        In the rapidly evolving world of technology, we understand the importance of staying ahead. That's why we're
+        proud to offer e-learning solutions that ensure you and your team are always up to date with the latest Python
+        trends and best practices. Our commitment to your growth is at the core of everything we do.
+
+        At Stayhappy Solutions , we don't just provide IT services; we provide solutions that drive innovation and deliver
+        results. Partner with us, and together, we'll navigate the ever-changing IT landscape to achieve your goals and
+        exceed your expectations."
+      </p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="project">
+      <h2>Services We are Offering</h2>
+      <ul>
+        <li>Web Development</li>
+        <li>Machine Learning and AI</li>
+        <li>E-Learning</li>
+        <li>UI/UX Design</li>
+        <li>Hosting and Cloud Services</li>
+        <li>Marketing and Advertising</li>
+        <li>Project Management</li>
+      </ul>
+    </div>
+    <div class="project">
+      <h2>Technology We are Teaching</h2>
+      <ul>
+        <li>Python/C/C++/JAVA</li>
+        <li>Html5</li>
+        <li>Css3</li>
+        <li>Javascript</li>
+        <li>AWS</li>
+        <li>Docker</li>
+        <li>SQL</li>
+        <Li>Django</Li>
+        <li>Flask etc.</li>
+      </ul>
+    </div>
+    <div class="project">
+      <h2>Project Done by Us</h2>
+      <ul>
+        <li>E-commerce websites</li>
+        <li>Informational Websites</li>
+        <li>AI-based websites</li>
+        <li>Educational & Personal websites</li>
+        <li>Mobile Applications</li>
+        <li>Business Websites</li>
+        <li>CRM & PRM Tools etc.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container" id="agriculture">
+    <div class="image">
+        <img src="media\download.jpeg" alt="Image">
+    </div>
+    <div class="data">
+        <p>"Welcome to our world of innovation where the future meets intelligence. Our AI projects are at the forefront of technological advancement, driven by a passion for creating smarter, more efficient solutions. With a focus on enhancing productivity and improving the human experience, our AI initiatives span various industries and applications. From natural language processing to computer vision, our projects harness the transformative power of artificial intelligence. Whether it's streamlining operations, optimizing decision-making, or enabling automation, we're committed to pushing the boundaries of what AI can achieve. Join us in exploring the possibilities, as we use AI to shape a better, more connected world."</p>
+    </div>
+</div>
+<div class="container">
+    <div class="data">
+        <p>"Our web application is powered by state-of-the-art artificial intelligence, delivering a dynamic and intelligent user experience. AI plays a central role in enhancing every aspect of our platform. From personalized recommendations based on your preferences to advanced search capabilities that understand your intent, AI is at the heart of our commitment to efficiency and user satisfaction. Our web app also leverages AI to ensure data security and privacy through robust threat detection and prevention mechanisms. Real-time decision support, predictive analytics, and natural language processing are just a few of the AI-driven features that enable you to interact with our application seamlessly. With image and speech recognition, our app offers innovative ways to engage and access information. Moreover, our AI models are constantly learning and evolving, guaranteeing that our web application remains adaptive and in tune with your ever-changing needs and expectations."</p>
+    </div>
+    <div class="image">
+        <img src="media\grid-AI.webp" alt="Image">
+    </div>
+</div>
+<div class="container" id="agriculture">
+  <div class="image">
+      <img src="media\webdev.webp" alt="Image">
+  </div>
+  <div class="data">
+      <p>"we are dedicated to crafting digital experiences that exceed your expectations. Our web development team takes your vision and transforms it into a stunning reality. We specialize in responsive design, ensuring that your website looks and performs flawlessly across all devices, reaching your audience wherever they are. With a commitment to cutting-edge technology, we stay at the forefront of innovation, implementing the latest web development trends to make your site truly stand out. Whether you're in need of a powerful e-commerce platform, SEO-optimized solutions, or custom web applications, we have the expertise to bring your ideas to life. We prioritize speed, security, and user-friendliness, and our dedication to your success doesn't end at launch. We provide ongoing support and maintenance to ensure your website continues to shine. When you choose us, you're choosing sleek design, strong code, and an affordable way to make your online presence truly exceptional."</p>
+  </div>
+</div>
+<div class="container">
+  <div class="data">
+      <p>"Project management is the backbone of any successful venture, and our suite of project management tools is designed to streamline and enhance the way you work. With our software, you can plan, execute, and track projects with ease. Our intuitive project management platform empowers teams to collaborate efficiently, prioritize tasks, and meet deadlines. From project planning and resource allocation to task assignment and progress tracking, our tools provide the visibility and control you need to ensure projects stay on track. We offer robust features, including Gantt charts, time tracking, document sharing, and real-time communication, all in one place. Our project management tools are flexible and scalable, making them ideal for businesses of all sizes and industries. Whether you're managing a small team or overseeing complex projects with multiple stakeholders, our tools can help you achieve your project management goals with precision and confidence."</p>
+  </div>
+  <div class="image">
+      <img src="media\project.jpg" alt="Image">
+  </div>
+</div>
+<div class="containerimage">
+<div>
+  <h3 style="text-align: center;">e-learning partner</h3>
+  <img class="myimage"src="data:image/png;base64,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" alt=""><a src="https://rvstechsolutions.in"></a>
+</div>
+</div>
+  <footer>
+    <ul class="statistics-list">
+      <li class="statistic-item">
+        <span class="count" data-count="10">0</span>
+        <span>PROJECTS DONE</span>
+      </li>
+      <li class="statistic-item">
+        <span class="count" data-count="100">0</span>
+        <span>HAPPY CLIENTS</span>
+      </li>
+      <li class="statistic-item">
+        <span class="count" data-count="150">0</span>
+        <span>STUDENTS</span>
+      </li>
+      <li class="statistic-item">
+        <span class="count" data-count="50">0</span>
+        <span>PARTICIPANTS</span>
+      </li>
+    </ul>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo"><img class="picheightlogo" src="media\mylogo.svg" alt="My Logo"></div>
+        <ul class="footer-nav">
+          <div class="footer-contact">
+            <p>Email: official@stayhappysolutions.com</p>
+            <p>Phone: + 91-9000992655</p>
+          </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    function showAlert() {
+      alert("Sorry!!!! Only Owner Of the Page Can View");
+    }
+
+    const welcomeMessage = document.getElementById("welcome-message");
+
+    const messages = ["Hi, there ", "Welcome to Stay Happy Solutions", "we are glad to see you here"];
+    let index = 0;
+
+    function changeMessage() {
+      welcomeMessage.textContent = messages[index];
+      index = (index + 1) % messages.length;
+    }
+
+    // Change the welcome message every 3 seconds
+    setInterval(changeMessage, 2000);
+
+
+    const countElements = document.querySelectorAll('.count');
+
+    countElements.forEach((element) => {
+      const targetCount = parseInt(element.getAttribute('data-count'));
+      let currentCount = 0;
+
+      const updateCount = () => {
+        const increment = targetCount / 100;
+
+        if (currentCount < targetCount) {
+          currentCount += increment;
+          element.textContent = `${Math.ceil(currentCount)}+`; // Add the "+" sign on the right
+          requestAnimationFrame(updateCount);
+        } else {
+          element.textContent = `${targetCount}+`; // Ensure the final number has the "+" sign on the right
+        }
+      };
+
+      // Start the counting animation
+      updateCount();
+    });
+
+
+  </script>
+</body>
+
+</html>
