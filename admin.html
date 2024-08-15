@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Messages</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        #signInDiv, #messagesDiv {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 40%; /* Changed to 90% for better fit on smaller screens */
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column; /* Ensure vertical alignment */
+            align-items: center; /* Center align items horizontally */
+        }
+
+        #signInDiv h2, #messagesDiv h2 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        input[type="email"], input[type="password"] {
+            width: 100%; /* Full width for input fields */
+            padding: 10px;
+            padding-left:2px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 20%;
+            font-size: 16px;
+            float:right;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #messages {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+
+        #messages ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #messages li {
+            background-color: #f9f9f9;
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 5px;
+        }
+
+        /* Responsive design for small screens */
+        @media (max-width: 600px) {
+            #signInDiv, #messagesDiv {
+                width: 95%; /* Adjust width for smaller screens */
+                padding: 15px; /* Reduce padding for better fit */
+            }
+
+            input[type="email"], input[type="password"] {
+                font-size: 14px; /* Reduce font size for smaller screens */
+            }
+
+            button {
+                font-size: 14px;
+                width: 30%;
+            }
+
+            #messages {
+                max-height: 300px; /* Adjust max height for smaller screens */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div id="signInDiv">
+        <h2>Sign In</h2>
+        <input type="email" id="email" placeholder="Email"/>
+        <input type="password" id="password" placeholder="Password"/>
+        <button onclick="signIn()">Sign In</button>
+    </div>
+    <div id="messagesDiv" style="display:none;">
+        <h2>Messages</h2>
+        <div id="messages"></div>
+        <button onclick="signOut()">Sign Out</button>
+    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+    
+        const firebaseConfig = {
+            apiKey: "AIzaSyC70SqDpDR0TfccVJmqnfnPebmE3mawASE",
+            authDomain: "stayhappysolutions-6823f.firebaseapp.com",
+            projectId: "stayhappysolutions-6823f",
+            storageBucket: "stayhappysolutions-6823f.appspot.com",
+            messagingSenderId: "909364389688",
+            appId: "1:909364389688:web:1c79b10efcb2bfcf50c3cd",
+            measurementId: "G-GWZPM92JWX"
+        };
+    
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+    
+        // Sign in function
+        window.signIn = async function() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+            } catch (error) {
+                alert("Error signing in: " + error.message);
+            }
+        }
+    
+        // Sign out function
+        window.signOut = function() {
+            signOut(auth).then(() => {
+                document.getElementById('messagesDiv').style.display = 'none';
+                document.getElementById('signInDiv').style.display = 'block';
+            }).catch((error) => {
+                alert("Error signing out: " + error.message);
+            });
+        }
+    
+        // Handle user authentication state
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                document.getElementById('signInDiv').style.display = 'none';
+                document.getElementById('messagesDiv').style.display = 'block';
+    
+                // Load messages
+                try {
+                    const querySnapshot = await getDocs(collection(db, 'messages'));
+                    let messagesArray = [];
+    
+                    querySnapshot.forEach((doc) => {
+                        const data = doc.data();
+                        data.id = doc.id; // Keep the document ID if needed
+                        messagesArray.push(data);
+                    });
+    
+                    // Sort messages by timestamp in descending order (newest first)
+                    messagesArray.sort((a, b) => {
+                        if (a.timestamp && b.timestamp) {
+                            return b.timestamp.seconds - a.timestamp.seconds;
+                        }
+                        return 0;
+                    });
+    
+                    let messagesHtml = '<ul>';
+                    // Use the sorted messagesArray to generate the HTML
+                    messagesArray.forEach((data) => {
+                        const timestamp = data.timestamp ? new Date(data.timestamp.seconds * 1000).toLocaleString() : 'No timestamp';
+                        const phoneNumber = data.phoneNumber ? data.phoneNumber : 'No phone number provided';
+                        messagesHtml += `<li><strong>${data.name}</strong> (${data.email}, ${phoneNumber}) - ${data.subject}: ${data.message} - ${timestamp}</li>`;
+                    });
+                    messagesHtml += '</ul>';
+                    document.getElementById('messages').innerHTML = messagesHtml;
+                } catch (error) {
+                    console.error("Error fetching messages: ", error);
+                }
+            } else {
+                document.getElementById('messagesDiv').style.display = 'none';
+                document.getElementById('signInDiv').style.display = 'block';
+            }
+        });
+    </script>    
+</body>
+</html>
+
+
+
+
