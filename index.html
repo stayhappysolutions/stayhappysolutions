@@ -201,77 +201,8 @@ body, html {
     }
 }
 
-  .notification {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: grey;
-      color: white;
-      padding: 15px;
-      border-radius: 5px;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-      display: none;
-      font-family: Arial, sans-serif;
-      z-index: 9999;
-    }
-
-    .notification .close-btn {
-      position: absolute;
-      top: 5px;
-      right: 10px;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .notification .close-btn:hover {
-      color: #ddd;
-    }
-
-    .error{
-        font-family: 'Courier New', Courier, monospace; /* Monospace for technical clarity */
-        color: #FF0000; /* Red color to signify error */
-        font-size: 16px;
-        padding: 10px;
-        background-color: #f8d7da; /* Light red background for error */
-        border: 1px solid #f5c6cb; /* Border with matching error color */
-        border-radius: 5px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow */
-      }
-
-      @media (max-width: 600px) {
-        .notification {
-            bottom: 10px;
-            right: 10px;
-            padding: 10px;
-            font-size: 14px; /* Reduce font size on smaller screens */
-            width: 90%; /* Make the notification take up more width */
-        }
-
-        .error {
-            font-size: 14px; /* Reduce font size for error message */
-            padding: 8px; /* Adjust padding for small screens */
-            width: 90%; /* Make the error message more responsive */
-           }
-        }
-
 </style>
 <body>
-   <div id="notification" class="notification">
-    <button class="close-btn" onclick="closeNotification()"> ✖ </button>
-        
-    "Dear Soultech Ltd,
-    Your API key "*****GWESDKIHGR$R%^F@J6" has surpassed the maximum usage threshold across multiple sites and has entered a rate-limiting state. Consequently, further requests will be throttled, and no additional calls can be processed at this time. Below is the list of errors encountered:
-    <p class="error"> Error 429: Too Many Requests – Maximum API call limit reached.
-        Error 503: Service Unavailable – The service is temporarily unavailable due to overuse.
-        Error 504: Gateway Timeout – The request timed out while waiting for a response from the server.</p>
-   
-    To restore full functionality and ensure seamless service continuity, we recommend upgrading your plan to accommodate increased demand. The upgrade cost is ₹2,580, which will provide you with enhanced API throughput and priority access to additional resources.
-    
-    – WSGI server"
-  </div>
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
   <div class="w3-bar w3-white w3-card" id="myNavbar">
@@ -872,27 +803,6 @@ document.getElementById('contactForm').addEventListener('submit', async function
     console.error("Error writing document: ", error);
   }
 });
-</script>
-
-  <script>
-  let notificationTimer;
-
-  function showNotification() {
-    const notification = document.getElementById('notification');
-    notification.style.display = 'block';
-  }
-
-  function closeNotification() {
-    const notification = document.getElementById('notification');
-    notification.style.display = 'none';
-
-    // Restart the notification timer for 30 seconds
-    clearTimeout(notificationTimer);
-    notificationTimer = setTimeout(showNotification, 2000);
-  }
-
-  // Initially start the timer for 30 seconds
-  notificationTimer = setTimeout(showNotification, 2000);
 </script>
 
 </body>
