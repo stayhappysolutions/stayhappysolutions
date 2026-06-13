@@ -3,201 +3,291 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="StayHappySolutions - A leading provider of IT services & Digital Marketing Agency in Bhubaneswar and across Odisha.StayHappySolutions is your trusted partner for success. Empower yourself with industry expertise and stay ahead in the ever-evolving tech landscape. Visit us at stayhappysolutions.com.">
-<meta name="keywords" content="IT services,Digital Marketing Agency,Web Development,App Development, AI Integrations & More in Bhubaneswar, IT services & Digital Marketing in Odisha,Bhubaneswar technology solutions, Odisha technology solutions, BBSR, Best IT services & Digital Marketing Agency In Bhubaneswar, No 1 IT Consulting & Business Solutions Agency in Odisha, Lowest Price For every Your IT needs, Best Services at Lower Price, Digital Marketing Agnecy Near Me, Best IT Solutions in Khandagiri">
-<meta name="author" content="StayHappySolutions">
-<meta http-equiv="refresh" content="0; url=maintenance.html">
+<meta name="description" content="StayHappy Solutions is a leading IT services and digital marketing company in Bhubaneswar, Odisha, offering web development, mobile app development, AI integrations, UI/UX design, and business automation solutions.">
+<meta name="keywords" content="IT services Bhubaneswar, software company Bhubaneswar, web development Odisha, mobile app development, AI integrations, digital marketing agency, business automation, UI UX design, StayHappy Solutions">
+<meta name="author" content="StayHappy Solutions">
+<meta property="og:site_name" content="StayHappy Solutions Pvt. Ltd.">
 <title>StayHappy Solutions — Software That Transforms</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
+/* =============================================
+   CSS CUSTOM PROPERTIES
+============================================= */
 :root {
   --bg:#07070e;--bg2:#0d0d18;--bg3:#12121f;--surface:#181828;--surface2:#1e1e32;
   --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
   --a1:#6c63ff;--a2:#ff4f9a;--a3:#00e5b0;--a4:#ff8c42;
-  --text:#eeeeff;--text2:#8886aa;--text3:#44436a;
+  --text:#eeeeff;--text2:#e4e3ff;--text3:#c6c5cf;
   --r:16px;
 }
+
+/* =============================================
+   RESET & BASE
+============================================= */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  line-height:1.6;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+
 body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background-image:
+  content:"";
+  position:fixed;inset:0;
+  background-image:
     linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
     linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
-    background-size:50px 50px;
-    pointer-events:none;
-    z-index:-2;
+  background-size:50px 50px;
+  pointer-events:none;z-index:-2;
 }
+
+#c{position:fixed;inset:0;width:100%;height:100%}
+.vignette{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse 80% 80% at 50% 50%,transparent 0%,rgba(0,0,0,.08) 50%,rgba(0,0,0,.70) 100%)}
+
+@media (max-width:1024px){
+  .vignette{background:radial-gradient(ellipse 90% 90% at 50% 50%,transparent 0%,rgba(0,0,0,.10) 50%,rgba(0,0,0,.75) 100%)}
+}
+
+@media (max-width:768px){
+  .vignette{background:radial-gradient(ellipse 100% 100% at 50% 50%,transparent 0%,rgba(0,0,0,.12) 45%,rgba(0,0,0,.80) 100%)}
+}
+
 h1,h2,h3,h4,h5{font-family:'Syne',sans-serif}
 a{text-decoration:none;color:inherit}
 img{display:block;max-width:100%}
 
 
-
-/* ==========================
-   AURORA BACKGROUND
-========================== */
-
-.aurora-bg{
-  position:fixed;
-  inset:0;
-  z-index:-3;
-  overflow:hidden;
-}
-
-.aurora-bg span{
-  position:absolute;
-  border-radius:50%;
-  filter:blur(120px);
-  opacity:.30;
-  animation:float 18s infinite ease-in-out;
-}
-
-.aurora-bg span:nth-child(1){
-  width:500px;
-  height:500px;
-  background:#6366f1;
-  top:-150px;
-  left:-100px;
-}
-
-.aurora-bg span:nth-child(2){
-  width:500px;
-  height:500px;
-  background:#8b5cf6;
-  right:-100px;
-  top:250px;
-}
-
-.aurora-bg span:nth-child(3){
-  width:450px;
-  height:450px;
-  background:#06b6d4;
-  bottom:-150px;
-  left:35%;
-}
-
-@keyframes float{
-  0%,100%{
-    transform:translateY(0);
-  }
-  50%{
-    transform:translateY(-40px);
-  }
-}
-
 /* SCROLLBAR */
-::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--a1);border-radius:2px}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--a1);border-radius:2px}
 
 /* NOISE */
-body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.35}
+body::after{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9999;opacity:.35;
+}
 
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 5%;background:rgba(7,7,14,0.8);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:background .3s}
-.logo{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:.6rem}
-.logo-icon{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;box-shadow:0 0 20px rgba(108,99,255,.4);animation:logo-glow 3s ease-in-out infinite}
-@keyframes logo-glow{0%,100%{box-shadow:0 0 20px rgba(108,99,255,.4)}50%{box-shadow:0 0 36px rgba(255,79,154,.5)}}
-.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
-.nav-links a{color:var(--text2);font-size:.875rem;font-weight:500;transition:color .2s;letter-spacing:.01em}
+
+/* =============================================
+   NAVIGATION
+============================================= */
+nav{ position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 5%;background:rgba(7,7,14,0.8);backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:background .3s;gap:1rem;}
+.logo{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:.5rem;flex-shrink:0;}
+.logo-icon{width:48px;height:42px;background:transparent;opacity:1;filter:none;}
+.logo-text{white-space:nowrap;}
+.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none}
+.nav-links a{color:var(--text2);font-size:.875rem;font-weight:500;transition:color .2s;letter-spacing:.01em;white-space:nowrap}
 .nav-links a:hover{color:var(--text)}
-.nav-cta{background:linear-gradient(135deg,var(--a1),#8b7eff)!important;color:#fff!important;padding:.5rem 1.3rem;border-radius:50px;font-weight:600!important;font-size:.82rem!important;box-shadow:0 0 22px rgba(108,99,255,.35);transition:all .3s!important}
+.nav-cta{background:linear-gradient(135deg,var(--a1),#8b7eff)!important;color:#fff!important;padding:.5rem 1.3rem;border-radius:50px;
+  font-weight:600!important;font-size:.82rem!important;box-shadow:0 0 22px rgba(108,99,255,.35);transition:all .3s!important;}
 .nav-cta:hover{box-shadow:0 0 40px rgba(108,99,255,.6)!important;transform:translateY(-1px)}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;flex-shrink:0;-webkit-tap-highlight-color:transparent}
 .hamburger span{display:block;width:22px;height:2px;background:var(--text2);border-radius:2px;transition:all .3s}
 
-/* MOBILE MENU */
-.mob-menu{display:none;position:fixed;inset:0;background:rgba(7,7,14,.97);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;backdrop-filter:blur(30px)}
-.mob-menu.open{display:flex}
-.mob-menu a{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--text2);transition:color .2s}
-.mob-menu a:hover{color:var(--text)}
-.mob-close{position:absolute;top:1.5rem;right:5%;background:none;border:none;color:var(--text2);font-size:1.8rem;cursor:pointer;line-height:1}
+.nav-links a.active{
+  color:#a79ef0;
+}
 
-/* ── HERO ── */
-#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:8rem 5% 6rem;text-align:center}
+.nav-links a.active::after{
+  width:100%;
+}
+
+/* MOBILE MENU */
+.mob-menu{
+  display:none;position:fixed;inset:0;
+  background:rgba(7,7,14,.97);z-index:999;
+  flex-direction:column;align-items:center;justify-content:center;
+  gap:2rem;
+  backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);
+  padding:2rem;
+}
+.mob-menu.open{display:flex}
+.mob-menu a{
+  font-family:'Syne',sans-serif;font-size:clamp(1.5rem,6vw,2rem);
+  font-weight:800;color:var(--text2);transition:color .2s;text-align:center;
+}
+.mob-menu a:hover{color:var(--text)}
+.mob-close{
+  position:absolute;top:1.5rem;right:5%;
+  background:none;border:none;color:var(--text2);
+  font-size:1.8rem;cursor:pointer;line-height:1;
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* =============================================
+   HERO
+============================================= */
+#hero{
+  min-height:100svh;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  padding:7rem 5% 5rem;
+  text-align:center;
+}
 .hero-bg{position:absolute;inset:0;overflow:hidden}
 .hb-orb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none}
-.hb-1{width:700px;height:700px;background:radial-gradient(circle,rgba(108,99,255,.16),transparent 70%);top:-20%;left:50%;transform:translateX(-50%);animation:orb1 9s ease-in-out infinite}
-.hb-2{width:500px;height:500px;background:radial-gradient(circle,rgba(255,79,154,.1),transparent 70%);bottom:-10%;right:-10%;animation:orb2 11s ease-in-out infinite}
-.hb-3{width:400px;height:400px;background:radial-gradient(circle,rgba(0,229,176,.08),transparent 70%);bottom:10%;left:-5%;animation:orb3 13s ease-in-out infinite}
+.hb-1{width:min(700px,100vw);height:min(700px,100vw);background:radial-gradient(circle,rgba(108,99,255,.16),transparent 70%);top:-20%;left:50%;transform:translateX(-50%);animation:orb1 9s ease-in-out infinite}
+.hb-2{width:min(500px,80vw);height:min(500px,80vw);background:radial-gradient(circle,rgba(255,79,154,.1),transparent 70%);bottom:-10%;right:-10%;animation:orb2 11s ease-in-out infinite}
+.hb-3{width:min(400px,70vw);height:min(400px,70vw);background:radial-gradient(circle,rgba(0,229,176,.08),transparent 70%);bottom:10%;left:-5%;animation:orb3 13s ease-in-out infinite}
 @keyframes orb1{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-50px)}}
 @keyframes orb2{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-30px) scale(1.1)}}
 @keyframes orb3{0%,100%{transform:translateY(0)}50%{transform:translateY(40px)}}
-.grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(108,99,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(108,99,255,.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse at 50% 50%,black 30%,transparent 80%)}
-.hero-inner{position:relative;z-index:1;max-width:960px;margin:0 auto}
-.h-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(108,99,255,.1);border:1px solid rgba(108,99,255,.25);padding:.38rem 1rem;border-radius:50px;font-size:.75rem;color:#a49dff;font-weight:600;letter-spacing:.07em;text-transform:uppercase;margin-bottom:2rem;animation:fadeup .8s ease both}
-.h-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--a3);animation:blink 1.4s ease-in-out infinite}
+.grid-lines{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(108,99,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(108,99,255,.04) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse at 50% 50%,black 30%,transparent 80%);
+}
+.hero-inner{position:relative;z-index:1;max-width:960px;margin:0 auto;width:100%}
+.h-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(108,99,255,.1);border:1px solid rgba(108,99,255,.25);
+  padding:.38rem 1rem;border-radius:50px;font-size:.75rem;
+  color:#a49dff;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+  margin-bottom:1.5rem;animation:fadeup .8s ease both;
+}
+.h-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--a3);animation:blink 1.4s ease-in-out infinite;flex-shrink:0}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
-h1.hero-title{font-size:clamp(3rem,7.5vw,6.5rem);font-weight:800;line-height:1.03;letter-spacing:-.04em;margin-bottom:1.5rem;animation:fadeup .8s .1s ease both}
+h1.hero-title{
+  font-size:clamp(2.4rem,8vw,6.5rem);
+  font-weight:800;line-height:1.03;letter-spacing:-.04em;
+  margin-bottom:1.2rem;animation:fadeup .8s .1s ease both;
+}
 .ht-white{color:var(--text)}
-.ht-grad{background:linear-gradient(135deg,#a49dff 0%,var(--a2) 45%,var(--a3) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:clamp(.95rem,2vw,1.15rem);color:var(--text2);max-width:580px;margin:0 auto 2.5rem;line-height:1.75;font-weight:600;animation:fadeup .8s .2s ease both}
-.hero-btns{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;animation:fadeup .8s .3s ease both}
-.btn-p{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,var(--a1),#8b7eff);color:#fff;padding:.85rem 2rem;border-radius:50px;font-weight:600;font-size:.95rem;box-shadow:0 8px 32px rgba(108,99,255,.35);transition:all .3s}
+.ht-grad{
+  background:linear-gradient(135deg,#a49dff 0%,var(--a2) 45%,var(--a3) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub{
+  font-size:clamp(.9rem,2.2vw,1.15rem);color:var(--text2);
+  max-width:580px;margin:0 auto 2rem;line-height:1.75;
+  font-weight:500;animation:fadeup .8s .2s ease both;
+}
+.hero-btns{
+  display:flex;align-items:center;justify-content:center;
+  gap:.75rem;flex-wrap:wrap;animation:fadeup .8s .3s ease both;
+}
+.btn-p{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:linear-gradient(135deg,var(--a1),#8b7eff);color:#fff;
+  padding:.8rem 1.8rem;border-radius:50px;font-weight:600;
+  font-size:.95rem;box-shadow:0 8px 32px rgba(108,99,255,.35);
+  transition:all .3s;white-space:nowrap;
+}
 .btn-p:hover{transform:translateY(-2px);box-shadow:0 14px 48px rgba(108,99,255,.5)}
-.btn-s{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:var(--text2);padding:.85rem 2rem;border-radius:50px;font-weight:500;font-size:.95rem;border:1px solid var(--border2);transition:all .3s}
+.btn-s{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:transparent;color:var(--text2);
+  padding:.8rem 1.8rem;border-radius:50px;font-weight:500;
+  font-size:.95rem;border:1px solid var(--border2);
+  transition:all .3s;white-space:nowrap;
+}
 .btn-s:hover{background:rgba(255,255,255,.05);color:var(--text);border-color:rgba(255,255,255,.2)}
-.hero-stats{display:flex;justify-content:center;gap:4rem;margin-top:5rem;padding-top:3rem;border-top:1px solid var(--border);flex-wrap:wrap;gap:2rem;animation:fadeup .8s .45s ease both}
-.stat-n{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--text),var(--a1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-stats{
+  display:flex;justify-content:center;align-items:center;
+  gap:2.5rem;margin-top:4rem;padding-top:2.5rem;
+  border-top:1px solid var(--border);
+  flex-wrap:wrap;animation:fadeup .8s .45s ease both;
+}
+.stat-item{text-align:center}
+.stat-n{
+  font-family:'Syne',sans-serif;font-size:clamp(1.5rem,3.5vw,2rem);
+  font-weight:800;
+  background:linear-gradient(135deg,var(--text),var(--a1));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
 .stat-l{font-size:.73rem;color:var(--text3);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-top:.15rem}
 @keyframes fadeup{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── MARQUEE ── */
-.mq-wrap{padding:2.5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
-.mq-track{display:flex;gap:3rem;white-space:nowrap;animation:mq 25s linear infinite}
+/* =============================================
+   MARQUEE
+============================================= */
+.mq-wrap{padding:2rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
+.mq-track{display:flex;gap:2.5rem;white-space:nowrap;animation:mq 25s linear infinite}
 .mq-track:hover{animation-play-state:paused}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.mq-item{display:inline-flex;align-items:center;gap:.6rem;font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);white-space:nowrap}
+.mq-item{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--text3);white-space:nowrap;
+}
 .mq-sep{color:var(--a1);font-size:1rem}
 
-/* ── SECTION COMMONS ── */
+/* =============================================
+   SECTION COMMONS
+============================================= */
 section{position:relative;z-index:1}
-.wrap{max-width:1200px;margin:0 auto;padding:7rem 5%}
+.wrap{max-width:1200px;margin:0 auto;padding:5rem 5%}
 .sec-tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--a1);margin-bottom:.75rem}
-.sec-h{font-size:clamp(1.9rem,4vw,3rem);font-weight:800;letter-spacing:-.035em;line-height:1.1;color:var(--text);margin-bottom:.75rem}
+.sec-h{font-size:clamp(1.6rem,4vw,3rem);font-weight:800;letter-spacing:-.035em;line-height:1.1;color:var(--text);margin-bottom:.75rem}
 .sec-p{color:var(--text2);font-size:1rem;font-weight:300;line-height:1.75;max-width:520px}
 .reveal{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.23,1,.32,1),transform .7s cubic-bezier(.23,1,.32,1)}
 .reveal.in{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
-/* ── SERVICES ──#services{background:var(--bg2)}*/
-
-.svc-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem;flex-wrap:wrap;gap:2rem}
-.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.2rem}
-.svc-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:2rem;transition:all .4s cubic-bezier(.23,1,.32,1);cursor:default;position:relative;overflow:hidden}
-.svc-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--gc,rgba(108,99,255,.07)) 0%,transparent 60%);opacity:0;transition:opacity .4s}
+/* =============================================
+   ABOUT / SERVICES SHARED HEADER
+============================================= */
+.svc-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1.5rem}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+.svc-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r);padding:1.8rem;
+  transition:all .4s cubic-bezier(.23,1,.32,1);cursor:default;
+  position:relative;overflow:hidden;
+}
+.svc-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--gc,rgba(108,99,255,.07)) 0%,transparent 60%);
+  opacity:0;transition:opacity .4s;
+}
 .svc-card:hover{transform:translateY(-5px);border-color:var(--border2)}
 .svc-card:hover::after{opacity:1}
-.svc-ico{width:48px;height:48px;border-radius:12px;background:var(--ib,rgba(108,99,255,.12));border:1px solid var(--ie,rgba(108,99,255,.2));display:flex;align-items:center;justify-content:center;font-size:1.35rem;margin-bottom:1.3rem;position:relative;z-index:1}
-.svc-card h3{font-size:1.05rem;font-weight:700;margin-bottom:.4rem;color:var(--text);position:relative;z-index:1}
-.svc-card p{font-size:.85rem;color:var(--text2);line-height:1.65;font-weight:600;position:relative;z-index:1}
+.svc-ico{
+  width:48px;height:48px;border-radius:12px;
+  background:var(--ib,rgba(108,99,255,.12));border:1px solid var(--ie,rgba(108,99,255,.2));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.35rem;margin-bottom:1.2rem;position:relative;z-index:1;
+}
+.svc-card h3{font-size:1rem;font-weight:700;margin-bottom:.4rem;color:var(--text);position:relative;z-index:1}
+.svc-card p{font-size:.85rem;color:var(--text2);line-height:1.65;font-weight:500;position:relative;z-index:1}
 .svc-arr{display:inline-flex;align-items:center;gap:.35rem;margin-top:1rem;font-size:.82rem;color:var(--text3);transition:all .3s;position:relative;z-index:1}
 .svc-card:hover .svc-arr{color:var(--a1);gap:.6rem}
 
-/* ── PRODUCTS ── */
-/*#products{background:var(--bg)}*/
-.prod-intro{text-align:center;margin-bottom:4.5rem}
+/* =============================================
+   PRODUCTS
+============================================= */
+.prod-intro{text-align:center;margin-bottom:4rem}
 .prod-intro .sec-p{margin:0 auto}
-
-/* product cards */
-.prod-cards{display:flex;flex-direction:column;gap:5rem}
-.prod-card{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.prod-cards{display:flex;flex-direction:column;gap:4rem}
+.prod-card{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
 .prod-card.rev{direction:rtl}
 .prod-card.rev>*{direction:ltr}
-.prod-label{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .9rem;border-radius:50px;margin-bottom:1.2rem}
-.prod-title{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;letter-spacing:-.04em;line-height:1.1;margin-bottom:1rem;color:var(--text)}
-.prod-desc{color:var(--text2);font-size:.95rem;line-height:1.75;font-weight:500;margin-bottom:1.8rem}
-.prod-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.8rem}
+.prod-label{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:.3rem .9rem;border-radius:50px;margin-bottom:1.2rem;
+}
+.prod-title{font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:800;letter-spacing:-.04em;line-height:1.1;margin-bottom:1rem;color:var(--text)}
+.prod-desc{color:var(--text2);font-size:.95rem;line-height:1.75;font-weight:500;margin-bottom:1.5rem}
+.prod-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
 .ptag{font-size:.72rem;font-weight:600;letter-spacing:.06em;padding:.28rem .75rem;border-radius:50px;background:var(--surface);border:1px solid var(--border);color:var(--text2)}
-.prod-actions{display:flex;gap:.8rem;flex-wrap:wrap}
+.prod-actions{display:flex;gap:.75rem;flex-wrap:wrap}
 .btn-prod{display:inline-flex;align-items:center;gap:.4rem;padding:.65rem 1.4rem;border-radius:50px;font-size:.85rem;font-weight:600;transition:all .3s}
 
-/* VisitAI mockup */
-.vm-wrap{background:var(--bg3);border:1px solid var(--border);border-radius:22px;overflow:hidden;position:relative}
-.vm-top{padding:.9rem 1.2rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.5rem}
-.vm-dot{width:9px;height:9px;border-radius:50%}
+/* Product mockups */
+.vm-wrap,.cf-wrap,.dp-wrap{background:var(--bg3);border:1px solid var(--border);border-radius:22px;overflow:hidden}
+.vm-top,.cf-top,.dp-top{padding:.9rem 1.2rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.5rem}
+.vm-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 .vm-body{padding:0;position:relative}
 .vm-scene{width:100%;aspect-ratio:16/9;background:linear-gradient(160deg,#0f1a2a 0%,#162237 40%,#0c2233 70%,#0a1520 100%);position:relative;overflow:hidden}
 .vm-floor{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to top,rgba(108,99,255,.08),transparent);border-top:1px solid rgba(108,99,255,.15)}
@@ -206,18 +296,14 @@ section{position:relative;z-index:1}
 .vm-win{width:4px;height:3px;background:rgba(255,220,100,.5);border-radius:1px;margin:2px 2px 0;display:inline-block}
 .vm-ui{position:absolute;top:8px;left:8px;right:8px;display:flex;justify-content:space-between;align-items:center}
 .vm-badge-live{background:rgba(0,229,176,.15);border:1px solid rgba(0,229,176,.3);color:var(--a3);font-size:.6rem;font-weight:700;letter-spacing:.08em;padding:.2rem .6rem;border-radius:50px;display:flex;align-items:center;gap:.3rem}
-.vm-badge-live::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--a3);animation:blink 1s infinite}
+.vm-badge-live::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--a3);animation:blink 1s infinite;flex-shrink:0}
 .vm-compass{background:rgba(7,7,14,.7);border:1px solid var(--border);border-radius:8px;padding:.3rem .6rem;font-size:.65rem;color:var(--text2);font-weight:500}
 .vm-bottom{padding:.8rem 1.2rem;display:flex;align-items:center;gap:.8rem}
-.vm-thumb{width:36px;height:36px;border-radius:7px;object-fit:cover;flex-shrink:0;background:rgba(108,99,255,.2);border:1px solid rgba(108,99,255,.3);display:flex;align-items:center;justify-content:center;font-size:.8rem}
-.vm-info{flex:1}
-.vm-info h6{font-size:.78rem;font-weight:600;color:var(--text);margin-bottom:.1rem}
-.vm-info p{font-size:.68rem;color:var(--text2)}
-.vm-price{font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;color:var(--a1)}
-
-/* ClipForge mockup */
-.cf-wrap{background:var(--bg3);border:1px solid var(--border);border-radius:22px;overflow:hidden}
-.cf-top{padding:.9rem 1.2rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.5rem}
+.vm-thumb{width:36px;height:36px;border-radius:7px;flex-shrink:0;background:rgba(108,99,255,.2);border:1px solid rgba(108,99,255,.3);display:flex;align-items:center;justify-content:center;font-size:.8rem}
+.vm-info{flex:1;min-width:0}
+.vm-info h6{font-size:.78rem;font-weight:600;color:var(--text);margin-bottom:.1rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vm-info p{font-size:.68rem;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vm-price{font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;color:var(--a1);flex-shrink:0}
 .cf-body{padding:1.2rem}
 .cf-preview{width:100%;aspect-ratio:9/5;background:linear-gradient(135deg,#1a0829,#0d1a2e,#0a2020);border-radius:12px;position:relative;overflow:hidden;margin-bottom:1rem;display:flex;align-items:center;justify-content:center}
 .cf-wave{position:absolute;bottom:0;left:0;right:0;height:35%;background:linear-gradient(to top,rgba(255,79,154,.12),transparent)}
@@ -229,260 +315,354 @@ section{position:relative;z-index:1}
 .cf-tool{display:flex;align-items:center;gap:.3rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.35rem .7rem;font-size:.7rem;color:var(--text2);font-weight:500;cursor:pointer;transition:all .25s}
 .cf-tool:hover{border-color:var(--border2);color:var(--text)}
 .cf-tool-icon{font-size:.85rem}
-
-/* DataPulse mockup */
-.dp-wrap{background:var(--bg3);border:1px solid var(--border);border-radius:22px;overflow:hidden}
-.dp-top{padding:.9rem 1.2rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.5rem}
 .dp-body{padding:1.2rem}
 .dp-metrics{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:1rem}
 .dp-metric{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.8rem}
 .dp-metric-label{font-size:.65rem;color:var(--text3);font-weight:600;letter-spacing:.07em;text-transform:uppercase;margin-bottom:.3rem}
-.dp-metric-val{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--text);line-height:1}
+.dp-metric-val{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:var(--text);line-height:1}
 .dp-metric-delta{font-size:.65rem;font-weight:600;margin-top:.2rem}
 .dp-chart{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.9rem;height:90px;display:flex;align-items:flex-end;gap:3px}
 .dp-bar{flex:1;border-radius:3px 3px 0 0;background:linear-gradient(to top,var(--a1),rgba(108,99,255,.3));animation:bar-up .8s ease both}
 @keyframes bar-up{from{transform:scaleY(0);transform-origin:bottom}to{transform:scaleY(1);transform-origin:bottom}}
 
-/* ── PROCESS ── #process{background:var(--bg2)}*/
-
-.proc-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:3.5rem}
-.proc-steps{display:flex;flex-direction:column;gap:1.2rem}
-.p-step{display:flex;gap:1.2rem;align-items:flex-start;padding:1.3rem;border-radius:14px;border:1px solid transparent;transition:all .35s;cursor:default}
+/* =============================================
+   PROCESS
+============================================= */
+.proc-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:3rem}
+.proc-steps{display:flex;flex-direction:column;gap:1rem}
+.p-step{display:flex;gap:1.2rem;align-items:flex-start;padding:1.2rem;border-radius:14px;border:1px solid transparent;transition:all .35s;cursor:default}
 .p-step:hover,.p-step.act{background:var(--surface);border-color:var(--border)}
 .p-num{width:38px;height:38px;border-radius:9px;flex-shrink:0;background:rgba(108,99,255,.1);border:1px solid rgba(108,99,255,.22);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;color:var(--a1)}
-.p-step h4{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:.25rem}
-.p-step p{font-size:.83rem;color:var(--text2);line-height:1.6;font-weight:600}
+.p-step h4{font-size:.92rem;font-weight:700;color:var(--text);margin-bottom:.25rem}
+.p-step p{font-size:.83rem;color:var(--text2);line-height:1.6;font-weight:500}
 .proc-vis{background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:2.5rem;text-align:center;position:relative;overflow:hidden}
 .proc-vis::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(108,99,255,.1),transparent 65%)}
-.pv-label{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--a1);margin-bottom:1.8rem;position:relative}
-.pv-ring-wrap{position:relative;width:150px;height:150px;margin:0 auto 2rem}
-.pv-ring{width:150px;height:150px;border-radius:50%;background:conic-gradient(var(--a1) 0% 94%,var(--surface2) 94% 100%);position:relative;display:flex;align-items:center;justify-content:center;animation:ring-spin 20s linear infinite}
+.pv-label{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--a1);margin-bottom:1.5rem;position:relative}
+.pv-ring-wrap{position:relative;width:140px;height:140px;margin:0 auto 1.8rem}
+.pv-ring{width:140px;height:140px;border-radius:50%;background:conic-gradient(var(--a1) 0% 94%,var(--surface2) 94% 100%);position:relative;display:flex;align-items:center;justify-content:center;animation:ring-spin 20s linear infinite}
 @keyframes ring-spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-.pv-ring-inner{position:absolute;width:110px;height:110px;border-radius:50%;background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center;animation:ring-spin 20s linear infinite reverse}
-.pv-ring-val{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--text);line-height:1}
-.pv-ring-sub{font-size:.83rem;color:var(--text3);font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+.pv-ring-inner{position:absolute;width:104px;height:104px;border-radius:50%;background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center;animation:ring-spin 20s linear infinite reverse}
+.pv-ring-val{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--text);line-height:1}
+.pv-ring-sub{font-size:.75rem;color:var(--text3);font-weight:600;letter-spacing:.05em;text-transform:uppercase}
 .pv-pills{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;position:relative}
 .pv-pill{background:var(--surface2);border:1px solid var(--border);border-radius:50px;padding:.3rem .8rem;font-size:.72rem;color:var(--text2);font-weight:500}
 
-/* ── TESTIMONIALS ── #testi{background:var(--bg)}*/
-
-.testi-head{text-align:center;margin-bottom:3.5rem}
+/* =============================================
+   TESTIMONIALS
+============================================= */
+.testi-head{text-align:center;margin-bottom:3rem}
 .testi-head .sec-p{margin:0 auto}
-.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.2rem}
-.t-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:1.8rem;transition:all .35s;position:relative;overflow:hidden}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem}
+.t-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:1.6rem;transition:all .35s;position:relative;overflow:hidden}
 .t-card:hover{border-color:var(--border2);transform:translateY(-4px)}
 .t-stars{display:flex;gap:2px;margin-bottom:1rem}
 .t-star{color:#f5c542;font-size:.8rem}
-.t-quote{font-size:.88rem;color:var(--text2);line-height:1.7;font-weight:600;margin-bottom:1.5rem}
+.t-quote{font-size:.87rem;color:var(--text2);line-height:1.7;font-weight:500;margin-bottom:1.5rem}
 .t-author{display:flex;align-items:center;gap:.75rem}
 .t-av{width:38px;height:38px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.78rem;font-weight:700;color:#fff}
 .t-name{font-size:.88rem;font-weight:600;color:var(--text)}
-.t-role{font-size:.75rem;color:var(--text3);font-weight:600;}
+.t-role{font-size:.75rem;color:var(--text3);font-weight:600}
 .t-tag{position:absolute;top:1.2rem;right:1.2rem;font-size:.65rem;font-weight:700;letter-spacing:.07em;padding:.2rem .65rem;border-radius:50px}
 
-/* ── PRICING ── #pricing{background:var(--bg2)}*/
-
+/* =============================================
+   PRICING
+============================================= */
 .pricing-head{text-align:center;margin-bottom:1rem}
-.pricing-note{text-align:center;margin-bottom:3rem;display:flex;align-items:center;justify-content:center;gap:.6rem;flex-wrap:wrap}
+.pricing-note{text-align:center;margin-bottom:2.5rem;display:flex;align-items:center;justify-content:center;gap:.6rem;flex-wrap:wrap}
 .pn-tag{display:inline-flex;align-items:center;gap:.4rem;background:rgba(0,229,176,.08);border:1px solid rgba(0,229,176,.2);color:var(--a3);font-size:.75rem;font-weight:600;padding:.35rem .9rem;border-radius:50px;letter-spacing:.04em}
-/* service pricing rows */
-.svc-pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.2rem;margin-bottom:3rem}
-.sp-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:1.6rem;display:flex;gap:1.2rem;align-items:flex-start;transition:all .35s;position:relative;overflow:hidden}
+.svc-pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem;margin-bottom:2.5rem}
+.sp-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:1.5rem;display:flex;gap:1.2rem;align-items:flex-start;transition:all .35s;position:relative;overflow:hidden}
 .sp-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--sc,rgba(108,99,255,.06)),transparent 60%);opacity:0;transition:opacity .35s}
 .sp-card:hover{border-color:var(--border2);transform:translateY(-3px)}
 .sp-card:hover::before{opacity:1}
 .sp-ico{width:44px;height:44px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:var(--sib,rgba(108,99,255,.12));border:1px solid var(--sie,rgba(108,99,255,.2))}
 .sp-body{flex:1;min-width:0}
-.sp-name{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:.2rem}
-.sp-desc{font-size:.78rem;color:var(--text3);line-height:1.5;margin-bottom:.7rem;font-weight:600}
+.sp-name{font-family:'Syne',sans-serif;font-size:.93rem;font-weight:700;color:var(--text);margin-bottom:.2rem}
+.sp-desc{font-size:.78rem;color:var(--text3);line-height:1.5;margin-bottom:.7rem;font-weight:500}
 .sp-meta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
-.sp-price{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:800;color:var(--text)}
+.sp-price{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:var(--text)}
 .sp-price span{font-size:.72rem;color:var(--text3);font-weight:400;font-family:'Inter',sans-serif}
 .sp-duration{display:flex;align-items:center;gap:.3rem;font-size:.72rem;color:var(--text3);font-weight:600}
 .sp-quote{display:inline-flex;align-items:center;gap:.3rem;margin-top:.8rem;font-size:.75rem;font-weight:600;color:var(--a1);transition:gap .2s;cursor:pointer}
 .sp-card:hover .sp-quote{gap:.55rem}
-/* bottom CTA row */
-.pricing-cta-row{background:linear-gradient(135deg,rgba(108,99,255,.1),rgba(255,79,154,.06));border:1px solid rgba(108,99,255,.2);border-radius:18px;padding:2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
-.pcta-text h4{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:.3rem}
-.pcta-text p{font-size:.85rem;color:var(--text2);font-weight:600}
+.pricing-cta-row{
+  background:linear-gradient(135deg,rgba(108,99,255,.1),rgba(255,79,154,.06));
+  border:1px solid rgba(108,99,255,.2);border-radius:18px;
+  padding:2rem;display:flex;align-items:center;
+  justify-content:space-between;gap:2rem;flex-wrap:wrap;
+}
+.pcta-text h4{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:.3rem}
+.pcta-text p{font-size:.85rem;color:var(--text2);font-weight:500}
 .pcta-actions{display:flex;gap:.8rem;flex-shrink:0;flex-wrap:wrap}
 
-/* ── CTA ── #cta{background:var(--bg)} */
-
-.cta-box{background:linear-gradient(140deg,rgba(108,99,255,.14),rgba(255,79,154,.07),rgba(0,229,176,.05));border:1px solid rgba(108,99,255,.22);border-radius:28px;padding:5rem;text-align:center;position:relative;overflow:hidden}
+/* =============================================
+   CTA
+============================================= */
+.cta-box{
+  background:linear-gradient(140deg,rgba(108,99,255,.14),rgba(255,79,154,.07),rgba(0,229,176,.05));
+  border:1px solid rgba(108,99,255,.22);border-radius:28px;
+  padding:4rem 3rem;text-align:center;position:relative;overflow:hidden;
+}
 .cta-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% -20%,rgba(108,99,255,.15),transparent 65%);pointer-events:none}
-.cta-box h2{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;letter-spacing:-.04em;margin-bottom:1rem;position:relative}
-.cta-box p{color:var(--text2);font-size:1.05rem;max-width:480px;margin:0 auto 2.5rem;font-weight:500;position:relative;line-height:1.7}
+.cta-box h2{font-size:clamp(1.8rem,5vw,3.5rem);font-weight:800;letter-spacing:-.04em;margin-bottom:1rem;position:relative}
+.cta-box p{color:var(--text2);font-size:1rem;max-width:480px;margin:0 auto 2rem;font-weight:500;position:relative;line-height:1.7}
 .cta-actions{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;position:relative}
 
-/* ── FOOTER ── */
-footer{border-top:1px solid var(--border);padding:4rem 5% 2rem;background:transparent}
-.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;margin-bottom:3.5rem}
-.ft-brand .logo{margin-bottom:1rem}
-.ft-brand p{color:var(--text3);font-size:.85rem;line-height:1.7;font-weight:600;max-width:250px}
-.ft-h{font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin-bottom:1rem}
-.ft-links{list-style:none;display:flex;flex-direction:column;gap:.55rem}
-.ft-links a{color:var(--text3);font-size:.83rem;font-weight:600;transition:color .2s}
-.ft-links a:hover{color:var(--text)}
-.ft-bot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;border-top:1px solid var(--border);padding-top:2rem}
-.ft-bot p{font-size:.83rem;color:var(--text3);font-weight:600;}
-.ft-soc{display:flex;gap:.75rem}
-.soc-btn{width:34px;height:34px;border-radius:8px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text3);font-size:.9rem;transition:all .2s}
-.soc-btn:hover{border-color:var(--border2);color:var(--text)}
-
-/* ── RESPONSIVE ── */
-@media(max-width:960px){
-  .nav-links{display:none}.hamburger{display:flex}
-  .proc-grid{grid-template-columns:1fr}
-  .prod-card{grid-template-columns:1fr}
-  .prod-card.rev{direction:ltr}
-  .ft-top{grid-template-columns:1fr 1fr}
-  .cta-box{padding:3rem 1.5rem}
+/* =============================================
+   CONTACT FORM
+============================================= */
+.contact-form{max-width:680px;margin:2rem auto 0;display:flex;flex-direction:column;gap:1rem}
+.contact-form input,.contact-form textarea{
+  width:100%;background:rgba(255,255,255,0.04);
+  border:1px solid var(--border);border-radius:14px;
+  padding:.95rem 1.1rem;color:var(--text);
+  font-family:'Inter',sans-serif;font-size:.95rem;
+  transition:all .3s ease;outline:none;
+  -webkit-appearance:none;appearance:none;
 }
-@media(max-width:600px){
-  .ft-top{grid-template-columns:1fr}
-  .ft-bot{flex-direction:column;text-align:center}
-  .wrap{padding:5rem 4%}
-  .hero-stats{gap:1.5rem}
-}
-
-
-/* CONTACT FORM */
-.contact-form{
-  max-width:700px;
-  margin:2rem auto 0;
-  display:flex;
-  flex-direction:column;
-  gap:1rem;
-}
-
-.contact-form input,
-.contact-form textarea{
-  width:100%;
-  background:rgba(255,255,255,0.04);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:1rem 1.1rem;
-  color:var(--text);
-  font-family:'Inter',sans-serif;
-  font-size:.95rem;
-  transition:all .3s ease;
-  outline:none;
-}
-
-.contact-form input::placeholder,
-.contact-form textarea::placeholder{
-  color:var(--text3);
-}
-
-
-
-.contact-form textarea{
-  resize:vertical;
-  min-height:140px;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus{
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:var(--text3)}
+.contact-form textarea{resize:vertical;min-height:130px}
+.contact-form input:focus,.contact-form textarea:focus{
   border-color:rgba(108,99,255,.6);
   box-shadow:0 0 0 4px rgba(108,99,255,.12);
   background:rgba(255,255,255,0.06);
 }
-
-.contact-form button{
-  align-self:center;
-  margin-top:.5rem;
-}
-
-#contact .cta-box{
-  max-width:900px;
-  margin:0 auto;
-}
-
-
-.custom-select{
-  position:relative;
-}
-
+.contact-form button{align-self:center;margin-top:.5rem}
+#contact .cta-box{max-width:900px;margin:0 auto}
+.custom-select{position:relative}
 .select-btn{
-  background:rgba(255,255,255,.04);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:1rem 1.1rem;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  cursor:pointer;
-  color:var(--text);
+  background:rgba(255,255,255,.04);border:1px solid var(--border);
+  border-radius:14px;padding:.95rem 1.1rem;display:flex;
+  justify-content:space-between;align-items:center;
+  cursor:pointer;color:var(--text);-webkit-tap-highlight-color:transparent;
+  user-select:none;
 }
-
 .select-options{
-  position:absolute;
-  top:calc(100% + 8px);
-  left:0;
-  right:0;
-  background:#181828;
-  border:1px solid var(--border);
-  border-radius:16px;
-  overflow:hidden;
-  display:none;
-  backdrop-filter:blur(20px);
-  z-index:100;
+  position:absolute;top:calc(100% + 8px);left:0;right:0;
+  background:#181828;border:1px solid var(--border);border-radius:16px;
+  overflow:hidden;display:none;backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);z-index:100;
   box-shadow:0 20px 40px rgba(0,0,0,.35);
 }
-
-.custom-select.active .select-options{
-  display:block;
-}
-
-.option{
-  padding:1rem 1.1rem;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.option:hover{
-  background:rgba(108,99,255,.15);
-  color:#a49dff;
-}
-
-.arrow{
-  transition:.3s;
-}
-
-.custom-select.active .arrow{
-  transform:rotate(180deg);
-}
-
-.selected-text{
-  color:var(--text3);
-}
-
+.custom-select.active .select-options{display:block}
+.option{padding:.95rem 1.1rem;cursor:pointer;transition:.2s;-webkit-tap-highlight-color:transparent}
+.option:hover,.option:active{background:rgba(108,99,255,.15);color:#a49dff}
+.arrow{transition:.3s}
+.custom-select.active .arrow{transform:rotate(180deg)}
+.selected-text{color:var(--text3)}
 .contact-info{
-  margin-top:2rem;
-  display:flex;
-  justify-content:center;
-  gap:2rem;
-  flex-wrap:wrap;
+  margin-top:2rem;display:flex;justify-content:center;
+  gap:1.5rem;flex-wrap:wrap;
+}
+.contact-info div{color:var(--text2);font-size:.8rem;display:flex;align-items:center;gap:.4rem}
+
+/* =============================================
+   FOOTER
+============================================= */
+footer{position:relative;z-index:10; border-top:1px solid var(--border);padding:4rem 5% 2rem;background:transparent;}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.ft-brand .logo{margin-bottom:1rem}
+.ft-brand p{color:var(--text3);font-size:.85rem;line-height:1.7;font-weight:500;max-width:250px}
+.ft-h{font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin-bottom:1rem}
+.ft-links{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.ft-links a{color:var(--text3);font-size:.83rem;font-weight:500;transition:color .2s}
+.ft-links a:hover{color:var(--text)}
+.ft-bot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;border-top:1px solid var(--border);padding-top:2rem}
+.ft-bot p{font-size:.83rem;color:var(--text3);font-weight:500}
+.ft-soc{display:flex;gap:.75rem}
+.soc-btn{width:34px;height:34px;border-radius:8px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text3);font-size:.9rem;transition:all .2s;-webkit-tap-highlight-color:transparent}
+.soc-btn:hover{border-color:var(--border2);color:var(--text)}
+
+/* =============================================
+   RESPONSIVE — LARGE DESKTOP (max 1280px)
+============================================= */
+@media (max-width:1280px) {
+  .ft-top{grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem}
 }
 
-.contact-info div{
-  color:var(--text2);
-  font-size:.8rem;
-  display:flex;
-  align-items:center;
-  gap:.4rem;
+/* =============================================
+   RESPONSIVE — TABLET LANDSCAPE (max 1024px)
+============================================= */
+@media (max-width:1024px) {
+  .wrap{padding:5rem 4%}
+  .ft-top{grid-template-columns:1fr 1fr;gap:2.5rem}
+  .ft-brand p{max-width:100%}
+  .prod-card{gap:2.5rem}
+  .proc-grid{gap:3rem}
+  .svc-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  nav{padding:1rem 4%}
 }
 
+/* =============================================
+   RESPONSIVE — TABLET PORTRAIT (max 900px)
+============================================= */
+@media (max-width:900px) {
+  .nav-links{display:none}
+  .hamburger{display:flex}
+
+  .proc-grid{grid-template-columns:1fr}
+  .proc-vis{max-width:420px;margin:0 auto}
+
+  .prod-card{grid-template-columns:1fr;gap:2rem}
+  .prod-card.rev{direction:ltr}
+  .prod-card.rev > *{direction:ltr}
+
+  .svc-head{flex-direction:column;align-items:flex-start}
+  .svc-head .sec-p{max-width:100%}
+
+  .hero-stats{gap:1.5rem}
+  .testi-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+}
+
+/* =============================================
+   RESPONSIVE — MOBILE LARGE (max 768px)
+============================================= */
+@media (max-width:768px) {
+  .wrap{padding:4rem 5%}
+  nav{padding:.9rem 5%}
+
+  .logo-text{display:none}
+  .logo{font-size:1rem}
+
+  #hero{padding:6rem 4% 4rem}
+  h1.hero-title{font-size:clamp(2.2rem,9vw,3.5rem)}
+  .hero-sub{font-size:.9rem}
+  .hero-btns .btn-p,.hero-btns .btn-s{font-size:.88rem;padding:.75rem 1.4rem}
+  .hero-stats{gap:1.2rem;padding-top:2rem;margin-top:3rem}
+  .stat-item{flex:1;min-width:75px}
+
+  .svc-grid{grid-template-columns:1fr 1fr}
+
+  .testi-grid{grid-template-columns:1fr 1fr}
+
+  .svc-pricing-grid{grid-template-columns:1fr}
+  .pricing-cta-row{flex-direction:column;text-align:center}
+  .pcta-actions{justify-content:center;width:100%}
+
+  .cta-box{padding:3rem 1.5rem;border-radius:20px}
+
+  .ft-top{grid-template-columns:1fr 1fr;gap:2rem}
+  .contact-info{flex-direction:column;align-items:center;gap:.8rem}
+
+  .dp-metric-val{font-size:1.15rem}
+}
+
+/* =============================================
+   RESPONSIVE — MOBILE (max 600px)
+============================================= */
+@media (max-width:600px) {
+  .wrap{padding:3.5rem 4%}
+
+  #hero{padding:5.5rem 4% 3.5rem}
+  h1.hero-title{font-size:clamp(2rem,10vw,3rem);letter-spacing:-.03em}
+  .hero-sub{font-size:.9rem;padding:0 .5rem}
+  .h-badge{font-size:.68rem;padding:.3rem .85rem}
+  .hero-btns{gap:.6rem}
+  .hero-btns .btn-p,.hero-btns .btn-s{font-size:.85rem;padding:.7rem 1.2rem}
+  .hero-stats{gap:1rem;margin-top:2.5rem;padding-top:2rem}
+  .stat-n{font-size:1.4rem}
+  .stat-l{font-size:.65rem}
+
+  .mq-item{font-size:.65rem;gap:.4rem}
+
+  .sec-h{font-size:clamp(1.5rem,6vw,2rem)}
+  .sec-p{font-size:.9rem}
+  .sec-tag{font-size:.68rem}
+
+  .svc-grid{grid-template-columns:1fr}
+  .svc-card{padding:1.4rem}
+
+  .prod-title{font-size:clamp(1.4rem,6vw,2rem)}
+  .prod-desc{font-size:.9rem}
+  .prod-actions{gap:.6rem}
+  .btn-prod{font-size:.82rem;padding:.6rem 1.2rem}
+
+  .testi-grid{grid-template-columns:1fr}
+  .t-card{padding:1.4rem}
+  .t-tag{font-size:.6rem;padding:.18rem .55rem}
+
+  .svc-pricing-grid{grid-template-columns:1fr}
+  .sp-card{padding:1.2rem;gap:.9rem}
+  .sp-ico{width:38px;height:38px;font-size:1rem;border-radius:9px}
+  .sp-price{font-size:.9rem}
+  .pricing-cta-row{padding:1.5rem 1.2rem}
+  .pn-tag{font-size:.68rem;padding:.28rem .7rem}
+
+  .cta-box{padding:2.5rem 1.2rem;border-radius:18px}
+
+  .proc-vis{padding:1.8rem}
+  .pv-ring-wrap{width:120px;height:120px}
+  .pv-ring{width:120px;height:120px}
+  .pv-ring-inner{width:88px;height:88px}
+  .pv-ring-val{font-size:1.5rem}
+  .proc-steps{gap:.8rem}
+  .p-step{padding:1rem;gap:.9rem}
+  .p-num{width:34px;height:34px;font-size:.78rem}
+  .p-step h4{font-size:.88rem}
+  .p-step p{font-size:.8rem}
+
+  .ft-top{grid-template-columns:1fr;gap:2rem}
+  .ft-bot{flex-direction:column;text-align:center;gap:1.2rem}
+  .ft-brand p{max-width:100%}
+
+  .contact-form input,.contact-form textarea{font-size:.9rem;padding:.85rem 1rem}
+  .contact-form{gap:.85rem}
+  #contact .cta-box{padding:2.5rem 1.2rem}
+  .contact-info div{font-size:.75rem}
+
+  .vm-bottom{flex-wrap:wrap;gap:.5rem}
+  .dp-metric{padding:.65rem}
+  .dp-metric-val{font-size:1.05rem}
+  .dp-metric-label{font-size:.6rem}
+
+  .cf-tools{gap:.4rem}
+  .cf-tool{padding:.28rem .55rem;font-size:.65rem}
+
+  .pricing-cta-row .btn-p,.pricing-cta-row .btn-s{font-size:.85rem;padding:.7rem 1.1rem}
+}
+
+/* =============================================
+   RESPONSIVE — MOBILE SMALL (max 400px)
+============================================= */
+@media (max-width:400px) {
+  .wrap{padding:3rem 4%}
+  nav{padding:.8rem 4%}
+
+  h1.hero-title{font-size:clamp(1.9rem,11vw,2.5rem)}
+  .hero-btns{flex-direction:column;align-items:stretch;max-width:260px;margin-left:auto;margin-right:auto}
+  .hero-btns .btn-p,.hero-btns .btn-s{justify-content:center;width:100%}
+
+  .hero-stats{gap:.8rem}
+  .stat-item{min-width:68px}
+  .stat-n{font-size:1.25rem}
+
+  .mob-menu a{font-size:1.4rem}
+  .mob-menu{gap:1.5rem}
+
+  .vm-price{display:none}
+  .dp-metric-val{font-size:.95rem}
+  .cf-play{width:40px;height:40px;font-size:.9rem}
+
+  .svc-grid{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .svc-pricing-grid{grid-template-columns:1fr}
+  .ft-top{grid-template-columns:1fr}
+
+  .sp-meta{flex-direction:column;align-items:flex-start;gap:.3rem}
+}
+
+/* =============================================
+   REDUCED MOTION
+============================================= */
+@media (prefers-reduced-motion:reduce) {
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+}
 </style>
 </head>
 <body>
-      <!-- Aurora Background -->
-    <div class="aurora-bg">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
+<canvas id="c"></canvas>
+<div class="vignette"></div>
 
 <!-- MOBILE MENU -->
 <div class="mob-menu" id="mobMenu">
@@ -491,14 +671,14 @@ footer{border-top:1px solid var(--border);padding:4rem 5% 2rem;background:transp
   <a href="#products" onclick="closeMob()">Products</a>
   <a href="#process" onclick="closeMob()">Process</a>
   <a href="#pricing" onclick="closeMob()">Pricing</a>
-  <a href="#cta" class="btn-p" style="font-size:1rem;border-radius:50px" onclick="closeMob()">Get Started →</a>
+  <a href="#cta" class="btn-p" style="font-size:1rem;border-radius:50px"  onclick="closeMob()">Get Started →</a>
 </div>
 
 <!-- NAV -->
 <nav id="nav">
   <a href="#" class="logo">
-    <div class="logo-icon">😊</div>
-    StayHappy Solutions
+    <img src="StayHappy_Solutions_Pvt_Ltd.svg" alt="StayHappy Solutions Pvt. Ltd. Logo" class="logo-icon">
+    <span class="logo-text">StayHappy Solutions</span>
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
@@ -519,7 +699,7 @@ footer{border-top:1px solid var(--border);padding:4rem 5% 2rem;background:transp
     <div class="grid-lines"></div>
   </div>
   <div class="hero-inner">
-    <div class="h-badge"><div class="h-badge-dot"></div> Trusted by 500+ businesses worldwide</div>
+    <div class="h-badge"><div class="h-badge-dot"></div>Building the future with AI & Software</div>
     <h1 class="hero-title">
       <span class="ht-white">Software That</span><br>
       <span class="ht-grad">Makes You Happy</span>
@@ -530,10 +710,10 @@ footer{border-top:1px solid var(--border);padding:4rem 5% 2rem;background:transp
       <a href="#products" class="btn-s">▷ &nbsp;Our Products</a>
     </div>
     <div class="hero-stats">
-      <div><div class="stat-n" id="s1">500+</div><div class="stat-l">Happy Clients</div></div>
-      <div><div class="stat-n" id="s2">98%</div><div class="stat-l">Satisfaction</div></div>
-      <div><div class="stat-n" id="s3">12M+</div><div class="stat-l">Users Served</div></div>
-      <div><div class="stat-n" id="s4">40+</div><div class="stat-l">Countries</div></div>
+      <div class="stat-item"><div class="stat-n" id="s1">35+</div><div class="stat-l">Happy Clients</div></div>
+      <div class="stat-item"><div class="stat-n" id="s2">50+</div><div class="stat-l">Projects Delivered</div></div>
+      <div class="stat-item"><div class="stat-n" id="s3">98%</div><div class="stat-l">Satisfaction</div></div>
+      <div class="stat-item"><div class="stat-n" id="s4">3+</div><div class="stat-l">Digital Products</div></div>
     </div>
   </div>
 </section>
@@ -564,54 +744,23 @@ footer{border-top:1px solid var(--border);padding:4rem 5% 2rem;background:transp
   </div>
 </div>
 
-
+<!-- ABOUT -->
 <section id="about">
   <div class="wrap">
     <div class="svc-head">
       <div>
         <span class="sec-tag">About Us</span>
-        <h2 class="sec-h">
-          Building software that helps businesses grow
-        </h2>
+        <h2 class="sec-h">Building software that helps businesses grow</h2>
       </div>
-      <p class="sec-p" style="font-weight:500;">
-        StayHappy Solutions is a software company focused on building
-        modern web applications, mobile apps, AI solutions, and scalable
-        digital products. We combine design, engineering, and innovation
-        to help businesses transform ideas into successful products.
-      </p>
-  </div>
-  <div class="svc-grid">
-    <div class="svc-card">
-      <div class="svc-ico">🚀</div>
-      <h3>Innovation First</h3>
-      <p>
-        We leverage modern technologies to build fast, scalable,
-        and future-ready solutions.
-      </p>
+      <p class="sec-p" style="font-weight:500;">StayHappy Solutions is a software company focused on building modern web applications, mobile apps, AI solutions, and scalable digital products. We combine design, engineering, and innovation to help businesses transform ideas into successful products.</p>
     </div>
-
-    <div class="svc-card">
-      <div class="svc-ico">🤝</div>
-      <h3>Client Focused</h3>
-      <p>
-        Every project is built around your business goals,
-        users, and long-term success.
-      </p>
-    </div>
-
-    <div class="svc-card">
-      <div class="svc-ico">⚡</div>
-      <h3>Fast Delivery</h3>
-      <p>
-        Agile development processes help us deliver quality
-        products quickly and efficiently.
-      </p>
+    <div class="svc-grid">
+      <div class="svc-card"><div class="svc-ico">🚀</div><h3>Innovation First</h3><p>We leverage modern technologies to build fast, scalable, and future-ready solutions.</p></div>
+      <div class="svc-card"><div class="svc-ico">🤝</div><h3>Client Focused</h3><p>Every project is built around your business goals, users, and long-term success.</p></div>
+      <div class="svc-card"><div class="svc-ico">⚡</div><h3>Fast Delivery</h3><p>Agile development processes help us deliver quality products quickly and efficiently.</p></div>
     </div>
   </div>
-</div>
 </section>
-
 
 <!-- SERVICES -->
 <section id="services">
@@ -624,42 +773,12 @@ footer{border-top:1px solid var(--border);padding:4rem 5% 2rem;background:transp
       <p class="sec-p" style="font-weight:500;">From a landing page to a full enterprise platform — we've got the stack, the team, and the mindset.</p>
     </div>
     <div class="svc-grid">
-      <div class="svc-card reveal" style="--gc:rgba(108,99,255,.08);--ib:rgba(108,99,255,.12);--ie:rgba(108,99,255,.22)">
-        <div class="svc-ico">🌐</div>
-        <h3>Web Development</h3>
-        <p>Blazing-fast, SEO-ready web apps built with modern frameworks. From MVPs to enterprise-scale platforms.</p>
-        <div class="svc-arr">Learn more →</div>
-      </div>
-      <div class="svc-card reveal d1" style="--gc:rgba(255,79,154,.07);--ib:rgba(255,79,154,.1);--ie:rgba(255,79,154,.2)">
-        <div class="svc-ico">📱</div>
-        <h3>App Development</h3>
-        <p>Native iOS, Android, and cross-platform apps that delight users and scale effortlessly from day one.</p>
-        <div class="svc-arr">Learn more →</div>
-      </div>
-      <div class="svc-card reveal d2" style="--gc:rgba(0,229,176,.06);--ib:rgba(0,229,176,.1);--ie:rgba(0,229,176,.2)">
-        <div class="svc-ico">🤖</div>
-        <h3>AI Development</h3>
-        <p>Custom LLMs, computer vision, NLP, and ML pipelines built from scratch for your unique use case.</p>
-        <div class="svc-arr">Learn more →</div>
-      </div>
-      <div class="svc-card reveal" style="--gc:rgba(255,140,66,.07);--ib:rgba(255,140,66,.1);--ie:rgba(255,140,66,.2)">
-        <div class="svc-ico">🔗</div>
-        <h3>AI Integration</h3>
-        <p>Plug AI into your existing systems — automate workflows, enrich data, and reduce operational overhead by 60%.</p>
-        <div class="svc-arr">Learn more →</div>
-      </div>
-      <div class="svc-card reveal d1" style="--gc:rgba(108,99,255,.08);--ib:rgba(108,99,255,.12);--ie:rgba(108,99,255,.22)">
-        <div class="svc-ico">☁️</div>
-        <h3>Cloud & DevOps</h3>
-        <p>AWS, GCP, Azure infrastructure with automated CI/CD, zero-downtime deploys, and 99.99% uptime SLAs.</p>
-        <div class="svc-arr">Learn more →</div>
-      </div>
-      <div class="svc-card reveal d2" style="--gc:rgba(255,79,154,.07);--ib:rgba(255,79,154,.1);--ie:rgba(255,79,154,.2)">
-        <div class="svc-ico">🧠</div>
-        <h3>IT Consultancy</h3>
-        <p>Strategic technology advice, architecture audits, and digital transformation roadmaps from seasoned CTOs.</p>
-        <div class="svc-arr">Learn more →</div>
-      </div>
+      <div class="svc-card reveal" style="--gc:rgba(108,99,255,.08);--ib:rgba(108,99,255,.12);--ie:rgba(108,99,255,.22)"><div class="svc-ico">🌐</div><h3>Web Development</h3><p>Blazing-fast, SEO-ready web apps built with modern frameworks. From MVPs to enterprise-scale platforms.</p><div class="svc-arr">Learn more →</div></div>
+      <div class="svc-card reveal d1" style="--gc:rgba(255,79,154,.07);--ib:rgba(255,79,154,.1);--ie:rgba(255,79,154,.2)"><div class="svc-ico">📱</div><h3>App Development</h3><p>Native iOS, Android, and cross-platform apps that delight users and scale effortlessly from day one.</p><div class="svc-arr">Learn more →</div></div>
+      <div class="svc-card reveal d2" style="--gc:rgba(0,229,176,.06);--ib:rgba(0,229,176,.1);--ie:rgba(0,229,176,.2)"><div class="svc-ico">🤖</div><h3>AI Development</h3><p>Custom LLMs, computer vision, NLP, and ML pipelines built from scratch for your unique use case.</p><div class="svc-arr">Learn more →</div></div>
+      <div class="svc-card reveal" style="--gc:rgba(255,140,66,.07);--ib:rgba(255,140,66,.1);--ie:rgba(255,140,66,.2)"><div class="svc-ico">🔗</div><h3>AI Integration</h3><p>Plug AI into your existing systems — automate workflows, enrich data, and reduce operational overhead by 60%.</p><div class="svc-arr">Learn more →</div></div>
+      <div class="svc-card reveal d1" style="--gc:rgba(108,99,255,.08);--ib:rgba(108,99,255,.12);--ie:rgba(108,99,255,.22)"><div class="svc-ico">☁️</div><h3>Cloud & DevOps</h3><p>AWS, GCP, Azure infrastructure with automated CI/CD, zero-downtime deploys, and 99.99% uptime SLAs.</p><div class="svc-arr">Learn more →</div></div>
+      <div class="svc-card reveal d2" style="--gc:rgba(255,79,154,.07);--ib:rgba(255,79,154,.1);--ie:rgba(255,79,154,.2)"><div class="svc-ico">🧠</div><h3>IT Consultancy</h3><p>Strategic technology advice, architecture audits, and digital transformation roadmaps from seasoned CTOs.</p><div class="svc-arr">Learn more →</div></div>
     </div>
   </div>
 </section>
@@ -670,60 +789,43 @@ footer{border-top:1px solid var(--border);padding:4rem 5% 2rem;background:transp
     <div class="prod-intro reveal">
       <span class="sec-tag">Our Products</span>
       <h2 class="sec-h">Tools we built.<br>Problems we solved.</h2>
-      <p class="sec-p" style="margin:.75rem auto 0; font-weight:500;">Three products born from real pain points — now used by thousands of people worldwide.</p>
+      <p class="sec-p" style="margin:.75rem auto 0;font-weight:500;">Three products born from real pain points — now used by thousands of people worldwide.</p>
     </div>
-
     <div class="prod-cards">
 
-      <!-- PRODUCT 1: VisitAI -->
+      <!-- Vistaora -->
       <div class="prod-card reveal">
         <div>
           <div class="prod-label" style="background:rgba(108,99,255,.1);border:1px solid rgba(108,99,255,.22);color:#a49dff">🏠 Real Estate Tech</div>
-          <h3 class="prod-title">VisitAI</h3>
-          <p class="prod-desc">Tour any plot, house, or land without physically being there. VisitAI delivers immersive 3D virtual walkthroughs powered by AI — giving builders and real estate agencies a way to sell faster, reach more buyers, and cut property visit costs by 80%.</p>
-          <div class="prod-tags">
-            <span class="ptag">Virtual Tours</span>
-            <span class="ptag">3D Walkthroughs</span>
-            <span class="ptag">Real Estate</span>
-            <span class="ptag">Builders & Agencies</span>
-            <span class="ptag">AI-Powered</span>
-          </div>
+          <h3 class="prod-title">Vistaora</h3>
+          <p class="prod-desc">Tour any plot, house, or land without physically being there. Vistaora delivers immersive 3D virtual walkthroughs powered by AI — giving builders and real estate agencies a way to sell faster, reach more buyers, and cut property visit costs by 80%.</p>
+          <div class="prod-tags"><span class="ptag">Virtual Tours</span><span class="ptag">3D Walkthroughs</span><span class="ptag">Real Estate</span><span class="ptag">Builders & Agencies</span><span class="ptag">AI-Powered</span></div>
           <div class="prod-actions">
-            <a href="#cta" class="btn-prod btn-p" style="background:linear-gradient(135deg,var(--a1),#8b7eff);box-shadow:0 6px 24px rgba(108,99,255,.3)">Explore VisitAI →</a>
+            <a href="#cta" class="btn-prod btn-p" style="background:linear-gradient(135deg,var(--a1),#8b7eff);box-shadow:0 6px 24px rgba(108,99,255,.3)">Explore Vistaora →</a>
             <a href="#cta" class="btn-prod btn-s">Request Demo</a>
           </div>
         </div>
         <div class="reveal d1">
           <div class="vm-wrap">
             <div class="vm-top">
-              <div class="vm-dot" style="background:#ff5f57"></div>
-              <div class="vm-dot" style="background:#febc2e"></div>
-              <div class="vm-dot" style="background:#28c840"></div>
-              <span style="font-size:.72rem;color:var(--text3);margin-left:auto;font-weight:600">VisitAI — Virtual Tour</span>
+              <div class="vm-dot" style="background:#ff5f57"></div><div class="vm-dot" style="background:#febc2e"></div><div class="vm-dot" style="background:#28c840"></div>
+              <span style="font-size:.72rem;color:var(--text3);margin-left:auto;font-weight:600">Vistaora — Virtual Tour</span>
             </div>
             <div class="vm-body">
               <div class="vm-scene">
                 <div class="vm-floor"></div>
-                <!-- simplified building silhouette -->
                 <div class="vm-building">
                   <div class="vm-col" style="width:18%;height:80px"><div class="vm-win"></div><div class="vm-win"></div><div class="vm-win"></div></div>
                   <div class="vm-col" style="width:28%;height:120px"><div class="vm-win"></div><div class="vm-win"></div><div class="vm-win"></div><div class="vm-win"></div></div>
                   <div class="vm-col" style="width:20%;height:95px"><div class="vm-win"></div><div class="vm-win"></div><div class="vm-win"></div></div>
                   <div class="vm-col" style="width:16%;height:65px"><div class="vm-win"></div><div class="vm-win"></div></div>
                 </div>
-                <!-- stars -->
                 <div style="position:absolute;top:15%;left:10%;width:2px;height:2px;background:#fff;border-radius:50%;box-shadow:20px 8px 0 #fff,45px -4px 0 rgba(255,255,255,.6),70px 12px 0 rgba(255,255,255,.4),110px 3px 0 #fff,150px -6px 0 rgba(255,255,255,.7),200px 8px 0 rgba(255,255,255,.5),240px -2px 0 #fff,280px 10px 0 rgba(255,255,255,.6)"></div>
-                <div class="vm-ui">
-                  <div class="vm-badge-live">LIVE 360°</div>
-                  <div class="vm-compass">N ↑ 32°</div>
-                </div>
+                <div class="vm-ui"><div class="vm-badge-live">LIVE 360°</div><div class="vm-compass">N ↑ 32°</div></div>
               </div>
               <div class="vm-bottom">
                 <div class="vm-thumb">🏢</div>
-                <div class="vm-info">
-                  <h6>Greenview Residency, Block B — 3BHK</h6>
-                  <p>Bhubaneswar, Odisha · 1,450 sq ft · 2nd Floor</p>
-                </div>
+                <div class="vm-info"><h6>Greenview Residency, Block B — 3BHK</h6><p>Bhubaneswar, Odisha · 1,450 sq ft</p></div>
                 <div class="vm-price">₹82L</div>
               </div>
             </div>
@@ -731,36 +833,27 @@ footer{border-top:1px solid var(--border);padding:4rem 5% 2rem;background:transp
         </div>
       </div>
 
-      <!-- PRODUCT 2: ClipForge -->
+      <!-- Reelio -->
       <div class="prod-card rev reveal">
         <div>
           <div class="prod-label" style="background:rgba(255,79,154,.1);border:1px solid rgba(255,79,154,.22);color:#ff80b8">🎬 Creator Tools</div>
-          <h3 class="prod-title">ClipForge</h3>
-          <p class="prod-desc">The AI-powered short video studio for modern content creators. Trim, style, caption, and publish — all in one place. ClipForge cuts editing time by 75%, auto-generates captions, suggests viral hooks, and exports directly to Reels, Shorts, and TikTok.</p>
-          <div class="prod-tags">
-            <span class="ptag">Short Video</span>
-            <span class="ptag">AI Captions</span>
-            <span class="ptag">Content Creators</span>
-            <span class="ptag">Reels / Shorts</span>
-            <span class="ptag">Auto-Edit</span>
-          </div>
+          <h3 class="prod-title">Reelio</h3>
+          <p class="prod-desc">The AI-powered short video studio for modern content creators. Trim, style, caption, and publish — all in one place. Reelio cuts editing time by 75%, auto-generates captions, suggests viral hooks, and exports directly to Reels, Shorts, and TikTok.</p>
+          <div class="prod-tags"><span class="ptag">Short Video</span><span class="ptag">AI Captions</span><span class="ptag">Content Creators</span><span class="ptag">Reels / Shorts</span><span class="ptag">Auto-Edit</span></div>
           <div class="prod-actions">
-            <a href="#cta" class="btn-prod btn-p" style="background:linear-gradient(135deg,var(--a2),#ff80b8);box-shadow:0 6px 24px rgba(255,79,154,.3)">Explore ClipForge →</a>
+            <a href="#cta" class="btn-prod btn-p" style="background:linear-gradient(135deg,var(--a2),#ff80b8);box-shadow:0 6px 24px rgba(255,79,154,.3)">Explore Reelio →</a>
             <a href="#cta" class="btn-prod btn-s">Try Free</a>
           </div>
         </div>
         <div class="reveal d1">
           <div class="cf-wrap">
             <div class="cf-top">
-              <div class="vm-dot" style="background:#ff5f57"></div>
-              <div class="vm-dot" style="background:#febc2e"></div>
-              <div class="vm-dot" style="background:#28c840"></div>
-              <span style="font-size:.72rem;color:var(--text3);margin-left:auto;font-weight:600">ClipForge — Editor</span>
+              <div class="vm-dot" style="background:#ff5f57"></div><div class="vm-dot" style="background:#febc2e"></div><div class="vm-dot" style="background:#28c840"></div>
+              <span style="font-size:.72rem;color:var(--text3);margin-left:auto;font-weight:600">Reelio — Editor</span>
             </div>
             <div class="cf-body">
               <div class="cf-preview">
                 <div class="cf-wave"></div>
-                <!-- waveform visual -->
                 <div style="position:absolute;bottom:0;left:0;right:0;height:35%;display:flex;align-items:flex-end;gap:2px;padding:0 8px;opacity:.5">
                   <div style="flex:1;background:var(--a2);border-radius:1px 1px 0 0;height:60%"></div><div style="flex:1;background:var(--a2);border-radius:1px 1px 0 0;height:80%"></div><div style="flex:1;background:var(--a2);border-radius:1px 1px 0 0;height:45%"></div><div style="flex:1;background:var(--a2);border-radius:1px 1px 0 0;height:90%"></div><div style="flex:1;background:var(--a2);border-radius:1px 1px 0 0;height:65%"></div><div style="flex:1;background:var(--a2);border-radius:1px 1px 0 0;height:55%"></div><div style="flex:1;background:var(--a2);border-radius:1px 1px 0 0;height:75%"></div><div style="flex:1;background:var(--a2);border-radius:1px 1px 0 0;height:40%"></div><div style="flex:1;background:var(--a2);border-radius:1px 1px 0 0;height:85%"></div><div style="flex:1;background:var(--a2);border-radius:1px 1px 0 0;height:60%"></div><div style="flex:1;background:var(--a2);border-radius:1px 1px 0 0;height:70%"></div><div style="flex:1;background:var(--a2);border-radius:1px 1px 0 0;height:50%"></div>
                 </div>
@@ -788,19 +881,13 @@ footer{border-top:1px solid var(--border);padding:4rem 5% 2rem;background:transp
         </div>
       </div>
 
-      <!-- PRODUCT 3: DataPulse -->
+      <!-- Signalix -->
       <div class="prod-card reveal">
         <div>
           <div class="prod-label" style="background:rgba(0,229,176,.1);border:1px solid rgba(0,229,176,.22);color:var(--a3)">📊 Analytics SaaS</div>
-          <h3 class="prod-title">DataPulse</h3>
-          <p class="prod-desc">Real-time business intelligence for teams that run on data. DataPulse connects to your databases, APIs, and tools to deliver live dashboards, anomaly alerts, and AI-generated reports — so you always know what's happening and what to do next.</p>
-          <div class="prod-tags">
-            <span class="ptag">Real-Time Analytics</span>
-            <span class="ptag">Live Dashboards</span>
-            <span class="ptag">AI Reports</span>
-            <span class="ptag">Data Pipelines</span>
-            <span class="ptag">Alerts & Insights</span>
-          </div>
+          <h3 class="prod-title">Signalix</h3>
+          <p class="prod-desc">Real-time business intelligence for teams that run on data. Signalix connects to your databases, APIs, and tools to deliver live dashboards, anomaly alerts, and AI-generated reports — so you always know what's happening and what to do next.</p>
+          <div class="prod-tags"><span class="ptag">Real-Time Analytics</span><span class="ptag">Live Dashboards</span><span class="ptag">AI Reports</span><span class="ptag">Data Pipelines</span><span class="ptag">Alerts & Insights</span></div>
           <div class="prod-actions">
             <a href="#cta" class="btn-prod btn-p" style="background:linear-gradient(135deg,var(--a3),#00b88a);box-shadow:0 6px 24px rgba(0,229,176,.25);color:#001a12">Explore DataPulse →</a>
             <a href="#cta" class="btn-prod btn-s">Start Free Trial</a>
@@ -809,33 +896,15 @@ footer{border-top:1px solid var(--border);padding:4rem 5% 2rem;background:transp
         <div class="reveal d1">
           <div class="dp-wrap">
             <div class="dp-top">
-              <div class="vm-dot" style="background:#ff5f57"></div>
-              <div class="vm-dot" style="background:#febc2e"></div>
-              <div class="vm-dot" style="background:#28c840"></div>
-              <span style="font-size:.72rem;color:var(--text3);margin-left:auto;font-weight:600">DataPulse — Dashboard</span>
+              <div class="vm-dot" style="background:#ff5f57"></div><div class="vm-dot" style="background:#febc2e"></div><div class="vm-dot" style="background:#28c840"></div>
+              <span style="font-size:.72rem;color:var(--text3);margin-left:auto;font-weight:600">Signalix — Dashboard</span>
             </div>
             <div class="dp-body">
               <div class="dp-metrics">
-                <div class="dp-metric">
-                  <div class="dp-metric-label">Revenue MTD</div>
-                  <div class="dp-metric-val">₹4.2M</div>
-                  <div class="dp-metric-delta" style="color:var(--a3)">↑ 18.4% vs last month</div>
-                </div>
-                <div class="dp-metric">
-                  <div class="dp-metric-label">Active Users</div>
-                  <div class="dp-metric-val">14,832</div>
-                  <div class="dp-metric-delta" style="color:var(--a3)">↑ 6.1% this week</div>
-                </div>
-                <div class="dp-metric">
-                  <div class="dp-metric-label">Churn Rate</div>
-                  <div class="dp-metric-val">1.8%</div>
-                  <div class="dp-metric-delta" style="color:var(--a3)">↓ 0.4% improved</div>
-                </div>
-                <div class="dp-metric">
-                  <div class="dp-metric-label">NPS Score</div>
-                  <div class="dp-metric-val">72</div>
-                  <div class="dp-metric-delta" style="color:#f5c542">→ Stable</div>
-                </div>
+                <div class="dp-metric"><div class="dp-metric-label">Revenue MTD</div><div class="dp-metric-val">₹4.2M</div><div class="dp-metric-delta" style="color:var(--a3)">↑ 18.4% vs last month</div></div>
+                <div class="dp-metric"><div class="dp-metric-label">Active Users</div><div class="dp-metric-val">14,832</div><div class="dp-metric-delta" style="color:var(--a3)">↑ 6.1% this week</div></div>
+                <div class="dp-metric"><div class="dp-metric-label">Churn Rate</div><div class="dp-metric-val">1.8%</div><div class="dp-metric-delta" style="color:var(--a3)">↓ 0.4% improved</div></div>
+                <div class="dp-metric"><div class="dp-metric-label">NPS Score</div><div class="dp-metric-val">72</div><div class="dp-metric-delta" style="color:#f5c542">→ Stable</div></div>
               </div>
               <div style="font-size:.68rem;color:var(--text3);font-weight:600;letter-spacing:.07em;text-transform:uppercase;margin-bottom:.5rem">Revenue — Last 7 Days</div>
               <div class="dp-chart" id="dpChart"></div>
@@ -855,40 +924,22 @@ footer{border-top:1px solid var(--border);padding:4rem 5% 2rem;background:transp
     <h2 class="sec-h">Idea to shipped<br>in record time</h2>
     <div class="proc-grid">
       <div class="proc-steps">
-        <div class="p-step act reveal">
-          <div class="p-num">01</div>
-          <div><h4>Discovery & Strategy</h4><p>Deep-dive into your goals, users, and market. We map the full technical roadmap before writing a single line of code.</p></div>
-        </div>
-        <div class="p-step reveal d1">
-          <div class="p-num">02</div>
-          <div><h4>Design & Prototype</h4><p>Interactive Figma prototypes validated with real users before any production code starts — reducing rework by 70%.</p></div>
-        </div>
-        <div class="p-step reveal d2">
-          <div class="p-num">03</div>
-          <div><h4>Agile Development</h4><p>2-week sprints with full visibility. You review progress weekly and steer with real feedback — no surprises.</p></div>
-        </div>
-        <div class="p-step reveal d3">
-          <div class="p-num">04</div>
-          <div><h4>Launch & Scale</h4><p>Zero-downtime deployment, performance monitoring, and dedicated support as you grow from launch to millions of users.</p></div>
-        </div>
+        <div class="p-step act reveal"><div class="p-num">01</div><div><h4>Discovery & Strategy</h4><p>Deep-dive into your goals, users, and market. We map the full technical roadmap before writing a single line of code.</p></div></div>
+        <div class="p-step reveal d1"><div class="p-num">02</div><div><h4>Design & Prototype</h4><p>Interactive Figma prototypes validated with real users before any production code starts — reducing rework by 70%.</p></div></div>
+        <div class="p-step reveal d2"><div class="p-num">03</div><div><h4>Agile Development</h4><p>2-week sprints with full visibility. You review progress weekly and steer with real feedback — no surprises.</p></div></div>
+        <div class="p-step reveal d3"><div class="p-num">04</div><div><h4>Launch & Scale</h4><p>Zero-downtime deployment, performance monitoring, and dedicated support as you grow from launch to millions of users.</p></div></div>
       </div>
       <div class="proc-vis reveal d2">
         <p class="pv-label">Delivery Score</p>
         <div class="pv-ring-wrap">
           <div class="pv-ring">
-            <div class="pv-ring-inner">
-              <div class="pv-ring-val">94%</div>
-              <div class="pv-ring-sub">On-Time</div>
-            </div>
+            <div class="pv-ring-inner"><div class="pv-ring-val">94%</div><div class="pv-ring-sub">On-Time</div></div>
           </div>
         </div>
         <div class="pv-pills">
-          <div class="pv-pill">React &amp; Next.js</div>
-          <div class="pv-pill">Flutter</div>
-          <div class="pv-pill">Python AI</div>
-          <div class="pv-pill">AWS / GCP</div>
-          <div class="pv-pill">Node.js</div>
-          <div class="pv-pill">PostgreSQL</div>
+          <div class="pv-pill">React &amp; Next.js</div><div class="pv-pill">Flutter</div>
+          <div class="pv-pill">Python AI</div><div class="pv-pill">AWS / GCP</div>
+          <div class="pv-pill">Node.js</div><div class="pv-pill">PostgreSQL</div>
         </div>
       </div>
     </div>
@@ -901,35 +952,26 @@ footer{border-top:1px solid var(--border);padding:4rem 5% 2rem;background:transp
     <div class="testi-head reveal">
       <span class="sec-tag">Client Stories</span>
       <h2 class="sec-h">Loved by teams worldwide</h2>
-      <p class="sec-p" style="margin:.75rem auto 0 ; font-weight:500;">Don't take our word for it — hear from the people we've helped transform.</p>
+      <p class="sec-p" style="margin:.75rem auto 0;font-weight:500;">Don't take our word for it — hear from the people we've helped transform.</p>
     </div>
     <div class="testi-grid">
       <div class="t-card reveal">
         <div class="t-tag" style="background:rgba(108,99,255,.1);border:1px solid rgba(108,99,255,.2);color:#a49dff">Web Dev</div>
         <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
         <p class="t-quote">"StayHappy delivered our e-commerce platform in 6 weeks — on time, on budget, and with a quality we didn't expect at that price. They're not a vendor, they're a partner."</p>
-        <div class="t-author">
-          <div class="t-av" style="background:linear-gradient(135deg,var(--a1),#8b7eff)">AR</div>
-          <div><div class="t-name">Arjun Reddy</div><div class="t-role">Founder, ShopMart India</div></div>
-        </div>
+        <div class="t-author"><div class="t-av" style="background:linear-gradient(135deg,var(--a1),#8b7eff)">AR</div><div><div class="t-name">Pratap Biswal</div><div class="t-role">Founder, MCF</div></div></div>
       </div>
       <div class="t-card reveal d1">
         <div class="t-tag" style="background:rgba(255,79,154,.1);border:1px solid rgba(255,79,154,.2);color:#ff80b8">AI Integration</div>
         <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
         <p class="t-quote">"The AI workflow they built cut our ops team's manual work by 65%. We went from 3 days per report to under 2 hours. Absolutely game-changing for our finance operations."</p>
-        <div class="t-author">
-          <div class="t-av" style="background:linear-gradient(135deg,var(--a2),#ff80b8)">PM</div>
-          <div><div class="t-name">Priya Menon</div><div class="t-role">VP Operations, FinServ Hub</div></div>
-        </div>
+        <div class="t-author"><div class="t-av" style="background:linear-gradient(135deg,var(--a2),#ff80b8)">PM</div><div><div class="t-name">Swagatika Srichandan</div><div class="t-role">VP Operations, FinServ Hub</div></div></div>
       </div>
       <div class="t-card reveal d2">
         <div class="t-tag" style="background:rgba(0,229,176,.1);border:1px solid rgba(0,229,176,.2);color:var(--a3)">Mobile App</div>
         <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
         <p class="t-quote">"Our health app hit 4.8 stars with 80,000 downloads in the first 3 months. The UX StayHappy designed is truly something special — users call it addictive in a good way."</p>
-        <div class="t-author">
-          <div class="t-av" style="background:linear-gradient(135deg,var(--a3),#00b88a);color:#001a12">SK</div>
-          <div><div class="t-name">Suresh Kumar</div><div class="t-role">CEO, WellnessNow</div></div>
-        </div>
+        <div class="t-author"><div class="t-av" style="background:linear-gradient(135deg,var(--a3),#00b88a);color:#001a12">SK</div><div><div class="t-name">Suresh Kumar</div><div class="t-role">CEO, WellnessNow</div></div></div>
       </div>
     </div>
   </div>
@@ -941,7 +983,7 @@ footer{border-top:1px solid var(--border);padding:4rem 5% 2rem;background:transp
     <div class="pricing-head reveal">
       <span class="sec-tag">Project-Based Pricing</span>
       <h2 class="sec-h">You pay per project.<br>Not per month.</h2>
-      <p class="sec-p" style="margin:.75rem auto 0; font-weight:500;">Fixed scope. Fixed price. Fixed deadline. Every project gets a custom quote — these are starting ranges based on real projects we've delivered.</p>
+      <p class="sec-p" style="margin:.75rem auto 0;font-weight:500;">Fixed scope. Fixed price. Fixed deadline. Every project gets a custom quote — these are starting ranges based on real projects we've delivered.</p>
     </div>
     <div class="pricing-note reveal">
       <div class="pn-tag">✦ All prices in INR</div>
@@ -949,89 +991,14 @@ footer{border-top:1px solid var(--border);padding:4rem 5% 2rem;background:transp
       <div class="pn-tag">🔒 No hidden charges</div>
       <div class="pn-tag">📋 Free requirement analysis</div>
     </div>
-
     <div class="svc-pricing-grid">
-
-      <div class="sp-card reveal" style="--sc:rgba(108,99,255,.07);--sib:rgba(108,99,255,.12);--sie:rgba(108,99,255,.22)">
-        <div class="sp-ico">🌐</div>
-        <div class="sp-body">
-          <div class="sp-name">Website Development</div>
-          <div class="sp-desc">Business websites, landing pages, portfolios, company sites with CMS & SEO</div>
-          <div class="sp-meta">
-            <div class="sp-price">₹25,000 – ₹1,50,000 <span>/ project</span></div>
-            <div class="sp-duration">⏱ 2–8 weeks</div>
-          </div>
-          <div class="sp-quote">Get Free Quote →</div>
-        </div>
-      </div>
-
-      <div class="sp-card reveal d1" style="--sc:rgba(255,79,154,.06);--sib:rgba(255,79,154,.1);--sie:rgba(255,79,154,.2)">
-        <div class="sp-ico">🛒</div>
-        <div class="sp-body">
-          <div class="sp-name">E-Commerce Platform</div>
-          <div class="sp-desc">Full online stores with payment gateway, inventory, admin panel & analytics</div>
-          <div class="sp-meta">
-            <div class="sp-price">₹60,000 – ₹3,00,000 <span>/ project</span></div>
-            <div class="sp-duration">⏱ 6–14 weeks</div>
-          </div>
-          <div class="sp-quote">Get Free Quote →</div>
-        </div>
-      </div>
-
-      <div class="sp-card reveal d2" style="--sc:rgba(108,99,255,.07);--sib:rgba(108,99,255,.12);--sie:rgba(108,99,255,.22)">
-        <div class="sp-ico">⚙️</div>
-        <div class="sp-body">
-          <div class="sp-name">Web Application</div>
-          <div class="sp-desc">Custom portals, dashboards, SaaS platforms, CRMs, ERPs & booking systems</div>
-          <div class="sp-meta">
-            <div class="sp-price">₹1,00,000 – ₹10,00,000 <span>/ project</span></div>
-            <div class="sp-duration">⏱ 8–24 weeks</div>
-          </div>
-          <div class="sp-quote">Get Free Quote →</div>
-        </div>
-      </div>
-
-      <div class="sp-card reveal" style="--sc:rgba(0,229,176,.06);--sib:rgba(0,229,176,.1);--sie:rgba(0,229,176,.2)">
-        <div class="sp-ico">📱</div>
-        <div class="sp-body">
-          <div class="sp-name">Mobile App Development</div>
-          <div class="sp-desc">iOS, Android or cross-platform apps using Flutter / React Native with backend</div>
-          <div class="sp-meta">
-            <div class="sp-price">₹1,50,000 – ₹8,00,000 <span>/ project</span></div>
-            <div class="sp-duration">⏱ 10–20 weeks</div>
-          </div>
-          <div class="sp-quote">Get Free Quote →</div>
-        </div>
-      </div>
-
-      <div class="sp-card reveal d1" style="--sc:rgba(255,140,66,.06);--sib:rgba(255,140,66,.1);--sie:rgba(255,140,66,.2)">
-        <div class="sp-ico">🤖</div>
-        <div class="sp-body">
-          <div class="sp-name">AI Development & Integration</div>
-          <div class="sp-desc">Custom AI models, chatbots, LLM integration, automation & ML pipelines</div>
-          <div class="sp-meta">
-            <div class="sp-price">₹75,000 – ₹15,00,000 <span>/ project</span></div>
-            <div class="sp-duration">⏱ 4–20 weeks</div>
-          </div>
-          <div class="sp-quote">Get Free Quote →</div>
-        </div>
-      </div>
-
-      <div class="sp-card reveal d2" style="--sc:rgba(255,79,154,.06);--sib:rgba(255,79,154,.1);--sie:rgba(255,79,154,.2)">
-        <div class="sp-ico">🧠</div>
-        <div class="sp-body">
-          <div class="sp-name">IT Consultancy</div>
-          <div class="sp-desc">Tech audits, architecture review, digital transformation strategy & CTO advisory</div>
-          <div class="sp-meta">
-            <div class="sp-price">₹10,000 – ₹50,000 <span>/ session</span></div>
-            <div class="sp-duration">⏱ Flexible</div>
-          </div>
-          <div class="sp-quote">Book a Session →</div>
-        </div>
-      </div>
+      <div class="sp-card reveal" style="--sc:rgba(108,99,255,.07);--sib:rgba(108,99,255,.12);--sie:rgba(108,99,255,.22)"><div class="sp-ico">🌐</div><div class="sp-body"><div class="sp-name">Website Development</div><div class="sp-desc">Business websites, landing pages, portfolios, company sites with CMS & SEO</div><div class="sp-meta"><div class="sp-price">₹25,000 – ₹1,50,000 <span>/ project</span></div><div class="sp-duration">⏱ 2–8 weeks</div></div><div class="sp-quote">Get Free Quote →</div></div></div>
+      <div class="sp-card reveal d1" style="--sc:rgba(255,79,154,.06);--sib:rgba(255,79,154,.1);--sie:rgba(255,79,154,.2)"><div class="sp-ico">🛒</div><div class="sp-body"><div class="sp-name">E-Commerce Platform</div><div class="sp-desc">Full online stores with payment gateway, inventory, admin panel & analytics</div><div class="sp-meta"><div class="sp-price">₹60,000 – ₹3,00,000 <span>/ project</span></div><div class="sp-duration">⏱ 6–14 weeks</div></div><div class="sp-quote">Get Free Quote →</div></div></div>
+      <div class="sp-card reveal d2" style="--sc:rgba(108,99,255,.07);--sib:rgba(108,99,255,.12);--sie:rgba(108,99,255,.22)"><div class="sp-ico">⚙️</div><div class="sp-body"><div class="sp-name">Web Application</div><div class="sp-desc">Custom portals, dashboards, SaaS platforms, CRMs, ERPs & booking systems</div><div class="sp-meta"><div class="sp-price">₹1,00,000 – ₹10,00,000 <span>/ project</span></div><div class="sp-duration">⏱ 8–24 weeks</div></div><div class="sp-quote">Get Free Quote →</div></div></div>
+      <div class="sp-card reveal" style="--sc:rgba(0,229,176,.06);--sib:rgba(0,229,176,.1);--sie:rgba(0,229,176,.2)"><div class="sp-ico">📱</div><div class="sp-body"><div class="sp-name">Mobile App Development</div><div class="sp-desc">iOS, Android or cross-platform apps using Flutter / React Native with backend</div><div class="sp-meta"><div class="sp-price">₹1,50,000 – ₹8,00,000 <span>/ project</span></div><div class="sp-duration">⏱ 10–20 weeks</div></div><div class="sp-quote">Get Free Quote →</div></div></div>
+      <div class="sp-card reveal d1" style="--sc:rgba(255,140,66,.06);--sib:rgba(255,140,66,.1);--sie:rgba(255,140,66,.2)"><div class="sp-ico">🤖</div><div class="sp-body"><div class="sp-name">AI Development & Integration</div><div class="sp-desc">Custom AI models, chatbots, LLM integration, automation & ML pipelines</div><div class="sp-meta"><div class="sp-price">₹75,000 – ₹15,00,000 <span>/ project</span></div><div class="sp-duration">⏱ 4–20 weeks</div></div><div class="sp-quote">Get Free Quote →</div></div></div>
+      <div class="sp-card reveal d2" style="--sc:rgba(255,79,154,.06);--sib:rgba(255,79,154,.1);--sie:rgba(255,79,154,.2)"><div class="sp-ico">🧠</div><div class="sp-body"><div class="sp-name">IT Consultancy</div><div class="sp-desc">Tech audits, architecture review, digital transformation strategy & CTO advisory</div><div class="sp-meta"><div class="sp-price">₹10,000 – ₹50,000 <span>/ session</span></div><div class="sp-duration">⏱ Flexible</div></div><div class="sp-quote">Book a Session →</div></div></div>
     </div>
-
-    <!-- bottom CTA row -->
     <div class="pricing-cta-row reveal">
       <div class="pcta-text">
         <h4>Not sure what your project costs?</h4>
@@ -1042,34 +1009,22 @@ footer{border-top:1px solid var(--border);padding:4rem 5% 2rem;background:transp
         <a href="tel:+919000992655" class="btn-s">📞 Call Us</a>
       </div>
     </div>
-
   </div>
-
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
   <div class="wrap">
     <div class="cta-box">
       <span class="sec-tag">Get Free Quote</span>
-
       <h2>Let's Build Something Great Together</h2>
-
-      <p>
-        Tell us about your project and we'll provide a free
-        consultation and project estimate.
-      </p>
-
+      <p>Tell us about your project and we'll provide a free consultation and project estimate.</p>
       <form class="contact-form">
         <input type="text" placeholder="Your Name" name="Name" required>
         <input type="tel" placeholder="Phone Number" name="PhoneNumber" required>
         <input type="email" placeholder="Email Address" name="Email" required>
-
         <div class="custom-select">
-          <div class="select-btn">
-            <span class="selected-text">Project Type</span>
-            <span class="arrow">⌄</span>
-          </div>
-
+          <div class="select-btn"><span class="selected-text">Project Type</span><span class="arrow">⌄</span></div>
           <div class="select-options">
             <div class="option">Website Development</div>
             <div class="option">Mobile App</div>
@@ -1077,21 +1032,16 @@ footer{border-top:1px solid var(--border);padding:4rem 5% 2rem;background:transp
             <div class="option">Custom Software</div>
             <div class="option">Other</div>
           </div>
-
           <input type="hidden" name="projectType" required>
         </div>
-
         <textarea rows="5" placeholder="Tell us about your project..." name="Message" required></textarea>
-
-        <button type="submit" class="btn-p">
-          Get Free Quote →
-        </button>
+        <button type="submit" class="btn-p">Get Free Quote →</button>
       </form>
-        <div class="contact-info">
-          <div>📧 official@stayhappysolutions.com</div>
-          <div>📞 +91 90009 92655 , +91 98277 45241</div>
-          <div>📍 Bhubaneswar, Odisha, India</div>
-        </div>
+      <div class="contact-info">
+        <div>📧 official@stayhappysolutions.com</div>
+        <div>📞 +91 90009 92655 , +91 98277 45241</div>
+        <div>📍 Bhubaneswar, Odisha, India</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1103,8 +1053,8 @@ footer{border-top:1px solid var(--border);padding:4rem 5% 2rem;background:transp
       <h2>Ready to <span class="ht-grad">StayHappy?</span></h2>
       <p>Book a free 30-minute strategy call. We'll map out exactly how to build your vision — fast, clean, and within budget.</p>
       <div class="cta-actions">
-        <a href="https://wa.me/919827745241?text=Hi%20StayHappy%20Solutions,%20I%20would%20like%20to%20book%20a%20free%20consultation%20call." class="btn-p" style="font-size:1rem;padding:1rem 2.4rem">Book Free Call →</a>
-        <a href="#services" class="btn-s" style="font-size:1rem;padding:1rem 2.4rem">Explore Services</a>
+        <a href="https://wa.me/919827745241?text=Hi%20StayHappy%20Solutions,%20I%20would%20like%20to%20book%20a%20free%20consultation%20call." class="btn-p" style="font-size:1rem;padding:1rem 2rem">Book Free Call →</a>
+        <a href="#services" class="btn-s" style="font-size:1rem;padding:1rem 2rem">Explore Services</a>
       </div>
     </div>
   </div>
@@ -1114,7 +1064,7 @@ footer{border-top:1px solid var(--border);padding:4rem 5% 2rem;background:transp
 <footer>
   <div class="ft-top">
     <div class="ft-brand">
-      <a href="#" class="logo"><div class="logo-icon">😊</div> StayHappy Solutions</a>
+      <a href="#" class="logo"><img src="StayHappy_Solutions_Pvt_Ltd.svg" alt="StayHappy Solutions Pvt. Ltd. Logo" class="logo-icon"><span class="logo-text">StayHappy Solutions</span></a>
       <p>Full-spectrum software solutions and products that help businesses transform and people stay happy.</p>
     </div>
     <div>
@@ -1130,9 +1080,9 @@ footer{border-top:1px solid var(--border);padding:4rem 5% 2rem;background:transp
     <div>
       <p class="ft-h">Products</p>
       <ul class="ft-links">
-        <li><a href="#">VisitAI</a></li>
-        <li><a href="#">ClipForge</a></li>
-        <li><a href="#">DataPulse</a></li>
+        <li><a href="#">Vistaora</a></li>
+        <li><a href="#">Reelio</a></li>
+        <li><a href="#">Signalix</a></li>
       </ul>
     </div>
     <div>
@@ -1149,8 +1099,8 @@ footer{border-top:1px solid var(--border);padding:4rem 5% 2rem;background:transp
   <div class="ft-bot">
     <p>© 2023 StayHappy Solutions Pvt. Ltd. All rights reserved.</p>
     <div class="ft-soc">
-      <a href="https://www.facebook.com/profile.php?id=100094588431772&amp;mibextid=ZbWKwL" class="soc-btn" title="Facebook">ⓕ</a>
-      <a href="#" class="soc-btn" title="LinkedIn">in</a>
+      <a href="" class="soc-btn" title="Facebook">ⓕ</a>
+      <a href="" class="soc-btn" title="LinkedIn">in</a>
       <a href="https://www.instagram.com/_stayhappysolutions_?igsh=Nnp4MzM0Z3Z0MGY0" class="soc-btn" title="Instagram">◎</a>
       <a href="https://wa.me/919827745241?text=Hi%20StayHappy%20Solutions,%20I%20would%20like%20to%20learn%20more%20about%20your%20services." class="soc-btn" title="WhatsApp">✆</a>
     </div>
@@ -1158,48 +1108,49 @@ footer{border-top:1px solid var(--border);padding:4rem 5% 2rem;background:transp
 </footer>
 
 <script>
+// Mobile menu — lock scroll when open
+function openMob(){
+  document.getElementById('mobMenu').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeMob(){
+  document.getElementById('mobMenu').classList.remove('open');
+  document.body.style.overflow='';
+}
 
-const select = document.querySelector('.custom-select');
-const btn = select.querySelector('.select-btn');
-const text = select.querySelector('.selected-text');
-const input = select.querySelector('input');
-const options = select.querySelectorAll('.option');
-
-// Mobile menu
-function openMob(){document.getElementById('mobMenu').classList.add('open')}
-function closeMob(){document.getElementById('mobMenu').classList.remove('open')}
+// Keyboard close
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMob()});
 
 // Reveal on scroll
-const revs = document.querySelectorAll('.reveal');
-const ro = new IntersectionObserver(entries=>{
+const revs=document.querySelectorAll('.reveal');
+const ro=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')});
-},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
 revs.forEach(el=>ro.observe(el));
 
 // Nav bg on scroll
 window.addEventListener('scroll',()=>{
-  document.getElementById('nav').style.background = window.scrollY>50?'rgba(7,7,14,.97)':'rgba(7,7,14,.8)';
-});
+  document.getElementById('nav').style.background=window.scrollY>50?'rgba(7,7,14,.97)':'rgba(7,7,14,.8)';
+},{passive:true});
 
 // Counter animation
-const counters = [
-  {el:'s1',target:500,suffix:'+'},
-  {el:'s2',target:98,suffix:'%'},
-  {el:'s3',target:12,suffix:'M+',decimal:true},
-  {el:'s4',target:40,suffix:'+'}
+const counters=[
+  {el:'s1',target:35,suffix:'+'},
+  {el:'s2',target:50,suffix:'+'},
+  {el:'s3',target:98,suffix:'%'},
+  {el:'s4',target:3,suffix:'+'}
 ];
-
 let counted=false;
-const statsEl = document.querySelector('.hero-stats');
-const sObs = new IntersectionObserver(entries=>{
-  if(entries[0].isIntersecting && !counted){
+const statsEl=document.querySelector('.hero-stats');
+const sObs=new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting&&!counted){
     counted=true;
     counters.forEach(c=>{
       const el=document.getElementById(c.el);
-      let v=0; const steps=60; const inc=c.target/steps;
+      let v=0;const steps=60;const inc=c.target/steps;
       const t=setInterval(()=>{
         v=Math.min(v+inc,c.target);
-        el.textContent=(c.decimal?v.toFixed(0):Math.floor(v))+c.suffix;
+        el.textContent=Math.floor(v)+c.suffix;
         if(v>=c.target)clearInterval(t);
       },32);
     });
@@ -1209,7 +1160,7 @@ const sObs = new IntersectionObserver(entries=>{
 if(statsEl)sObs.observe(statsEl);
 
 // DataPulse bars
-const dpChart = document.getElementById('dpChart');
+const dpChart=document.getElementById('dpChart');
 if(dpChart){
   const vals=[45,62,38,78,55,88,72];
   const max=Math.max(...vals);
@@ -1222,45 +1173,413 @@ if(dpChart){
   });
 }
 
+// Custom select
+const select=document.querySelector('.custom-select');
+const btn=select.querySelector('.select-btn');
+const text=select.querySelector('.selected-text');
+const input=select.querySelector('input');
+const opts=select.querySelectorAll('.option');
 
-btn.addEventListener('click', () => {
-  select.classList.toggle('active');
-});
-
-options.forEach(option => {
-  option.addEventListener('click', () => {
-    text.textContent = option.textContent;
-    input.value = option.textContent;
+btn.addEventListener('click',()=>select.classList.toggle('active'));
+opts.forEach(o=>{
+  o.addEventListener('click',()=>{
+    text.textContent=o.textContent;
+    text.style.color='var(--text)';
+    input.value=o.textContent;
     select.classList.remove('active');
   });
 });
-
-document.addEventListener('click', e => {
-  if (!select.contains(e.target)) {
-    select.classList.remove('active');
-  }
-});
+document.addEventListener('click',e=>{if(!select.contains(e.target))select.classList.remove('active')});
 </script>
 
+<script type="module">
+import * as THREE from 'https://unpkg.com/three@0.155.0/build/three.module.js';
+
+const canvas = document.getElementById('c');
+const W = () => window.innerWidth, H = () => window.innerHeight;
+
+const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:false, powerPreference:'high-performance' });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(W(), H());
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.4;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, W()/H(), 0.1, 2000);
+camera.position.set(0, 18, 42);
+camera.lookAt(0, 0, 0);
+
+// ── Fog layers ──────────────────────────────────────────
+const fogGeo = new THREE.PlaneGeometry(200,200);
+const fogMat = new THREE.MeshBasicMaterial({color:0x050a2a,transparent:true,opacity:.18,side:THREE.DoubleSide,depthWrite:false});
+for(let i=0;i<3;i++){const f=new THREE.Mesh(fogGeo,fogMat.clone());f.rotation.x=Math.PI/2+(i-1)*.3;f.position.y=(i-1)*1.5;scene.add(f)}
+
+// ── Backdrop stars ──────────────────────────────────────
+const bgCount=8000,bgPos=new Float32Array(bgCount*3),bgCol=new Float32Array(bgCount*3);
+for(let i=0;i<bgCount;i++){const i3=i*3,t=Math.random()*Math.PI*2,p=Math.acos(2*Math.random()-1),r=300+Math.random()*200;bgPos[i3]=r*Math.sin(p)*Math.cos(t);bgPos[i3+1]=r*Math.sin(p)*Math.sin(t);bgPos[i3+2]=r*Math.cos(p);const g=.6+Math.random()*.4;bgCol[i3]=g;bgCol[i3+1]=g;bgCol[i3+2]=g+.1}
+const bgG=new THREE.BufferGeometry();bgG.setAttribute('position',new THREE.BufferAttribute(bgPos,3));bgG.setAttribute('color',new THREE.BufferAttribute(bgCol,3));
+scene.add(new THREE.Points(bgG,new THREE.PointsMaterial({size:.9,vertexColors:true,transparent:true,opacity:.6,sizeAttenuation:false})));
+
+// ── Galaxy spiral ───────────────────────────────────────
+const COUNT=140000,ARMS=5,gPos=new Float32Array(COUNT*3),gCol=new Float32Array(COUNT*3);
+for(let i=0;i<COUNT;i++){const i3=i*3,arm=Math.floor(Math.random()*ARMS),t=Math.pow(Math.random(),1.5),radius=1+t*28,aAngle=(arm/ARMS)*Math.PI*2,spin=radius*1.8,scatter=Math.pow(1-t,2)*3+.3;gPos[i3]=Math.cos(aAngle+spin)*radius+(Math.random()-.5)*scatter;gPos[i3+1]=(Math.random()-.5)*(1.5*(1-t*.7));gPos[i3+2]=Math.sin(aAngle+spin)*radius+(Math.random()-.5)*scatter;const dn=radius/28,rnd=Math.random();if(dn<.15){gCol[i3]=1;gCol[i3+1]=.95;gCol[i3+2]=.75}else if(rnd<.18){gCol[i3]=.75+Math.random()*.25;gCol[i3+1]=.85+Math.random()*.15;gCol[i3+2]=1}else if(rnd<.55){gCol[i3]=1;gCol[i3+1]=1;gCol[i3+2]=1}else if(rnd<.78){gCol[i3]=1;gCol[i3+1]=.9;gCol[i3+2]=.6}else{gCol[i3]=.8+Math.random()*.2;gCol[i3+1]=.7;gCol[i3+2]=1}}
+const galaxyGeo=new THREE.BufferGeometry();galaxyGeo.setAttribute('position',new THREE.BufferAttribute(gPos,3));galaxyGeo.setAttribute('color',new THREE.BufferAttribute(gCol,3));
+const galaxyMat=new THREE.PointsMaterial({size:.045,vertexColors:true,transparent:true,opacity:.92,blending:THREE.AdditiveBlending,depthWrite:false,sizeAttenuation:true});
+const galaxy=new THREE.Points(galaxyGeo,galaxyMat);scene.add(galaxy);
+
+// ── Core glow ───────────────────────────────────────────
+[[0xfff4cc,.9,.8],[0xffd580,.35,2.0],[0xffb347,.12,4.5]].forEach(([col,op,sz])=>{scene.add(new THREE.Mesh(new THREE.SphereGeometry(sz,32,32),new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:op,blending:THREE.AdditiveBlending,depthWrite:false})))});
+const coreCount=1200,cPos=new Float32Array(coreCount*3),cCol=new Float32Array(coreCount*3);
+for(let i=0;i<coreCount;i++){const i3=i*3,r=Math.random()*1.8,t=Math.random()*Math.PI*2,p=Math.acos(2*Math.random()-1);cPos[i3]=r*Math.sin(p)*Math.cos(t);cPos[i3+1]=r*Math.sin(p)*Math.sin(t)*.3;cPos[i3+2]=r*Math.sin(p)*Math.sin(t);cCol[i3]=1;cCol[i3+1]=.95;cCol[i3+2]=.7}
+const cG=new THREE.BufferGeometry();cG.setAttribute('position',new THREE.BufferAttribute(cPos,3));cG.setAttribute('color',new THREE.BufferAttribute(cCol,3));
+scene.add(new THREE.Points(cG,new THREE.PointsMaterial({size:.15,vertexColors:true,transparent:true,opacity:.95,blending:THREE.AdditiveBlending,depthWrite:false})));
+
+// ── Nebula wisps ────────────────────────────────────────
+[[6,-3,.4,0x2244ff,.025],[-5,4,1.2,0xff4488,.018],[0,0,0,0x6633cc,.022],[10,6,2.1,0x0055ff,.015]].forEach(([x,z,rot,col,op])=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(22,10),new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:op,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,depthWrite:false}));m.position.set(x,-.2,z);m.rotation.x=Math.PI/2;m.rotation.z=rot;scene.add(m)});
+
+// ── Dust particles ──────────────────────────────────────
+const dC=18000,dPos=new Float32Array(dC*3),dCol=new Float32Array(dC*3);
+for(let i=0;i<dC;i++){const i3=i*3,r=1+Math.random()*24,t=Math.random()*Math.PI*2;dPos[i3]=Math.cos(t)*r+(Math.random()-.5)*6;dPos[i3+1]=(Math.random()-.5)*.6;dPos[i3+2]=Math.sin(t)*r+(Math.random()-.5)*6;dCol[i3]=.3+Math.random()*.3;dCol[i3+1]=.25+Math.random()*.25;dCol[i3+2]=.5+Math.random()*.4}
+const dG=new THREE.BufferGeometry();dG.setAttribute('position',new THREE.BufferAttribute(dPos,3));dG.setAttribute('color',new THREE.BufferAttribute(dCol,3));
+scene.add(new THREE.Points(dG,new THREE.PointsMaterial({size:.025,vertexColors:true,transparent:true,opacity:.45,blending:THREE.AdditiveBlending,depthWrite:false})));
+
+// ── Lighting ────────────────────────────────────────────
+scene.add(new THREE.AmbientLight(0x334466,1.2));
+const sun=new THREE.DirectionalLight(0xfff4cc,3.5);sun.position.set(30,20,10);scene.add(sun);
+const rim=new THREE.DirectionalLight(0x4466ff,0.6);rim.position.set(-20,-10,-20);scene.add(rim);
+
+// ── Asteroid belt ───────────────────────────────────────
+function makeAsteroidGeo(){
+  const b=new THREE.IcosahedronGeometry(1,2),p=b.attributes.position;
+  for(let i=0;i<p.count;i++){const v=new THREE.Vector3().fromBufferAttribute(p,i);v.normalize().multiplyScalar(1+(Math.random()-.5)*.55);p.setXYZ(i,v.x,v.y,v.z)}
+  p.needsUpdate=true;b.computeVertexNormals();return b;
+}
+const aMats=[new THREE.MeshStandardMaterial({color:0x7a7060,roughness:.95,metalness:.05}),new THREE.MeshStandardMaterial({color:0x6a6455,roughness:1,metalness:0}),new THREE.MeshStandardMaterial({color:0x8a8070,roughness:.9,metalness:.08}),new THREE.MeshStandardMaterial({color:0x5a5448,roughness:1,metalness:0})];
+const aGeos=Array.from({length:6},makeAsteroidGeo);
+const asteroids=[];
+for(let i=0;i<90;i++){
+  const mesh=new THREE.Mesh(aGeos[i%aGeos.length],aMats[i%aMats.length]);
+  const br=32+Math.random()*16,angle=Math.random()*Math.PI*2,y=(Math.random()-.5)*2.5;
+  mesh.position.set(Math.cos(angle)*br,y,Math.sin(angle)*br);
+  const s=.08+Math.random()*.38;mesh.scale.set(s,s*(.7+Math.random()*.5),s*(.7+Math.random()*.6));
+  mesh.rotation.set(Math.random()*Math.PI*2,Math.random()*Math.PI*2,Math.random()*Math.PI*2);
+  mesh.userData={orbitRadius:br,orbitAngle:angle,orbitSpeed:.00008+Math.random()*.00014,yOff:y,rotX:(Math.random()-.5)*.012,rotY:(Math.random()-.5)*.015,rotZ:(Math.random()-.5)*.010};
+  scene.add(mesh);asteroids.push(mesh);
+}
+const heroAsteroids=[[36,.8,.00006,.55,1.2],[40,2.5,.00009,.72,-.8],[34,4.2,.00007,.48,.4]].map(([r,a,s,sc,y])=>{
+  const mesh=new THREE.Mesh(aGeos[0],new THREE.MeshStandardMaterial({color:0x8a8272,roughness:.92,metalness:.06}));
+  mesh.scale.setScalar(sc);mesh.userData={orbitRadius:r,orbitAngle:a,orbitSpeed:s,yOff:y,rotX:.008,rotY:.011,rotZ:.007};scene.add(mesh);return mesh;
+});
+const chipC=3000,chipPos=new Float32Array(chipC*3),chipCol=new Float32Array(chipC*3);
+for(let i=0;i<chipC;i++){const i3=i*3,r=30+Math.random()*22,a=Math.random()*Math.PI*2;chipPos[i3]=Math.cos(a)*r+(Math.random()-.5)*2;chipPos[i3+1]=(Math.random()-.5)*3;chipPos[i3+2]=Math.sin(a)*r+(Math.random()-.5)*2;const g=.4+Math.random()*.25;chipCol[i3]=g+.05;chipCol[i3+1]=g;chipCol[i3+2]=g-.05}
+const chipG=new THREE.BufferGeometry();chipG.setAttribute('position',new THREE.BufferAttribute(chipPos,3));chipG.setAttribute('color',new THREE.BufferAttribute(chipCol,3));
+const chipMesh=new THREE.Points(chipG,new THREE.PointsMaterial({size:.04,vertexColors:true,transparent:true,opacity:.55,sizeAttenuation:true,depthWrite:false}));
+scene.add(chipMesh);
+
+// ══════════════════════════════════════════════════════
+// ── PLANETS ───────────────────────────────────────────
+// ══════════════════════════════════════════════════════
+
+// Helper: procedural planet texture on a canvas
+function makePlanetTexture(fn, size=512) {
+  const cv = document.createElement('canvas'); cv.width=cv.height=size;
+  const ctx = cv.getContext('2d'); fn(ctx, size);
+  return new THREE.CanvasTexture(cv);
+}
+
+// Helper: draw orbit ring
+function makeOrbitRing(radius, color=0x334466, opacity=0.18) {
+  const pts = [];
+  for(let i=0;i<=128;i++) pts.push(new THREE.Vector3(Math.cos(i/128*Math.PI*2)*radius,0,Math.sin(i/128*Math.PI*2)*radius));
+  const g=new THREE.BufferGeometry().setFromPoints(pts);
+  const m=new THREE.LineBasicMaterial({color,transparent:true,opacity,depthWrite:false});
+  return new THREE.Line(g,m);
+}
+
+// ── Planet textures ──────────────────────────────────
+
+// Rocky brown (Mercury-like)
+const texMercury = makePlanetTexture((ctx,sz)=>{
+  const g=ctx.createRadialGradient(sz*.4,sz*.38,sz*.05,sz*.5,sz*.5,sz*.5);
+  g.addColorStop(0,'#c8b89a');g.addColorStop(.4,'#a0886a');g.addColorStop(1,'#6e5840');
+  ctx.fillStyle=g;ctx.fillRect(0,0,sz,sz);
+  for(let i=0;i<220;i++){ctx.beginPath();ctx.arc(Math.random()*sz,Math.random()*sz,Math.random()*sz*.03,0,Math.PI*2);ctx.fillStyle=`rgba(0,0,0,${Math.random()*.25})`;ctx.fill()}
+});
+
+// Ocean blue (Earth-like)
+const texEarth = makePlanetTexture((ctx,sz)=>{
+  ctx.fillStyle='#1a4a8a';ctx.fillRect(0,0,sz,sz);
+  // continents
+  [[.2,.3,.35,.28],[.55,.2,.3,.25],[.1,.6,.4,.3],[.6,.55,.35,.3],[.35,.65,.25,.2]].forEach(([x,y,w,h])=>{
+    const g=ctx.createRadialGradient(x*sz,y*sz,0,(x+w*.5)*sz,(y+h*.5)*sz,w*sz*.7);
+    g.addColorStop(0,'#4a9a4a');g.addColorStop(.5,'#3a7a30');g.addColorStop(1,'#2a5a20');
+    ctx.fillStyle=g;ctx.beginPath();ctx.ellipse(x*sz,y*sz,w*sz*.55,h*sz*.6,Math.random(),0,Math.PI*2);ctx.fill();
+  });
+  // clouds
+  for(let i=0;i<14;i++){ctx.fillStyle=`rgba(255,255,255,${.15+Math.random()*.18})`;ctx.beginPath();ctx.ellipse(Math.random()*sz,Math.random()*sz,Math.random()*sz*.18,Math.random()*sz*.06,Math.random()*Math.PI,0,Math.PI*2);ctx.fill()}
+});
+
+// Red desert (Mars-like)
+const texMars = makePlanetTexture((ctx,sz)=>{
+  const g=ctx.createRadialGradient(sz*.4,sz*.35,sz*.05,sz*.5,sz*.5,sz*.52);
+  g.addColorStop(0,'#e0603a');g.addColorStop(.5,'#c04020');g.addColorStop(1,'#7a2810');
+  ctx.fillStyle=g;ctx.fillRect(0,0,sz,sz);
+  for(let i=0;i<180;i++){ctx.beginPath();ctx.arc(Math.random()*sz,Math.random()*sz,Math.random()*sz*.025,0,Math.PI*2);ctx.fillStyle=`rgba(${Math.random()<.5?'0,0,0':'255,180,120'},${Math.random()*.2})`;ctx.fill()}
+  // polar cap
+  ctx.fillStyle='rgba(240,240,255,0.55)';ctx.beginPath();ctx.ellipse(sz*.5,sz*.06,sz*.14,sz*.06,0,0,Math.PI*2);ctx.fill();
+});
+
+// Gas giant banded (Jupiter-like)
+const texJupiter = makePlanetTexture((ctx,sz)=>{
+  const bands=[['#c8a06a',0],['#e0c89a',.08],['#b07840',.18],['#d4a870',.28],['#884428',.38],['#c89060',.5],['#a86838',.6],['#ddb870',.72],['#8a5020',.84],['#c09060',1]];
+  bands.forEach(([col,stop],idx)=>{if(idx<bands.length-1){const [nc,ns]=bands[idx+1];const gr=ctx.createLinearGradient(0,stop*sz,0,ns*sz);gr.addColorStop(0,col);gr.addColorStop(1,nc);ctx.fillStyle=gr;ctx.fillRect(0,stop*sz,sz,(ns-stop)*sz)}});
+  // turbulence swirls
+  for(let i=0;i<8;i++){ctx.strokeStyle=`rgba(${Math.random()<.5?'180,120,60':'255,220,140'},.18)`;ctx.lineWidth=2+Math.random()*4;ctx.beginPath();ctx.ellipse(Math.random()*sz,Math.random()*sz*.9+sz*.05,Math.random()*sz*.2,sz*.025+Math.random()*sz*.02,0,0,Math.PI*2);ctx.stroke()}
+  // Great Red Spot
+  ctx.fillStyle='rgba(160,40,20,.7)';ctx.beginPath();ctx.ellipse(sz*.35,sz*.55,sz*.09,sz*.055,-.2,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='rgba(200,80,40,.3)';ctx.beginPath();ctx.ellipse(sz*.35,sz*.55,sz*.12,sz*.075,-.2,0,Math.PI*2);ctx.fill();
+});
+
+// Ice blue (Neptune-like)
+const texNeptune = makePlanetTexture((ctx,sz)=>{
+  const g=ctx.createRadialGradient(sz*.38,sz*.35,sz*.04,sz*.5,sz*.5,sz*.52);
+  g.addColorStop(0,'#60b0ff');g.addColorStop(.4,'#2060c0');g.addColorStop(1,'#0a1e6a');
+  ctx.fillStyle=g;ctx.fillRect(0,0,sz,sz);
+  for(let i=0;i<8;i++){ctx.fillStyle=`rgba(140,200,255,${.08+Math.random()*.1})`;ctx.beginPath();ctx.ellipse(Math.random()*sz,Math.random()*sz,sz*(.15+Math.random()*.1),sz*.025,Math.random()*.3,0,Math.PI*2);ctx.fill()}
+  ctx.fillStyle='rgba(200,230,255,.4)';ctx.beginPath();ctx.ellipse(sz*.58,sz*.42,sz*.07,sz*.045,.3,0,Math.PI*2);ctx.fill();
+});
+
+// Yellow-cream (Venus-like)
+const texVenus = makePlanetTexture((ctx,sz)=>{
+  const g=ctx.createRadialGradient(sz*.42,sz*.38,sz*.04,sz*.5,sz*.5,sz*.52);
+  g.addColorStop(0,'#f5e090');g.addColorStop(.5,'#d4a840');g.addColorStop(1,'#8a6010');
+  ctx.fillStyle=g;ctx.fillRect(0,0,sz,sz);
+  for(let i=0;i<12;i++){ctx.fillStyle=`rgba(255,245,180,${.1+Math.random()*.12})`;ctx.beginPath();ctx.ellipse(Math.random()*sz,Math.random()*sz,sz*(.12+Math.random()*.1),sz*.03,Math.random()*.5,0,Math.PI*2);ctx.fill()}
+});
+
+// Saturn ring texture
+function makeSaturnRingTex() {
+  const cv=document.createElement('canvas');cv.width=512;cv.height=1;
+  const ctx=cv.getContext('2d'),g=ctx.createLinearGradient(0,0,512,0);
+  g.addColorStop(0,'rgba(0,0,0,0)');
+  g.addColorStop(.15,'rgba(180,150,100,.0)');
+  g.addColorStop(.25,'rgba(200,170,110,.55)');
+  g.addColorStop(.38,'rgba(160,130,80,.35)');
+  g.addColorStop(.5,'rgba(210,185,130,.7)');
+  g.addColorStop(.62,'rgba(170,140,90,.4)');
+  g.addColorStop(.75,'rgba(195,165,105,.6)');
+  g.addColorStop(.88,'rgba(140,110,70,.25)');
+  g.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=g;ctx.fillRect(0,0,512,1);
+  return new THREE.CanvasTexture(cv);
+}
+
+// Saturn body texture
+const texSaturn = makePlanetTexture((ctx,sz)=>{
+  const bands=[['#d4b870',0],['#c4a858',.12],['#e8d090',.25],['#b89040',.4],['#d8c078',.55],['#a87828',.7],['#c8a860',.85],['#b89050',1]];
+  bands.forEach(([col,stop],idx)=>{if(idx<bands.length-1){const[nc,ns]=bands[idx+1];const gr=ctx.createLinearGradient(0,stop*sz,0,ns*sz);gr.addColorStop(0,col);gr.addColorStop(1,nc);ctx.fillStyle=gr;ctx.fillRect(0,stop*sz,sz,(ns-stop)*sz)}});
+});
+
+// ── Build planets ────────────────────────────────────
+
+function createGlowSprite(color, size) {
+  const cv=document.createElement('canvas');cv.width=cv.height=128;
+  const ctx=cv.getContext('2d'),cx=64,cy=64;
+  const g=ctx.createRadialGradient(cx,cy,0,cx,cy,64);
+  g.addColorStop(0,color.replace(')',',0.8)').replace('rgb','rgba'));
+  g.addColorStop(.4,color.replace(')',',0.3)').replace('rgb','rgba'));
+  g.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=g;ctx.fillRect(0,0,128,128);
+  const tex=new THREE.CanvasTexture(cv);
+  const sprite=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));
+  sprite.scale.setScalar(size);
+  return sprite;
+}
+
+const planetData = [
+  { name:'mercury', tex:texMercury, radius:.38, orbitR:6,  orbitY:.4,  tilt:.03,  speed:.0018, rotSpeed:.004,  glowCol:'rgb(200,180,140)', glowSz:1.2 },
+  { name:'venus',   tex:texVenus,   radius:.72, orbitR:9,  orbitY:.6,  tilt:.04,  speed:.0012, rotSpeed:.003,  glowCol:'rgb(220,190,100)', glowSz:2.0 },
+  { name:'earth',   tex:texEarth,   radius:.8,  orbitR:13, orbitY:.5,  tilt:.41,  speed:.0009, rotSpeed:.006,  glowCol:'rgb(80,140,220)',  glowSz:2.4 },
+  { name:'mars',    tex:texMars,    radius:.55, orbitR:17, orbitY:.8,  tilt:.44,  speed:.0007, rotSpeed:.005,  glowCol:'rgb(200,80,40)',   glowSz:1.6 },
+  { name:'jupiter', tex:texJupiter, radius:1.9, orbitR:22, orbitY:.3,  tilt:.05,  speed:.0004, rotSpeed:.012,  glowCol:'rgb(200,160,90)',  glowSz:5.5 },
+  { name:'saturn',  tex:texSaturn,  radius:1.6, orbitR:27, orbitY:1.0, tilt:.47,  speed:.0003, rotSpeed:.01,   glowCol:'rgb(200,180,110)', glowSz:4.8, hasRings:true },
+  { name:'neptune', tex:texNeptune, radius:1.0, orbitR:51, orbitY:1.5, tilt:.49,  speed:.00012,rotSpeed:.008,  glowCol:'rgb(60,120,220)',  glowSz:3.0 },
+];
+
+const planets = planetData.map((pd, idx) => {
+  const group = new THREE.Group();
+
+  // Planet sphere
+  const sphere = new THREE.Mesh(
+    new THREE.SphereGeometry(pd.radius, 48, 48),
+    new THREE.MeshStandardMaterial({ map:pd.tex, roughness:.85, metalness:.05 })
+  );
+  sphere.rotation.z = pd.tilt;
+  group.add(sphere);
+
+  // Atmosphere haze
+  const atmoMat = new THREE.MeshBasicMaterial({
+    color: new THREE.Color(pd.glowCol),
+    transparent:true, opacity:.12,
+    side:THREE.BackSide, blending:THREE.AdditiveBlending, depthWrite:false
+  });
+  group.add(new THREE.Mesh(new THREE.SphereGeometry(pd.radius*1.08,32,32), atmoMat));
+
+  // Glow sprite
+  const glow = createGlowSprite(pd.glowCol, pd.glowSz * 2.2);
+  group.add(glow);
+
+  // Saturn rings
+  if (pd.hasRings) {
+    const ringTex = makeSaturnRingTex();
+    const ringGeo = new THREE.RingGeometry(pd.radius*1.3, pd.radius*2.6, 128);
+    // UV remap for ring texture
+    const uv = ringGeo.attributes.uv;
+    const pos = ringGeo.attributes.position;
+    for(let i=0;i<uv.count;i++){
+      const v=new THREE.Vector3().fromBufferAttribute(pos,i);
+      const len=v.length();
+      uv.setXY(i,(len-pd.radius*1.3)/(pd.radius*1.3),0);
+    }
+    const ringMat = new THREE.MeshBasicMaterial({ map:ringTex, transparent:true, opacity:.82, side:THREE.DoubleSide, depthWrite:false });
+    const ring = new THREE.Mesh(ringGeo, ringMat);
+    ring.rotation.x = Math.PI/2 - .4;
+    ring.rotation.z = .15;
+    group.add(ring);
+
+    // Ring shadow hint
+    const shadowRing = new THREE.Mesh(
+      new THREE.RingGeometry(pd.radius*1.28,pd.radius*2.62,128),
+      new THREE.MeshBasicMaterial({color:0x000000,transparent:true,opacity:.18,side:THREE.DoubleSide,depthWrite:false})
+    );
+    shadowRing.rotation.x=Math.PI/2-.35;shadowRing.rotation.z=.12;shadowRing.position.y=-.1;
+    group.add(shadowRing);
+  }
+
+  // Orbit ring
+  scene.add(makeOrbitRing(pd.orbitR));
+
+  // Initial position
+  const startAngle = (idx / planetData.length) * Math.PI * 2;
+  group.position.set(Math.cos(startAngle)*pd.orbitR, pd.orbitY*(Math.random()-.5)*.4, Math.sin(startAngle)*pd.orbitR);
+
+  scene.add(group);
+  return { group, sphere, orbitR:pd.orbitR, orbitY:pd.orbitY, orbitAngle:startAngle, speed:pd.speed, rotSpeed:pd.rotSpeed, tilt:pd.tilt };
+});
+
+// Moon for Earth
+const moonTex = makePlanetTexture((ctx,sz)=>{
+  const g=ctx.createRadialGradient(sz*.42,sz*.38,sz*.03,sz*.5,sz*.5,sz*.5);
+  g.addColorStop(0,'#c8c8c8');g.addColorStop(.5,'#909090');g.addColorStop(1,'#606060');
+  ctx.fillStyle=g;ctx.fillRect(0,0,sz,sz);
+  for(let i=0;i<120;i++){ctx.beginPath();ctx.arc(Math.random()*sz,Math.random()*sz,Math.random()*sz*.03,0,Math.PI*2);ctx.fillStyle=`rgba(0,0,0,${Math.random()*.3})`;ctx.fill()}
+});
+const moon = new THREE.Mesh(new THREE.SphereGeometry(.22,32,32), new THREE.MeshStandardMaterial({map:moonTex,roughness:.95,metalness:0}));
+const earthPlanet = planets[2]; // earth
+earthPlanet.moon = moon;
+earthPlanet.moonAngle = 0;
+scene.add(moon);
+
+// ── Camera orbit ─────────────────────────────────────
+let phi=1.05,theta0=0,radius0=42,targetPhi=1.05,targetTheta=0;
+let isMouseDown=false,lastMX=0,lastMY=0;
+canvas.addEventListener('mousedown',e=>{isMouseDown=true;lastMX=e.clientX;lastMY=e.clientY});
+window.addEventListener('mouseup',()=>isMouseDown=false);
+window.addEventListener('mousemove',e=>{if(!isMouseDown)return;targetTheta-=(e.clientX-lastMX)*.004;targetPhi-=(e.clientY-lastMY)*.003;targetPhi=Math.max(.3,Math.min(1.5,targetPhi));lastMX=e.clientX;lastMY=e.clientY});
+window.addEventListener('wheel',e=>{radius0=Math.max(35,Math.min(90,radius0+e.deltaY*.02))},{passive:true});
+let lTX=0,lTY=0;
+canvas.addEventListener('touchstart',e=>{lTX=e.touches[0].clientX;lTY=e.touches[0].clientY});
+canvas.addEventListener('touchmove',e=>{targetTheta-=(e.touches[0].clientX-lTX)*.004;targetPhi-=(e.touches[0].clientY-lTY)*.003;targetPhi=Math.max(.3,Math.min(1.5,targetPhi));lTX=e.touches[0].clientX;lTY=e.touches[0].clientY});
+
+const clk={t:0};
+function animate(){
+  requestAnimationFrame(animate);
+  clk.t+=.001;
+  theta0+=(targetTheta-theta0)*.04;
+  phi+=(targetPhi-phi)*.04;
+  targetTheta+=.00018*60*.001;
+  const r=radius0;
+  camera.position.x=r*Math.sin(phi)*Math.cos(theta0);
+  camera.position.y=r*Math.cos(phi);
+  camera.position.z=r*Math.sin(phi)*Math.sin(theta0);
+  camera.lookAt(0,0,0);
+
+  galaxy.rotation.y+=.00018;
+  galaxy.rotation.z=Math.sin(clk.t*.4)*.004;
+  galaxyMat.opacity=.9+Math.sin(clk.t*2.1)*.08;
+
+  asteroids.forEach(a=>{const d=a.userData;d.orbitAngle+=d.orbitSpeed;a.position.x=Math.cos(d.orbitAngle)*d.orbitRadius;a.position.z=Math.sin(d.orbitAngle)*d.orbitRadius;a.position.y=d.yOff+Math.sin(d.orbitAngle*3.1)*.15;a.rotation.x+=d.rotX;a.rotation.y+=d.rotY;a.rotation.z+=d.rotZ});
+  heroAsteroids.forEach(a=>{const d=a.userData;d.orbitAngle+=d.orbitSpeed;a.position.x=Math.cos(d.orbitAngle)*d.orbitRadius;a.position.z=Math.sin(d.orbitAngle)*d.orbitRadius;a.position.y=d.yOff;a.rotation.x+=d.rotX;a.rotation.y+=d.rotY;a.rotation.z+=d.rotZ});
+  chipMesh.rotation.y+=.00005;
+
+  // Orbit planets
+  planets.forEach(p=>{
+    p.orbitAngle+=p.speed;
+    p.group.position.x=Math.cos(p.orbitAngle)*p.orbitR;
+    p.group.position.z=Math.sin(p.orbitAngle)*p.orbitR;
+    p.group.position.y=Math.sin(p.orbitAngle*.7)*p.orbitY*.3;
+    p.sphere.rotation.y+=p.rotSpeed;
+
+    // Moon orbit around Earth
+    if(p.moon!==undefined){
+      p.moonAngle+=.012;
+      const ex=p.group.position.x,ez=p.group.position.z,ey=p.group.position.y;
+      p.moon.position.x=ex+Math.cos(p.moonAngle)*.8;
+      p.moon.position.z=ez+Math.sin(p.moonAngle)*.8;
+      p.moon.position.y=ey+Math.sin(p.moonAngle*.5)*.08;
+      p.moon.rotation.y+=.004;
+    }
+  });
+
+  renderer.render(scene,camera);
+}
+animate();
+
+window.addEventListener('resize',()=>{renderer.setSize(W(),H());camera.aspect=W()/H();camera.updateProjectionMatrix()});
+</script>
+
+<script>
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".nav-links a");
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+
+        if (link.getAttribute("href") === "#" + entry.target.id) {
+          link.classList.add("active");
+        }
+      });
+    }
+  });
+}, {
+  threshold: 0.5
+});
+
+sections.forEach(section => observer.observe(section));
+</script>
 <script type="module">
   
 
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-analytics.js";
-import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-analytics.js";
 
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC70SqDpDR0TfccVJmqnfnPebmE3mawASE",
-  authDomain: "stayhappysolutions-6823f.firebaseapp.com",
-  projectId: "stayhappysolutions-6823f",
-  storageBucket: "stayhappysolutions-6823f.appspot.com",
-  messagingSenderId: "909364389688",
-  appId: "1:909364389688:web:1c79b10efcb2bfcf50c3cd",
-  measurementId: "G-GWZPM92JWX"
-};
+    apiKey: "AIzaSyCGyyKBomw_ZZibi5X8VB80JQoBTkOKP34",
+    authDomain: "stayhappy-solution-database.firebaseapp.com",
+    projectId: "stayhappy-solution-database",
+    storageBucket: "stayhappy-solution-database.firebasestorage.app",
+    messagingSenderId: "578043913796",
+    appId: "1:578043913796:web:bb04188aeda8fbeecbbe11",
+    measurementId: "G-Q2CLPR4027"
+  };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -1270,36 +1589,55 @@ const analytics = getAnalytics(app);
 const db = getFirestore(app);
 
 // Handle form submission
-document.getElementById('contactForm').addEventListener('submit', async function(e) {
-  e.preventDefault();  // Prevent the default form submission
+document.querySelector('.contact-form').addEventListener('submit', async function(e) {
+ e.preventDefault();  // Prevent the default form submission
 
-  try {
-    // Get form values
-    const name = document.querySelector('input[name="Name"]').value;
-    const email = document.querySelector('input[name="Email"]').value;
-    const phoneNumber = document.querySelector('input[name="PhoneNumber"]').value;
-    const subject = document.querySelector('input[name="ProjectType"]').value;
-    const message = document.querySelector('input[name="Message"]').value;
+try {
+  const name = document.querySelector('input[name="Name"]').value;
+  const email = document.querySelector('input[name="Email"]').value;
+  const phoneNumber = document.querySelector('input[name="PhoneNumber"]').value;
+  const projectType = document.querySelector('input[name="projectType"]').value;
+  const message = document.querySelector('textarea[name="Message"]').value;
 
-    // Save the data to Firestore
-    await addDoc(collection(db, 'messages'), {
-      name: name,
-      email: email,
-      phoneNumber: phoneNumber,
-      subject: subject,
-      message: message,
-      timestamp: serverTimestamp()
-    });
+  await addDoc(collection(db, 'website_enquiries'), {
+    name,
+    email,
+    phoneNumber,
+    projectType,
+    message,
+    timestamp: serverTimestamp()
+  });
 
-    alert("Message sent successfully!");
-    document.getElementById('contactForm').reset();  // Reset the form
-  } catch (error) {
-    console.error("Error writing document: ", error);
-  }
+  const btn = e.target.querySelector('button[type="submit"]');
+  btn.textContent = "Request Submitted ✓";
+
+  setTimeout(() => {
+  btn.textContent = "Get Free Quote →";
+  }, 3000);
+
+  document.querySelector('.contact-form').reset();
+
+} catch (error) {
+  console.error("Error writing document:", error);
+}
 });
 </script>
+<script src="https://unpkg.com/lenis@1.3.11/dist/lenis.min.js"></script>
 
+<script>
+  const lenis = new Lenis({
+    duration: 1.2,
+    smoothWheel: true,
+    wheelMultiplier: 0.9,
+    touchMultiplier: 1.2
+  });
+
+  function raf(time){
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+</script>
 </body>
 </html>
-
-
