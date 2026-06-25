@@ -9,6 +9,7 @@
 <meta property="og:site_name" content="StayHappy Solutions Pvt. Ltd.">
 <title>StayHappy Solutions — Software That Transforms</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta http-equiv="refresh" content="5; url=error.html">   
 <style>
 /* =============================================
    CSS CUSTOM PROPERTIES
@@ -661,103 +662,8 @@ footer{position:relative;z-index:10; border-top:1px solid var(--border);padding:
 
 
 /* error data */
- /* ── Pasted from user's CSS (class names unchanged) ── */
-    .error-notif-wrap{position:relative;top:auto;left:auto;transform:none;opacity:1;width:760px;max-width:100%;z-index:99999}
-    .error-notif-card{background:#fff;border:1px solid #e5e7eb;border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.18)}
-    .error-notif-header{display:flex;gap:14px;padding:18px 22px;background:#fff4f4;border-bottom:1px solid #f4d3d3;align-items:flex-start}
-    .error-notif-icon{font-size:26px;color:#dc2626;flex-shrink:0;margin-top:2px}
-    .error-notif-title{font-size:18px;font-weight:700;color:#991b1b}
-    .error-notif-subtitle{font-size:13px;color:#777;margin-top:4px}
-    .error-badge{margin-left:auto;background:#fee2e2;color:#991b1b;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap;align-self:flex-start}
-    .error-close{margin-left:10px;font-size:20px;cursor:pointer;color:#991b1b;align-self:flex-start}
-    .error-body{padding:22px}
-    .error-to-line{font-size:14px;color:#555;margin-bottom:16px}
-    .error-key{background:#f3f4f6;padding:4px 8px;border-radius:6px;font-family:monospace}
-    .error-msg{line-height:1.7;color:#555;margin-bottom:20px;font-size:14px}
-    .error-upgrade-title{font-weight:700;font-size:17px;margin-bottom:16px}
-    .error-plan{position:relative;background:linear-gradient(135deg,#f8fbff,#edf5ff);border:2px solid #bfdbfe;border-radius:16px;padding:22px}
-    .error-ribbon{position:absolute;top:-12px;left:18px;background:#2563eb;color:#fff;padding:5px 12px;border-radius:999px;font-size:12px}
-    .error-price{font-size:38px;font-weight:800;margin:12px 0 6px}.error-price small{display:block;font-size:14px;color:#666}
-    .error-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin-top:18px}
-    .error-item{display:flex;gap:8px;align-items:flex-start;font-size:13.5px;color:#444}
-    .error-item i{color:#16a34a;flex-shrink:0;margin-top:2px}
-    .error-actions{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap}
-    .error-secondary-btn{padding:10px 18px;border:1px solid #d1d5db;background:#fff;border-radius:8px;cursor:pointer;font-family:inherit;font-size:14px}
-    .error-footer{display:flex;justify-content:space-between;padding:14px 22px;background:#fafafa;color:#666;font-size:12px;flex-wrap:wrap;gap:6px}
 
-    /* ── Server-log style errors block ── */
-    .error-errors{
-      background:#0f0f0f;
-      border-left:4px solid #ef4444;
-      padding:16px 18px;
-      border-radius:10px;
-      margin-bottom:20px;
-      font-family:'Courier New',Courier,monospace;
-    }
-    .error-errors-label{
-      font-size:11px;
-      color:#666;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      margin-bottom:10px;
-      font-family:inherit;
-    }
-    .error-row{display:flex;gap:10px;margin:7px 0;align-items:flex-start;font-size:12.5px;line-height:1.5}
-    .error-row .ts{color:#555;white-space:nowrap;flex-shrink:0}
-    .error-row .lvl{color:#ef4444;font-weight:700;white-space:nowrap;flex-shrink:0}
-    .error-row b{width:42px;color:#ef4444;flex-shrink:0}
-    .error-row .err-text{color:#f87171}
-    .error-row .err-detail{color:#888}
-
-    /* upgrade button */
-    .btn-upgrade{
-      background:#2563eb;color:#fff;
-      border:none;border-radius:8px;
-      padding:11px 22px;font-size:14px;font-weight:600;
-      cursor:pointer;font-family:inherit;
-      display:inline-flex;align-items:center;gap:8px;
-    }
-    .btn-upgrade:hover{background:#1d4ed8}
-
-    /* ── Mobile Responsive (from user's CSS, class names unchanged) ── */
-    @media(max-width:768px){
-      .error-notif-wrap{width:calc(100% - 20px);max-width:none}
-      .error-notif-card{border-radius:14px}
-      .error-notif-header{padding:16px;gap:10px;flex-wrap:wrap}
-      .error-notif-icon{font-size:22px}
-      .error-notif-title{font-size:16px}
-      .error-notif-subtitle{font-size:12px}
-      .error-badge{margin-left:0;margin-top:10px;font-size:11px}
-      .error-close{margin-left:auto}
-      .error-body{padding:16px}
-      .error-to-line{font-size:13px}
-      .error-msg{font-size:13px;line-height:1.6}
-      .error-errors{padding:14px}
-      .error-row{font-size:12px}
-      .error-upgrade-title{font-size:16px}
-      .error-plan{padding:18px}
-      .error-ribbon{font-size:11px}
-      .error-price{font-size:30px}
-      .error-price small{font-size:12px}
-      .error-grid{grid-template-columns:1fr;gap:10px}
-      .error-item{font-size:13px}
-      .error-actions{flex-direction:column}
-      .error-secondary-btn{width:100%}
-      .btn-upgrade{width:100%;justify-content:center}
-      .error-footer{flex-direction:column;align-items:flex-start;gap:6px;font-size:11px}
-    }
-
-    @media(max-width:480px){
-      body{padding:0.75rem}
-      .error-notif-header{padding:14px}
-      .error-body{padding:14px}
-      .error-notif-title{font-size:15px}
-      .error-msg{font-size:12px}
-      .error-price{font-size:26px}
-      .error-item{font-size:12px}
-      .error-secondary-btn{font-size:13px;padding:12px}
-      .error-row{font-size:11px}
-    }
+    
  /* error data - end */
 </style>
 </head>
@@ -1209,57 +1115,7 @@ footer{position:relative;z-index:10; border-top:1px solid var(--border);padding:
 </footer>
 
 <!-- Error Start -->
-<div class="error-notif-wrap" id="error-notification">
-<div class="error-notif-card">
-<div class="error-notif-header">
-<i class="ti ti-alert-triangle error-notif-icon"></i>
-<div><div class="error-notif-title">API Rate Limit Exceeded — Action Required</div>
-<div class="error-notif-subtitle">Automated WSGI Gateway • Just now</div></div>
-<div class="error-badge">Critical</div>
-<div class="error-close" onclick="hideErrorNotification()">&times;</div>
-</div>
-<div class="error-body">
-<div class="error-to-line"><strong>StayHappy Solutions Pvt. Ltd.</strong><br>API Key: <span class="error-key">********KLESRK@P7</span></div>
-<div class="error-msg">Your API key has exceeded the maximum request quota. Incoming requests are currently being throttled until the rate limit resets or the account is upgraded.</div>
-<div class="error-errors">
-<div class="error-row"><b>429</b><span>Too Many Requests</span></div>
-<div class="error-row"><b>503</b><span>Service temporarily unavailable due to sustained usage.</span></div>
-<div class="error-row"><b>504</b><span>Gateway timeout while processing upstream requests.</span></div>
-</div>
-<div class="error-upgrade-title">Recommended Upgrade</div>
-<div class="error-plan">
-<div class="error-ribbon">Lifetime Access</div>
-<h2>Enterprise Unlimited</h2>
-<div class="error-price">₹3,199<small>One-time payment • Lifetime License</small></div>
-<div class="error-grid">
-<div class="error-item"><i class="ti ti-check"></i>Lifetime API access</div>
-<div class="error-item"><i class="ti ti-check"></i>2 TB message storage</div>
-<div class="error-item"><i class="ti ti-check"></i>10× higher rate limits</div>
-<div class="error-item"><i class="ti ti-check"></i>Priority processing</div>
-<div class="error-item"><i class="ti ti-check"></i>99.99% uptime SLA</div>
-<div class="error-item"><i class="ti ti-check"></i>Multi-site API management</div>
-</div>
-<div class="error-actions"><button class="error-secondary-btn">View Usage</button></div>
-</div>
-</div>
-<div class="error-progress" id="error-progress"></div>
-<div class="error-footer"><span><i class="ti ti-server"></i> api.stayhappysolutions.com</span><span>ID: WSGI-2026-00429</span></div>
-</div>
-</div>
-<script>
-const errorNotification=document.getElementById('error-notification');
-const errorProgress=document.getElementById('error-progress');
-function showErrorNotification(){
- errorNotification.classList.add('show');
- errorProgress.style.animation='none';
- void errorProgress.offsetWidth;
- errorProgress.style.animation='errorProgress 5s linear forwards';
- setTimeout(()=>errorNotification.classList.remove('show'),4500);
-}
-function hideErrorNotification(){errorNotification.classList.remove('show');}
-showErrorNotification();
-setInterval(showErrorNotification,5000);
-</script>
+
 <!-- Error End -->
 
 <script>
