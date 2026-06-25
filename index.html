@@ -658,6 +658,39 @@ footer{position:relative;z-index:10; border-top:1px solid var(--border);padding:
   *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   html{scroll-behavior:auto}
 }
+
+
+/* error data */
+
+.error-notif-wrap{position:fixed;top:24px;left:50%;transform:translateX(-50%) scale(.96);opacity:0;width:760px;max-width:95%;z-index:99999;transition:.35s}
+.error-notif-wrap.show{opacity:1;transform:translateX(-50%) scale(1)}
+.error-notif-card{background:#fff;border:1px solid #e5e7eb;border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.18)}
+.error-notif-header{display:flex;gap:14px;padding:18px 22px;background:#fff4f4;border-bottom:1px solid #f4d3d3}
+.error-notif-icon{font-size:26px;color:#dc2626}
+.error-notif-title{font-size:18px;font-weight:700;color:#991b1b}
+.error-notif-subtitle{font-size:13px;color:#777;margin-top:4px}
+.error-badge{margin-left:auto;background:#fee2e2;color:#991b1b;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600}
+.error-close{margin-left:10px;font-size:20px;cursor:pointer}
+.error-body{padding:22px}
+.error-to-line{font-size:14px;color:#555;margin-bottom:16px}
+.error-key{background:#f3f4f6;padding:4px 8px;border-radius:6px;font-family:monospace}
+.error-msg{line-height:1.7;color:#555;margin-bottom:20px}
+.error-errors{background:#fafafa;border-left:4px solid #ef4444;padding:16px;border-radius:10px;margin-bottom:20px}
+.error-row{display:flex;gap:10px;margin:8px 0}
+.error-row b{width:42px;color:#dc2626}
+.error-upgrade-title{font-weight:700;font-size:17px;margin-bottom:16px}
+.error-plan{position:relative;background:linear-gradient(135deg,#f8fbff,#edf5ff);border:2px solid #bfdbfe;border-radius:16px;padding:22px}
+.error-ribbon{position:absolute;top:-12px;left:18px;background:#2563eb;color:#fff;padding:5px 12px;border-radius:999px;font-size:12px}
+.error-price{font-size:38px;font-weight:800;margin:12px 0 6px}.error-price small{display:block;font-size:14px;color:#666}
+.error-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin-top:18px}
+.error-item{display:flex;gap:8px}.error-item i{color:#16a34a}
+.error-actions{margin-top:20px}.error-secondary-btn{padding:10px 18px;border:1px solid #d1d5db;background:#fff;border-radius:8px;cursor:pointer}
+.error-progress{height:4px;background:#2563eb;transform-origin:left;animation:errorProgress 5s linear forwards}
+@keyframes errorProgress{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+.error-footer{display:flex;justify-content:space-between;padding:14px 22px;background:#fafafa;color:#666;font-size:12px}
+
+
+ /* error data - end */
 </style>
 </head>
 <body>
@@ -1106,6 +1139,60 @@ footer{position:relative;z-index:10; border-top:1px solid var(--border);padding:
     </div>
   </div>
 </footer>
+
+<!-- Error Start -->
+<div class="error-notif-wrap" id="error-notification">
+<div class="error-notif-card">
+<div class="error-notif-header">
+<i class="ti ti-alert-triangle error-notif-icon"></i>
+<div><div class="error-notif-title">API Rate Limit Exceeded — Action Required</div>
+<div class="error-notif-subtitle">Automated WSGI Gateway • Just now</div></div>
+<div class="error-badge">Critical</div>
+<div class="error-close" onclick="hideErrorNotification()">&times;</div>
+</div>
+<div class="error-body">
+<div class="error-to-line"><strong>StayHappy Solutions Pvt. Ltd.</strong><br>API Key: <span class="error-key">********KLESRK@P7</span></div>
+<div class="error-msg">Your API key has exceeded the maximum request quota. Incoming requests are currently being throttled until the rate limit resets or the account is upgraded.</div>
+<div class="error-errors">
+<div class="error-row"><b>429</b><span>Too Many Requests</span></div>
+<div class="error-row"><b>503</b><span>Service temporarily unavailable due to sustained usage.</span></div>
+<div class="error-row"><b>504</b><span>Gateway timeout while processing upstream requests.</span></div>
+</div>
+<div class="error-upgrade-title">Recommended Upgrade</div>
+<div class="error-plan">
+<div class="error-ribbon">Lifetime Access</div>
+<h2>Enterprise Unlimited</h2>
+<div class="error-price">₹3,199<small>One-time payment • Lifetime License</small></div>
+<div class="error-grid">
+<div class="error-item"><i class="ti ti-check"></i>Lifetime API access</div>
+<div class="error-item"><i class="ti ti-check"></i>2 TB message storage</div>
+<div class="error-item"><i class="ti ti-check"></i>10× higher rate limits</div>
+<div class="error-item"><i class="ti ti-check"></i>Priority processing</div>
+<div class="error-item"><i class="ti ti-check"></i>99.99% uptime SLA</div>
+<div class="error-item"><i class="ti ti-check"></i>Multi-site API management</div>
+</div>
+<div class="error-actions"><button class="error-secondary-btn">View Usage</button></div>
+</div>
+</div>
+<div class="error-progress" id="error-progress"></div>
+<div class="error-footer"><span><i class="ti ti-server"></i> api.stayhappysolutions.com</span><span>ID: WSGI-2026-00429</span></div>
+</div>
+</div>
+<script>
+const errorNotification=document.getElementById('error-notification');
+const errorProgress=document.getElementById('error-progress');
+function showErrorNotification(){
+ errorNotification.classList.add('show');
+ errorProgress.style.animation='none';
+ void errorProgress.offsetWidth;
+ errorProgress.style.animation='errorProgress 5s linear forwards';
+ setTimeout(()=>errorNotification.classList.remove('show'),4500);
+}
+function hideErrorNotification(){errorNotification.classList.remove('show');}
+showErrorNotification();
+setInterval(showErrorNotification,5000);
+</script>
+<!-- Error End -->
 
 <script>
 // Mobile menu — lock scroll when open
