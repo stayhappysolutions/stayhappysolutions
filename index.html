@@ -661,198 +661,103 @@ footer{position:relative;z-index:10; border-top:1px solid var(--border);padding:
 
 
 /* error data */
+ /* ── Pasted from user's CSS (class names unchanged) ── */
+    .error-notif-wrap{position:relative;top:auto;left:auto;transform:none;opacity:1;width:760px;max-width:100%;z-index:99999}
+    .error-notif-card{background:#fff;border:1px solid #e5e7eb;border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.18)}
+    .error-notif-header{display:flex;gap:14px;padding:18px 22px;background:#fff4f4;border-bottom:1px solid #f4d3d3;align-items:flex-start}
+    .error-notif-icon{font-size:26px;color:#dc2626;flex-shrink:0;margin-top:2px}
+    .error-notif-title{font-size:18px;font-weight:700;color:#991b1b}
+    .error-notif-subtitle{font-size:13px;color:#777;margin-top:4px}
+    .error-badge{margin-left:auto;background:#fee2e2;color:#991b1b;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap;align-self:flex-start}
+    .error-close{margin-left:10px;font-size:20px;cursor:pointer;color:#991b1b;align-self:flex-start}
+    .error-body{padding:22px}
+    .error-to-line{font-size:14px;color:#555;margin-bottom:16px}
+    .error-key{background:#f3f4f6;padding:4px 8px;border-radius:6px;font-family:monospace}
+    .error-msg{line-height:1.7;color:#555;margin-bottom:20px;font-size:14px}
+    .error-upgrade-title{font-weight:700;font-size:17px;margin-bottom:16px}
+    .error-plan{position:relative;background:linear-gradient(135deg,#f8fbff,#edf5ff);border:2px solid #bfdbfe;border-radius:16px;padding:22px}
+    .error-ribbon{position:absolute;top:-12px;left:18px;background:#2563eb;color:#fff;padding:5px 12px;border-radius:999px;font-size:12px}
+    .error-price{font-size:38px;font-weight:800;margin:12px 0 6px}.error-price small{display:block;font-size:14px;color:#666}
+    .error-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin-top:18px}
+    .error-item{display:flex;gap:8px;align-items:flex-start;font-size:13.5px;color:#444}
+    .error-item i{color:#16a34a;flex-shrink:0;margin-top:2px}
+    .error-actions{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap}
+    .error-secondary-btn{padding:10px 18px;border:1px solid #d1d5db;background:#fff;border-radius:8px;cursor:pointer;font-family:inherit;font-size:14px}
+    .error-footer{display:flex;justify-content:space-between;padding:14px 22px;background:#fafafa;color:#666;font-size:12px;flex-wrap:wrap;gap:6px}
 
-.error-notif-wrap{position:fixed;top:24px;left:50%;transform:translateX(-50%) scale(.96);opacity:0;width:760px;max-width:95%;z-index:99999;transition:.35s}
-.error-notif-wrap.show{opacity:1;transform:translateX(-50%) scale(1)}
-.error-notif-card{background:#fff;border:1px solid #e5e7eb;border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.18)}
-.error-notif-header{display:flex;gap:14px;padding:18px 22px;background:#fff4f4;border-bottom:1px solid #f4d3d3}
-.error-notif-icon{font-size:26px;color:#dc2626}
-.error-notif-title{font-size:18px;font-weight:700;color:#991b1b}
-.error-notif-subtitle{font-size:13px;color:#777;margin-top:4px}
-.error-badge{margin-left:auto;background:#fee2e2;color:#991b1b;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600}
-.error-close{margin-left:10px;font-size:20px;cursor:pointer}
-.error-body{padding:22px}
-.error-to-line{font-size:14px;color:#555;margin-bottom:16px}
-.error-key{background:#f3f4f6;padding:4px 8px;border-radius:6px;font-family:monospace}
-.error-msg{line-height:1.7;color:#555;margin-bottom:20px}
-.error-errors{background:#fafafa;border-left:4px solid #ef4444;padding:16px;border-radius:10px;margin-bottom:20px}
-.error-row{display:flex;gap:10px;margin:8px 0}
-.error-row b{width:42px;color:#dc2626}
-.error-upgrade-title{font-weight:700;font-size:17px;margin-bottom:16px}
-.error-plan{position:relative;background:linear-gradient(135deg,#f8fbff,#edf5ff);border:2px solid #bfdbfe;border-radius:16px;padding:22px}
-.error-ribbon{position:absolute;top:-12px;left:18px;background:#2563eb;color:#fff;padding:5px 12px;border-radius:999px;font-size:12px}
-.error-price{font-size:38px;font-weight:800;margin:12px 0 6px}.error-price small{display:block;font-size:14px;color:#666}
-.error-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin-top:18px}
-.error-item{display:flex;gap:8px}.error-item i{color:#16a34a}
-.error-actions{margin-top:20px}.error-secondary-btn{padding:10px 18px;border:1px solid #d1d5db;background:#fff;border-radius:8px;cursor:pointer}
-.error-progress{height:4px;background:#2563eb;transform-origin:left;animation:errorProgress 5s linear forwards}
-@keyframes errorProgress{from{transform:scaleX(1)}to{transform:scaleX(0)}}
-.error-footer{display:flex;justify-content:space-between;padding:14px 22px;background:#fafafa;color:#666;font-size:12px}
-
-
- /* ==============================
-   Mobile Responsive
-================================= */
-
-@media (max-width: 768px) {
-
-    .error-notif-wrap{
-        width:calc(100% - 20px);
-        max-width:none;
-        top:10px;
-        left:10px;
-        right:10px;
-        transform:scale(.96);
-    }
-
-    .error-notif-wrap.show{
-        transform:scale(1);
-    }
-
-    .error-notif-card{
-        border-radius:14px;
-    }
-
-    .error-notif-header{
-        padding:16px;
-        gap:10px;
-        flex-wrap:wrap;
-    }
-
-    .error-notif-icon{
-        font-size:22px;
-    }
-
-    .error-notif-title{
-        font-size:16px;
-    }
-
-    .error-notif-subtitle{
-        font-size:12px;
-    }
-
-    .error-badge{
-        margin-left:0;
-        margin-top:10px;
-        font-size:11px;
-    }
-
-    .error-close{
-        margin-left:auto;
-    }
-
-    .error-body{
-        padding:16px;
-    }
-
-    .error-to-line{
-        font-size:13px;
-    }
-
-    .error-msg{
-        font-size:13px;
-        line-height:1.6;
-    }
-
+    /* ── Server-log style errors block ── */
     .error-errors{
-        padding:14px;
+      background:#0f0f0f;
+      border-left:4px solid #ef4444;
+      padding:16px 18px;
+      border-radius:10px;
+      margin-bottom:20px;
+      font-family:'Courier New',Courier,monospace;
+    }
+    .error-errors-label{
+      font-size:11px;
+      color:#666;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:10px;
+      font-family:inherit;
+    }
+    .error-row{display:flex;gap:10px;margin:7px 0;align-items:flex-start;font-size:12.5px;line-height:1.5}
+    .error-row .ts{color:#555;white-space:nowrap;flex-shrink:0}
+    .error-row .lvl{color:#ef4444;font-weight:700;white-space:nowrap;flex-shrink:0}
+    .error-row b{width:42px;color:#ef4444;flex-shrink:0}
+    .error-row .err-text{color:#f87171}
+    .error-row .err-detail{color:#888}
+
+    /* upgrade button */
+    .btn-upgrade{
+      background:#2563eb;color:#fff;
+      border:none;border-radius:8px;
+      padding:11px 22px;font-size:14px;font-weight:600;
+      cursor:pointer;font-family:inherit;
+      display:inline-flex;align-items:center;gap:8px;
+    }
+    .btn-upgrade:hover{background:#1d4ed8}
+
+    /* ── Mobile Responsive (from user's CSS, class names unchanged) ── */
+    @media(max-width:768px){
+      .error-notif-wrap{width:calc(100% - 20px);max-width:none}
+      .error-notif-card{border-radius:14px}
+      .error-notif-header{padding:16px;gap:10px;flex-wrap:wrap}
+      .error-notif-icon{font-size:22px}
+      .error-notif-title{font-size:16px}
+      .error-notif-subtitle{font-size:12px}
+      .error-badge{margin-left:0;margin-top:10px;font-size:11px}
+      .error-close{margin-left:auto}
+      .error-body{padding:16px}
+      .error-to-line{font-size:13px}
+      .error-msg{font-size:13px;line-height:1.6}
+      .error-errors{padding:14px}
+      .error-row{font-size:12px}
+      .error-upgrade-title{font-size:16px}
+      .error-plan{padding:18px}
+      .error-ribbon{font-size:11px}
+      .error-price{font-size:30px}
+      .error-price small{font-size:12px}
+      .error-grid{grid-template-columns:1fr;gap:10px}
+      .error-item{font-size:13px}
+      .error-actions{flex-direction:column}
+      .error-secondary-btn{width:100%}
+      .btn-upgrade{width:100%;justify-content:center}
+      .error-footer{flex-direction:column;align-items:flex-start;gap:6px;font-size:11px}
     }
 
-    .error-row{
-        font-size:13px;
+    @media(max-width:480px){
+      body{padding:0.75rem}
+      .error-notif-header{padding:14px}
+      .error-body{padding:14px}
+      .error-notif-title{font-size:15px}
+      .error-msg{font-size:12px}
+      .error-price{font-size:26px}
+      .error-item{font-size:12px}
+      .error-secondary-btn{font-size:13px;padding:12px}
+      .error-row{font-size:11px}
     }
-
-    .error-upgrade-title{
-        font-size:16px;
-    }
-
-    .error-plan{
-        padding:18px;
-    }
-
-    .error-ribbon{
-        font-size:11px;
-    }
-
-    .error-price{
-        font-size:30px;
-    }
-
-    .error-price small{
-        font-size:12px;
-    }
-
-    .error-grid{
-        grid-template-columns:1fr;
-        gap:10px;
-    }
-
-    .error-item{
-        font-size:13px;
-    }
-
-    .error-actions{
-        display:flex;
-        flex-direction:column;
-    }
-
-    .error-secondary-btn{
-        width:100%;
-    }
-
-    .error-footer{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:6px;
-        font-size:11px;
-    }
-
-}
-
-
-/* Small Phones */
-
-@media (max-width:480px){
-
-    .error-notif-wrap{
-        width:calc(100% - 12px);
-        top:6px;
-        left:6px;
-        right:6px;
-    }
-
-    .error-notif-header{
-        padding:14px;
-    }
-
-    .error-body{
-        padding:14px;
-    }
-
-    .error-notif-title{
-        font-size:15px;
-    }
-
-    .error-msg{
-        font-size:12px;
-    }
-
-    .error-price{
-        font-size:26px;
-    }
-
-    .error-item{
-        font-size:12px;
-    }
-
-    .error-secondary-btn{
-        font-size:13px;
-        padding:12px;
-    }
-
-}  
-
-
  /* error data - end */
 </style>
 </head>
