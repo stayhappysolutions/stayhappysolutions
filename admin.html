@@ -8,8 +8,7 @@
     <title>Admin Dashboard | StayHappy Solutions</title>
 
 
-
-    <style>
+<style>
         :root {
             --bg-1: #0b0f19;
             --bg-2: #161b2e;
@@ -23,25 +22,29 @@
 
         * { box-sizing: border-box; }
 
+        html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
         body {
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             margin: 0;
             min-height: 100vh;
+            min-height: 100dvh; /* fixes mobile browser URL-bar height jump */
             display: flex;
             justify-content: center;
             align-items: center;
             background: radial-gradient(circle at 20% 20%, #1e2540 0%, var(--bg-1) 50%, #05070d 100%);
             color: var(--text-primary);
-            padding: 24px;
+            padding: clamp(12px, 4vw, 24px);
         }
 
         #signInDiv, #messagesDiv {
             background: var(--glass);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border);
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
-            padding: 40px;
+            padding: clamp(20px, 5vw, 40px);
             width: 440px;
             max-width: 100%;
         }
@@ -49,8 +52,8 @@
         #messagesDiv { width: 640px; }
 
         h2 {
-            margin: 0 0 28px 0;
-            font-size: 26px;
+            margin: 0 0 clamp(18px, 4vw, 28px) 0;
+            font-size: clamp(20px, 5vw, 26px);
             font-weight: 700;
             letter-spacing: -0.02em;
             background: linear-gradient(135deg, #fff, var(--text-secondary));
@@ -78,8 +81,9 @@
             border-radius: 10px;
             background: rgba(255,255,255,0.03);
             color: var(--text-primary);
-            font-size: 15px;
+            font-size: 16px; /* 16px minimum prevents iOS Safari auto-zoom on focus */
             transition: border-color 0.2s, box-shadow 0.2s;
+            min-height: 44px; /* comfortable touch target */
         }
 
         input::placeholder { color: #dbe0e6; font-weight: bold; }
@@ -101,8 +105,10 @@
             font-size: 15px;
             font-weight: 600;
             margin-top: 8px;
+            min-height: 46px; /* touch target */
             transition: transform 0.15s, box-shadow 0.2s, opacity 0.2s;
             box-shadow: 0 8px 24px rgba(99,102,241,0.35);
+            touch-action: manipulation;
         }
 
         button:hover {
@@ -126,10 +132,11 @@
         }
 
         #messages {
-            max-height: 480px;
+            max-height: min(480px, 60vh);
             overflow-y: auto;
             margin-bottom: 20px;
             padding-right: 6px;
+            -webkit-overflow-scrolling: touch;
         }
 
         #messages::-webkit-scrollbar { width: 6px; }
@@ -145,7 +152,7 @@
             background: rgba(255,255,255,0.03);
             border: 1px solid var(--border);
             border-radius: 14px;
-            padding: 18px 20px;
+            padding: clamp(14px, 3vw, 18px) clamp(14px, 4vw, 20px);
             margin-bottom: 12px;
             transition: background 0.2s, border-color 0.2s;
         }
@@ -199,6 +206,7 @@
             font-size: 14px;
             line-height: 1.6;
             color: #cbd5e1;
+            word-break: break-word;
         }
 
         .empty-state, .loading-state {
@@ -220,21 +228,8 @@
 
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        @media (max-width: 600px) {
-            #signInDiv, #messagesDiv { width: 100%; padding: 28px 20px; }
-            h2 { font-size: 22px; }
-        }
-
         #c{position:fixed;inset:0;width:100%;height:100%}
         .vignette{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse 80% 80% at 50% 50%,transparent 0%,rgba(0,0,0,.08) 50%,rgba(0,0,0,.70) 100%)}
-
-        @media (max-width:1024px){
-        .vignette{background:radial-gradient(ellipse 90% 90% at 50% 50%,transparent 0%,rgba(0,0,0,.10) 50%,rgba(0,0,0,.75) 100%)}
-        }
-
-        @media (max-width:768px){
-        .vignette{background:radial-gradient(ellipse 100% 100% at 50% 50%,transparent 0%,rgba(0,0,0,.12) 45%,rgba(0,0,0,.80) 100%)}
-        }
 
         .forhomeback {
             background: rgba(255,255,255,0.05);
@@ -267,6 +262,8 @@
             padding: 5px;
             margin-bottom: 22px;
             width: fit-content;
+            max-width: 100%;
+            overflow-x: auto;
         }
 
         .shs-tabbtn {
@@ -284,6 +281,8 @@
             cursor: pointer;
             box-shadow: none;
             transform: none;
+            white-space: nowrap;
+            min-height: 40px;
             transition: background 0.2s, color 0.2s;
         }
 
@@ -308,16 +307,18 @@
             display: flex;
             gap: 10px;
             margin-bottom: 18px;
+            flex-wrap: wrap;
         }
 
         .shs-input {
             flex: 1;
+            min-width: 0; /* prevents flex overflow on narrow screens */
             padding: 12px 16px;
             border: 1px solid var(--border);
             border-radius: 10px;
             background: rgba(255,255,255,0.03);
             color: var(--text-primary);
-            font-size: 14px;
+            font-size: 16px; /* prevents iOS zoom-on-focus */
             font-family: inherit;
             outline: none;
             transition: border-color 0.2s, box-shadow 0.2s;
@@ -341,6 +342,7 @@
             width: auto;
             margin-top: 0;
             padding: 0 20px;
+            min-height: 46px;
             white-space: nowrap;
             font-size: 13.5px;
         }
@@ -353,8 +355,8 @@
         }
 
         .shs-check {
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             flex-shrink: 0;
             border: 1.5px solid var(--text-secondary);
             border-radius: 6px;
@@ -383,6 +385,7 @@
 
         .shs-task-text, .shs-note-text {
             flex: 1;
+            min-width: 0;
             font-size: 14px;
             line-height: 1.6;
             color: #cbd5e1;
@@ -401,14 +404,15 @@
             background: transparent;
             color: var(--text-secondary);
             cursor: pointer;
-            width: 30px;
-            height: 30px;
-            border-radius: 8px;
+            width: 34px;
+            height: 34px;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             flex-shrink: 0;
-            transition: background 0.15s, color 0.15s;
+            touch-action: manipulation;
         }
 
         .shs-icon-btn:hover { background: rgba(239,68,68,0.15); color: #f87171; }
@@ -417,7 +421,7 @@
         /* ── Notes grid ─────────────────────────────────────── */
         .shs-notes-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(min(230px, 100%), 1fr));
             gap: 12px;
         }
 
@@ -456,10 +460,11 @@
             align-items: center;
             justify-content: space-between;
             gap: 16px;
+            flex-wrap: wrap;
         }
 
         .shs-ring-wrap { position: relative; width: 50px; height: 50px; flex-shrink: 0; margin-bottom: 28px; }
-        .shs-ring-wrap svg { transform: rotate(-90deg); }
+        .shs-ring-wrap svg { transform: rotate(-90deg); width: 100%; height: 100%; }
         .shs-ring-track { stroke: rgba(255,255,255,0.08); fill: none; stroke-width: 5; }
         .shs-ring-progress {
             stroke: url(#shsRingGradient);
@@ -479,6 +484,136 @@
             color: var(--text-primary);
         }
 
+        /* ═══════════════════════════════════════════════════════
+           RESPONSIVE BREAKPOINTS
+           Covers: large desktops, laptops, tablets (portrait/
+           landscape), large phones, standard phones, small/
+           older phones, and short-viewport landscape phones.
+           ═══════════════════════════════════════════════════════ */
+
+        /* Large desktop / wide monitors ------------------------ */
+        @media (min-width: 1440px) {
+            #messagesDiv { width: 720px; }
+        }
+
+        /* Laptops & small desktops ------------------------------ */
+        @media (max-width: 1200px) {
+            #messagesDiv { width: 600px; }
+        }
+
+        /* Tablets (portrait & landscape) ------------------------ */
+        @media (max-width: 1024px) {
+            .vignette{background:radial-gradient(ellipse 90% 90% at 50% 50%,transparent 0%,rgba(0,0,0,.10) 50%,rgba(0,0,0,.75) 100%)}
+            #messagesDiv { width: 100%; max-width: 560px; }
+        }
+
+        /* Small tablets / large phones (landscape) --------------- */
+        @media (max-width: 768px) {
+            .vignette{background:radial-gradient(ellipse 100% 100% at 50% 50%,transparent 0%,rgba(0,0,0,.12) 45%,rgba(0,0,0,.80) 100%)}
+
+            #signInDiv, #messagesDiv { width: 100%; padding: 28px 20px; border-radius: 18px; }
+            h2 { font-size: 22px; margin-bottom: 20px; }
+
+            .shs-head-row { gap: 10px; }
+            .shs-ring-wrap { width: 42px; height: 42px; margin-bottom: 20px; }
+
+            .shs-notes-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+        }
+
+        /* Standard phones (portrait) ----------------------------- */
+        @media (max-width: 480px) {
+            body { padding: 14px; align-items: flex-start; }
+
+            #signInDiv, #messagesDiv {
+                padding: 22px 16px;
+                border-radius: 16px;
+                margin: 10px 0;
+            }
+
+            h2 { font-size: 20px; margin-bottom: 16px; }
+
+            .field { margin-bottom: 14px; }
+
+            input[type="email"], input[type="password"] {
+                padding: 12px 14px;
+            }
+
+            button { padding: 12px 18px; font-size: 14.5px; }
+
+            .msg-card { padding: 14px 14px; border-radius: 12px; }
+            .msg-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+            .msg-name { font-size: 15px; }
+            .msg-body { font-size: 13.5px; }
+
+            .shs-tabbar { width: 100%; }
+            .shs-tabbtn { flex: 1; padding: 8px 10px; font-size: 11.5px; text-align: center; }
+
+            .shs-input-row { flex-direction: column; gap: 8px; }
+            .shs-addbtn { width: 100%; padding: 12px; }
+
+            .shs-notes-grid { grid-template-columns: 1fr; }
+
+            .shs-check { width: 24px; height: 24px; }
+            .shs-icon-btn { width: 38px; height: 38px; }
+        }
+
+        /* Small / older phones (e.g. iPhone SE, ~375px & below) -- */
+        @media (max-width: 380px) {
+            body { padding: 10px; }
+
+            #signInDiv, #messagesDiv {
+                padding: 18px 14px;
+                border-radius: 14px;
+            }
+
+            h2 { font-size: 18px; }
+
+            label { font-size: 11px; }
+
+            input[type="email"], input[type="password"],
+            .shs-input { padding: 11px 12px; }
+
+            button, .shs-addbtn { font-size: 14px; padding: 11px 14px; }
+
+            .msg-tag { font-size: 10px; padding: 3px 8px; }
+            .msg-time { font-size: 11px; }
+
+            .shs-tabbtn { padding: 7px 6px; font-size: 10.5px; }
+        }
+
+        /* Extra-narrow devices (foldables closed, ~280–320px) ---- */
+        @media (max-width: 320px) {
+            #signInDiv, #messagesDiv { padding: 16px 12px; }
+            h2 { font-size: 17px; }
+            .shs-notes-grid { gap: 8px; }
+        }
+
+        /* Short-height viewports: landscape phones --------------- */
+        @media (max-height: 480px) and (orientation: landscape) {
+            body { align-items: flex-start; padding: 10px; }
+            #signInDiv, #messagesDiv { padding: 16px 20px; }
+            h2 { margin-bottom: 12px; font-size: 18px; }
+            .field { margin-bottom: 10px; }
+            #messages { max-height: 50vh; }
+        }
+
+        /* Touch devices: remove hover-only affordances, enlarge targets */
+        @media (hover: none) and (pointer: coarse) {
+            button, .shs-icon-btn, .shs-tabbtn, .shs-check { min-height: 44px; }
+            .shs-icon-btn { width: 40px; height: 40px; }
+            button:hover, .secondary-btn:hover, .forhomeback:hover,
+            .msg-card:hover, .shs-note-card:hover {
+                transform: none;
+            }
+        }
+
+        /* Respect reduced-motion preference ---------------------- */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                transition-duration: 0.001ms !important;
+            }
+        }
     </style>
     
 </head>
