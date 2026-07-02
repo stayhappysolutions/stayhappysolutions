@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <meta name="author" content="StayHappy Solutions">
-    <title>Quote Requests | StayHappy Solutions</title>
+    <title>Admin Dashboard | StayHappy Solutions</title>
 
 
 
@@ -258,6 +257,228 @@
             height: 100%;
         }
 
+        /* ── Tasks & Notes tab bar ─────────────────────────── */
+        .shs-tabbar {
+            display: flex;
+            gap: 6px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 5px;
+            margin-bottom: 22px;
+            width: fit-content;
+        }
+
+        .shs-tabbtn {
+            border: none;
+            background: transparent;
+            width: auto;
+            margin: 0;
+            padding: 8px 18px;
+            font-size: 12.5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-secondary);
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: none;
+            transform: none;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .shs-tabbtn:hover {
+            transform: none;
+            box-shadow: none;
+            background: rgba(255,255,255,0.05);
+            color: var(--text-primary);
+        }
+
+        .shs-tabbtn.is-active {
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: #fff;
+            box-shadow: 0 6px 18px rgba(99,102,241,0.35);
+        }
+
+        .shs-panel { display: none; }
+        .shs-panel.is-active { display: block; }
+
+        /* ── Shared input row ──────────────────────────────── */
+        .shs-input-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .shs-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.03);
+            color: var(--text-primary);
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .shs-input::placeholder { color: #8890a0; font-weight: 400; }
+
+        .shs-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(99,102,241,0.15);
+        }
+
+        textarea.shs-input {
+            resize: vertical;
+            min-height: 46px;
+            line-height: 1.5;
+            font-family: inherit;
+        }
+
+        .shs-addbtn {
+            width: auto;
+            margin-top: 0;
+            padding: 0 20px;
+            white-space: nowrap;
+            font-size: 13.5px;
+        }
+
+        /* ── Task rows (reuses .msg-card look) ─────────────── */
+        .shs-task-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .shs-check {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            border: 1.5px solid var(--text-secondary);
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            padding: 0;
+            transition: background 0.15s, border-color 0.15s;
+        }
+
+        .shs-check.is-checked {
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            border-color: var(--accent);
+        }
+
+        .shs-check.is-checked::after {
+            content: '';
+            width: 5px;
+            height: 9px;
+            border-right: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            transform: rotate(45deg) translate(-1px, -1px);
+        }
+
+        .shs-task-text, .shs-note-text {
+            flex: 1;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #cbd5e1;
+            outline: none;
+            word-break: break-word;
+        }
+
+        .shs-task-row.is-done .shs-task-text {
+            color: var(--text-secondary);
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        .shs-icon-btn {
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .shs-icon-btn:hover { background: rgba(239,68,68,0.15); color: #f87171; }
+        .shs-icon-btn svg { width: 15px; height: 15px; }
+
+        /* ── Notes grid ─────────────────────────────────────── */
+        .shs-notes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 12px;
+        }
+
+        .shs-note-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: 14px;
+            padding: 16px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-height: 110px;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .shs-note-card:hover {
+            background: rgba(255,255,255,0.06);
+            border-left-color: var(--accent-2);
+        }
+
+        .shs-note-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .shs-note-date {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        /* ── Progress ring in header ────────────────────────── */
+        .shs-head-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .shs-ring-wrap { position: relative; width: 50px; height: 50px; flex-shrink: 0; margin-bottom: 28px; }
+        .shs-ring-wrap svg { transform: rotate(-90deg); }
+        .shs-ring-track { stroke: rgba(255,255,255,0.08); fill: none; stroke-width: 5; }
+        .shs-ring-progress {
+            stroke: url(#shsRingGradient);
+            fill: none;
+            stroke-width: 5;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 0.4s ease;
+        }
+        .shs-ring-label {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
     </style>
     
 </head>
@@ -279,8 +500,54 @@
     </div>
 
     <div id="messagesDiv" style="display:none;">
-        <h2>Enquiries</h2>
-        <div id="messages"><div class="loading-state"><div class="spinner"></div>Loading messages…</div></div>
+        <h2>Dashboard</h2>
+
+        <div class="shs-tabbar">
+            <button class="shs-tabbtn is-active" data-tab="enquiries" id="shsTabEnquiries">Enquiries</button>
+            <button class="shs-tabbtn" data-tab="tasks" id="shsTabTasks">Tasks</button>
+            <button class="shs-tabbtn" data-tab="notes" id="shsTabNotes">Notes</button>
+        </div>
+
+        <!-- ENQUIRIES PANEL (existing Firestore feed) -->
+        <div class="shs-panel is-active" id="shsPanelEnquiries">
+            <div id="messages"><div class="loading-state"><div class="spinner"></div>Loading messages…</div></div>
+        </div>
+
+        <!-- TASKS PANEL -->
+        <div class="shs-panel" id="shsPanelTasks">
+            <div class="shs-head-row">
+                <div class="shs-input-row" style="flex:1;">
+                    <input type="text" class="shs-input" id="shsTaskInput" placeholder="Add a task and press Enter…" maxlength="200">
+                    <button class="shs-addbtn" id="shsTaskAddBtn">Add</button>
+                </div>
+                <div class="shs-ring-wrap">
+                    <svg width="50" height="50" viewBox="0 0 50 50">
+                        <defs>
+                            <linearGradient id="shsRingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#6366f1"/>
+                                <stop offset="100%" stop-color="#8b5cf6"/>
+                            </linearGradient>
+                        </defs>
+                        <circle class="shs-ring-track" cx="25" cy="25" r="21"></circle>
+                        <circle class="shs-ring-progress" id="shsRing" cx="25" cy="25" r="21" stroke-dasharray="132" stroke-dashoffset="132"></circle>
+                    </svg>
+                    <div class="shs-ring-label" id="shsRingLabel">0%</div>
+                </div>
+            </div>
+            <ul id="shsTaskList" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;"></ul>
+            <div class="empty-state" id="shsTaskEmpty">No tasks yet — add your first one above.</div>
+        </div>
+
+        <!-- NOTES PANEL -->
+        <div class="shs-panel" id="shsPanelNotes">
+            <div class="shs-input-row">
+                <textarea class="shs-input" id="shsNoteInput" placeholder="Write a note… (Ctrl/Cmd + Enter to save)" rows="2"></textarea>
+                <button class="shs-addbtn" id="shsNoteAddBtn">Add</button>
+            </div>
+            <div class="shs-notes-grid" id="shsNoteGrid"></div>
+            <div class="empty-state" id="shsNoteEmpty">No notes yet — jot something down above.</div>
+        </div>
+
         <button class="secondary-btn" onclick="signOut()">Sign Out</button>
         <button class="forhomeback"><a  style="text-decoration: none; color: inherit;" href="index.html">Home</a></button>
     </div>
@@ -288,9 +555,9 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-auth.js";
-        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
-
-        const firebaseConfig = {
+        import {getFirestore,collection,addDoc,getDocs,updateDoc,deleteDoc,doc,serverTimestamp,query,orderBy} from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+        
+      const firebaseConfig = {
             apiKey: "AIzaSyCGyyKBomw_ZZibi5X8VB80JQoBTkOKP34",
             authDomain: "stayhappy-solution-database.firebaseapp.com",
             projectId: "stayhappy-solution-database",
@@ -300,9 +567,11 @@
             measurementId: "G-Q2CLPR4027"
         };
 
+
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
+     
 
         window.signIn = async function() {
             const email = document.getElementById('email').value;
@@ -321,14 +590,319 @@
             }).catch((error) => {
                 alert("Error signing out: " + error.message);
             });
+        };
+
+
+
+       (function () {
+        // ── Tab switching ────────────────────────────────────
+        var tabs = {
+            enquiries: { btn: document.getElementById('shsTabEnquiries'), panel: document.getElementById('shsPanelEnquiries') },
+            tasks:     { btn: document.getElementById('shsTabTasks'),     panel: document.getElementById('shsPanelTasks') },
+            notes:     { btn: document.getElementById('shsTabNotes'),     panel: document.getElementById('shsPanelNotes') }
+        };
+
+        function switchTab(name) {
+            Object.keys(tabs).forEach(function (key) {
+                var active = key === name;
+                tabs[key].btn.classList.toggle('is-active', active);
+                tabs[key].panel.classList.toggle('is-active', active);
+            });
         }
 
-        onAuthStateChanged(auth, async (user) => {
+        Object.keys(tabs).forEach(function (key) {
+            tabs[key].btn.addEventListener('click', function () { switchTab(key); });
+        });
+
+        var tasks = [];
+        var notes = [];
+
+        const TASK_COLLECTION = "admin_tasks";
+        const NOTE_COLLECTION = "admin_notes";  
+
+        var el = {
+            taskInput: document.getElementById('shsTaskInput'),
+            taskAddBtn: document.getElementById('shsTaskAddBtn'),
+            taskList: document.getElementById('shsTaskList'),
+            taskEmpty: document.getElementById('shsTaskEmpty'),
+            noteInput: document.getElementById('shsNoteInput'),
+            noteAddBtn: document.getElementById('shsNoteAddBtn'),
+            noteGrid: document.getElementById('shsNoteGrid'),
+            noteEmpty: document.getElementById('shsNoteEmpty'),
+            ring: document.getElementById('shsRing'),
+            ringLabel: document.getElementById('shsRingLabel')
+        };
+
+        var TRASH_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6h16Z"/></svg>';
+        
+        async function loadTasks() {
+
+            tasks = [];
+
+            const q = query(
+                collection(db, TASK_COLLECTION),
+                orderBy("createdAt", "desc")
+            );
+
+            const snapshot = await getDocs(q);
+
+            snapshot.forEach((document) => {
+
+                tasks.push({
+                    id: document.id,
+                    ...document.data()
+                });
+
+            });
+
+            renderTasks();
+            updateProgress();
+        }
+
+
+        async function loadNotes() {
+
+            notes = [];
+
+            const q = query(
+                collection(db, NOTE_COLLECTION),
+                orderBy("createdAt", "desc")
+            );
+
+            const snapshot = await getDocs(q);
+
+            snapshot.forEach((document) => {
+
+                const data = document.data();
+
+                notes.push({
+                    id: document.id,
+                    text: data.text,
+                    date: data.createdAt
+                        ? new Date(data.createdAt.seconds * 1000).toLocaleDateString(undefined, {
+                            month: "short",
+                            day: "numeric"
+                        })
+                        : ""
+                });
+
+            });
+
+            renderNotes();
+
+        } 
+
+        // ── Tasks ────────────────────────────────────────────
+        function renderTasks() {
+            el.taskList.innerHTML = '';
+            el.taskEmpty.style.display = tasks.length ? 'none' : 'block';
+
+            tasks.forEach(function (task) {
+                var li = document.createElement('li');
+                li.className = 'msg-card shs-task-row' + (task.done ? ' is-done' : '');
+
+                var check = document.createElement('button');
+                check.className = 'shs-check' + (task.done ? ' is-checked' : '');
+                check.setAttribute('aria-label', 'Toggle complete');
+
+                check.addEventListener("click", async function () {
+
+                await updateDoc(
+                            doc(db, TASK_COLLECTION, task.id),
+                            { done: !task.done }
+                        );
+                        await loadTasks();
+                    });
+
+                var text = document.createElement('span');
+                text.className = 'shs-task-text';
+                text.contentEditable = 'true';
+                text.textContent = task.text;
+
+                text.addEventListener("blur", async function () {
+
+                    var val = text.textContent.trim();
+
+                    if (!val) {
+                        text.textContent = task.text;
+                        return;
+                    }
+
+                    await updateDoc(
+                        doc(db, TASK_COLLECTION, task.id),
+                        {
+                            text: val
+                        }
+                    );
+
+                    await loadTasks();
+
+                });
+
+
+                text.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter') { e.preventDefault(); text.blur(); }
+                });
+
+                var del = document.createElement('button');
+                del.className = 'shs-icon-btn';
+                del.innerHTML = TRASH_ICON;
+                del.setAttribute('aria-label', 'Delete task');
+
+                del.addEventListener("click", async function () {
+                    await deleteDoc(
+                        doc(db, TASK_COLLECTION, task.id)
+                    );
+                    await loadTasks();
+                    });
+
+                li.appendChild(check);
+                li.appendChild(text);
+                li.appendChild(del);
+                el.taskList.appendChild(li);
+            });
+        }
+
+        async function addTask() {
+
+            var val = el.taskInput.value.trim();
+
+            if (!val) return;
+
+            await addDoc(
+                collection(db, TASK_COLLECTION),
+                {
+                    text: val,
+                    done: false,
+                    createdAt: serverTimestamp()
+                }
+            );
+
+            el.taskInput.value = "";
+
+            await loadTasks();
+
+            el.taskInput.focus();
+
+        }
+
+
+        el.taskAddBtn.addEventListener("click", addTask);
+
+        el.taskInput.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") addTask();
+        });
+
+        // ── Notes ────────────────────────────────────────────
+        function formatDate(d) {
+            return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+        }
+
+        function renderNotes() {
+            el.noteGrid.innerHTML = '';
+            el.noteEmpty.style.display = notes.length ? 'none' : 'block';
+
+            notes.forEach(function (note) {
+                var card = document.createElement('div');
+                card.className = 'shs-note-card';
+
+                var text = document.createElement('div');
+                text.className = 'shs-note-text';
+                text.contentEditable = 'true';
+                text.textContent = note.text;
+                
+
+                text.addEventListener("blur", async function () {
+                    var val = text.textContent.trim();
+                    if (!val) {
+                            text.textContent = note.text;
+                            return;
+                        }
+                    await updateDoc(
+                      doc(db, NOTE_COLLECTION, note.id),
+                        {
+                            text: val
+                        }
+                    );
+                    await loadNotes();
+                    });
+
+                var footer = document.createElement('div');
+                footer.className = 'shs-note-footer';
+
+                var date = document.createElement('span');
+                date.className = 'shs-note-date';
+                date.textContent = note.date;
+
+                var del = document.createElement('button');
+                del.className = 'shs-icon-btn';
+                del.innerHTML = TRASH_ICON;
+                del.setAttribute('aria-label', 'Delete note');
+
+                del.addEventListener("click", async function () {
+
+                await deleteDoc(
+                    doc(db, NOTE_COLLECTION, note.id)
+                );
+
+                await loadNotes();
+
+                });
+
+                footer.appendChild(date);
+                footer.appendChild(del);
+                card.appendChild(text);
+                card.appendChild(footer);
+                el.noteGrid.appendChild(card);
+            });
+        }
+
+        async function addNote() {
+
+                var val = el.noteInput.value.trim();
+
+                if (!val) return;
+
+                await addDoc(
+                    collection(db, NOTE_COLLECTION),
+                    {
+                        text: val,
+                        createdAt: serverTimestamp()
+                    }
+                );
+
+                el.noteInput.value = "";
+
+                await loadNotes();
+
+                el.noteInput.focus();
+
+            }
+
+        el.noteAddBtn.addEventListener('click', addNote);
+        el.noteInput.addEventListener('keydown', function (e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') addNote();
+        });
+
+        // ── Progress ring ────────────────────────────────────
+        function updateProgress() {
+            var total = tasks.length;
+            var done = tasks.filter(function (t) { return t.done; }).length;
+            var pct = total ? Math.round((done / total) * 100) : 0;
+            var circumference = 132; // 2 * PI * 21, matches r=21 in the SVG
+            el.ring.style.strokeDashoffset = circumference - (circumference * pct / 100);
+            el.ringLabel.textContent = pct + '%';
+        }
+
+
+               onAuthStateChanged(auth, async (user) => {
             if (user) {
+
                 document.getElementById('signInDiv').style.display = 'none';
                 document.getElementById('messagesDiv').style.display = 'block';
 
                 try {
+
                     const querySnapshot = await getDocs(collection(db, 'website_enquiries'));
                     let messagesArray = [];
 
@@ -349,37 +923,55 @@
 
                     if (messagesArray.length === 0) {
                         messagesEl.innerHTML = '<div class="empty-state">No enquiries yet.</div>';
-                        return;
+                    } else {
+
+                        let messagesHtml = '<ul>';
+
+                        messagesArray.forEach((data) => {
+                            const timestamp = data.timestamp
+                                ? new Date(data.timestamp.seconds * 1000).toLocaleString()
+                                : 'No timestamp';
+
+                            const phoneNumber = data.phoneNumber
+                                ? data.phoneNumber
+                                : 'No phone provided';
+
+                            messagesHtml += `
+                                <li class="msg-card">
+                                    <div class="msg-header">
+                                        <span class="msg-name">${data.name}</span>
+                                        <span class="msg-time">${timestamp}</span>
+                                    </div>
+                                    <div class="msg-meta">${data.email} • ${phoneNumber}</div>
+                                    <div class="msg-tag">${data.projectType}</div>
+                                    <div class="msg-body">${data.message}</div>
+                                </li>`;
+                        });
+
+                        messagesHtml += '</ul>';
+                        messagesEl.innerHTML = messagesHtml;
                     }
 
-                    let messagesHtml = '<ul>';
-                    messagesArray.forEach((data) => {
-                        const timestamp = data.timestamp ? new Date(data.timestamp.seconds * 1000).toLocaleString() : 'No timestamp';
-                        const phoneNumber = data.phoneNumber ? data.phoneNumber : 'No phone provided';
-                        messagesHtml += `
-                            <li class="msg-card">
-                                <div class="msg-header">
-                                    <span class="msg-name">${data.name}</span>
-                                    <span class="msg-time">${timestamp}</span>
-                                </div>
-                                <div class="msg-meta">${data.email} • ${phoneNumber}</div>
-                                <div class="msg-tag">${data.projectType}</div>
-                                <div class="msg-body">${data.message}</div>
-                            </li>`;
-                    });
-                    messagesHtml += '</ul>';
-                    messagesEl.innerHTML = messagesHtml;
+                    // Load Tasks & Notes AFTER login
+                    await loadTasks();
+                    await loadNotes();
+
                 } catch (error) {
-                    document.getElementById('messages').innerHTML = '<div class="empty-state">Error loading messages.</div>';
-                    console.error("Error fetching messages: ", error);
+                    document.getElementById('messages').innerHTML =
+                        '<div class="empty-state">Error loading messages.</div>';
+                    console.error(error);
                 }
+
             } else {
+
                 document.getElementById('messagesDiv').style.display = 'none';
                 document.getElementById('signInDiv').style.display = 'block';
+
             }
         });
-    </script>
-    
+    })();
+</script>
+
 <script type="module">
 import * as THREE from 'https://unpkg.com/three@0.155.0/build/three.module.js';
 
@@ -398,46 +990,38 @@ const camera = new THREE.PerspectiveCamera(60, W()/H(), 0.1, 2000);
 camera.position.set(0, 18, 42);
 camera.lookAt(0, 0, 0);
 
-// ── Fog layers ──────────────────────────────────────────
 const fogGeo = new THREE.PlaneGeometry(200,200);
 const fogMat = new THREE.MeshBasicMaterial({color:0x050a2a,transparent:true,opacity:.18,side:THREE.DoubleSide,depthWrite:false});
 for(let i=0;i<3;i++){const f=new THREE.Mesh(fogGeo,fogMat.clone());f.rotation.x=Math.PI/2+(i-1)*.3;f.position.y=(i-1)*1.5;scene.add(f)}
 
-// ── Backdrop stars ──────────────────────────────────────
 const bgCount=8000,bgPos=new Float32Array(bgCount*3),bgCol=new Float32Array(bgCount*3);
 for(let i=0;i<bgCount;i++){const i3=i*3,t=Math.random()*Math.PI*2,p=Math.acos(2*Math.random()-1),r=300+Math.random()*200;bgPos[i3]=r*Math.sin(p)*Math.cos(t);bgPos[i3+1]=r*Math.sin(p)*Math.sin(t);bgPos[i3+2]=r*Math.cos(p);const g=.6+Math.random()*.4;bgCol[i3]=g;bgCol[i3+1]=g;bgCol[i3+2]=g+.1}
 const bgG=new THREE.BufferGeometry();bgG.setAttribute('position',new THREE.BufferAttribute(bgPos,3));bgG.setAttribute('color',new THREE.BufferAttribute(bgCol,3));
 scene.add(new THREE.Points(bgG,new THREE.PointsMaterial({size:.9,vertexColors:true,transparent:true,opacity:.6,sizeAttenuation:false})));
 
-// ── Galaxy spiral ───────────────────────────────────────
 const COUNT=140000,ARMS=5,gPos=new Float32Array(COUNT*3),gCol=new Float32Array(COUNT*3);
 for(let i=0;i<COUNT;i++){const i3=i*3,arm=Math.floor(Math.random()*ARMS),t=Math.pow(Math.random(),1.5),radius=1+t*28,aAngle=(arm/ARMS)*Math.PI*2,spin=radius*1.8,scatter=Math.pow(1-t,2)*3+.3;gPos[i3]=Math.cos(aAngle+spin)*radius+(Math.random()-.5)*scatter;gPos[i3+1]=(Math.random()-.5)*(1.5*(1-t*.7));gPos[i3+2]=Math.sin(aAngle+spin)*radius+(Math.random()-.5)*scatter;const dn=radius/28,rnd=Math.random();if(dn<.15){gCol[i3]=1;gCol[i3+1]=.95;gCol[i3+2]=.75}else if(rnd<.18){gCol[i3]=.75+Math.random()*.25;gCol[i3+1]=.85+Math.random()*.15;gCol[i3+2]=1}else if(rnd<.55){gCol[i3]=1;gCol[i3+1]=1;gCol[i3+2]=1}else if(rnd<.78){gCol[i3]=1;gCol[i3+1]=.9;gCol[i3+2]=.6}else{gCol[i3]=.8+Math.random()*.2;gCol[i3+1]=.7;gCol[i3+2]=1}}
 const galaxyGeo=new THREE.BufferGeometry();galaxyGeo.setAttribute('position',new THREE.BufferAttribute(gPos,3));galaxyGeo.setAttribute('color',new THREE.BufferAttribute(gCol,3));
 const galaxyMat=new THREE.PointsMaterial({size:.045,vertexColors:true,transparent:true,opacity:.92,blending:THREE.AdditiveBlending,depthWrite:false,sizeAttenuation:true});
 const galaxy=new THREE.Points(galaxyGeo,galaxyMat);scene.add(galaxy);
 
-// ── Core glow ───────────────────────────────────────────
 [[0xfff4cc,.9,.8],[0xffd580,.35,2.0],[0xffb347,.12,4.5]].forEach(([col,op,sz])=>{scene.add(new THREE.Mesh(new THREE.SphereGeometry(sz,32,32),new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:op,blending:THREE.AdditiveBlending,depthWrite:false})))});
 const coreCount=1200,cPos=new Float32Array(coreCount*3),cCol=new Float32Array(coreCount*3);
 for(let i=0;i<coreCount;i++){const i3=i*3,r=Math.random()*1.8,t=Math.random()*Math.PI*2,p=Math.acos(2*Math.random()-1);cPos[i3]=r*Math.sin(p)*Math.cos(t);cPos[i3+1]=r*Math.sin(p)*Math.sin(t)*.3;cPos[i3+2]=r*Math.sin(p)*Math.sin(t);cCol[i3]=1;cCol[i3+1]=.95;cCol[i3+2]=.7}
 const cG=new THREE.BufferGeometry();cG.setAttribute('position',new THREE.BufferAttribute(cPos,3));cG.setAttribute('color',new THREE.BufferAttribute(cCol,3));
 scene.add(new THREE.Points(cG,new THREE.PointsMaterial({size:.15,vertexColors:true,transparent:true,opacity:.95,blending:THREE.AdditiveBlending,depthWrite:false})));
 
-// ── Nebula wisps ────────────────────────────────────────
 [[6,-3,.4,0x2244ff,.025],[-5,4,1.2,0xff4488,.018],[0,0,0,0x6633cc,.022],[10,6,2.1,0x0055ff,.015]].forEach(([x,z,rot,col,op])=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(22,10),new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:op,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,depthWrite:false}));m.position.set(x,-.2,z);m.rotation.x=Math.PI/2;m.rotation.z=rot;scene.add(m)});
 
-// ── Dust particles ──────────────────────────────────────
 const dC=18000,dPos=new Float32Array(dC*3),dCol=new Float32Array(dC*3);
 for(let i=0;i<dC;i++){const i3=i*3,r=1+Math.random()*24,t=Math.random()*Math.PI*2;dPos[i3]=Math.cos(t)*r+(Math.random()-.5)*6;dPos[i3+1]=(Math.random()-.5)*.6;dPos[i3+2]=Math.sin(t)*r+(Math.random()-.5)*6;dCol[i3]=.3+Math.random()*.3;dCol[i3+1]=.25+Math.random()*.25;dCol[i3+2]=.5+Math.random()*.4}
 const dG=new THREE.BufferGeometry();dG.setAttribute('position',new THREE.BufferAttribute(dPos,3));dG.setAttribute('color',new THREE.BufferAttribute(dCol,3));
 scene.add(new THREE.Points(dG,new THREE.PointsMaterial({size:.025,vertexColors:true,transparent:true,opacity:.45,blending:THREE.AdditiveBlending,depthWrite:false})));
 
-// ── Lighting ────────────────────────────────────────────
 scene.add(new THREE.AmbientLight(0x334466,1.2));
 const sun=new THREE.DirectionalLight(0xfff4cc,3.5);sun.position.set(30,20,10);scene.add(sun);
 const rim=new THREE.DirectionalLight(0x4466ff,0.6);rim.position.set(-20,-10,-20);scene.add(rim);
 
-// ── Asteroid belt ───────────────────────────────────────
 function makeAsteroidGeo(){
   const b=new THREE.IcosahedronGeometry(1,2),p=b.attributes.position;
   for(let i=0;i<p.count;i++){const v=new THREE.Vector3().fromBufferAttribute(p,i);v.normalize().multiplyScalar(1+(Math.random()-.5)*.55);p.setXYZ(i,v.x,v.y,v.z)}
@@ -465,18 +1049,12 @@ const chipG=new THREE.BufferGeometry();chipG.setAttribute('position',new THREE.B
 const chipMesh=new THREE.Points(chipG,new THREE.PointsMaterial({size:.04,vertexColors:true,transparent:true,opacity:.55,sizeAttenuation:true,depthWrite:false}));
 scene.add(chipMesh);
 
-// ══════════════════════════════════════════════════════
-// ── PLANETS ───────────────────────────────────────────
-// ══════════════════════════════════════════════════════
-
-// Helper: procedural planet texture on a canvas
 function makePlanetTexture(fn, size=512) {
   const cv = document.createElement('canvas'); cv.width=cv.height=size;
   const ctx = cv.getContext('2d'); fn(ctx, size);
   return new THREE.CanvasTexture(cv);
 }
 
-// Helper: draw orbit ring
 function makeOrbitRing(radius, color=0x334466, opacity=0.18) {
   const pts = [];
   for(let i=0;i<=128;i++) pts.push(new THREE.Vector3(Math.cos(i/128*Math.PI*2)*radius,0,Math.sin(i/128*Math.PI*2)*radius));
@@ -485,9 +1063,6 @@ function makeOrbitRing(radius, color=0x334466, opacity=0.18) {
   return new THREE.Line(g,m);
 }
 
-// ── Planet textures ──────────────────────────────────
-
-// Rocky brown (Mercury-like)
 const texMercury = makePlanetTexture((ctx,sz)=>{
   const g=ctx.createRadialGradient(sz*.4,sz*.38,sz*.05,sz*.5,sz*.5,sz*.5);
   g.addColorStop(0,'#c8b89a');g.addColorStop(.4,'#a0886a');g.addColorStop(1,'#6e5840');
@@ -495,41 +1070,32 @@ const texMercury = makePlanetTexture((ctx,sz)=>{
   for(let i=0;i<220;i++){ctx.beginPath();ctx.arc(Math.random()*sz,Math.random()*sz,Math.random()*sz*.03,0,Math.PI*2);ctx.fillStyle=`rgba(0,0,0,${Math.random()*.25})`;ctx.fill()}
 });
 
-// Ocean blue (Earth-like)
 const texEarth = makePlanetTexture((ctx,sz)=>{
   ctx.fillStyle='#1a4a8a';ctx.fillRect(0,0,sz,sz);
-  // continents
   [[.2,.3,.35,.28],[.55,.2,.3,.25],[.1,.6,.4,.3],[.6,.55,.35,.3],[.35,.65,.25,.2]].forEach(([x,y,w,h])=>{
     const g=ctx.createRadialGradient(x*sz,y*sz,0,(x+w*.5)*sz,(y+h*.5)*sz,w*sz*.7);
     g.addColorStop(0,'#4a9a4a');g.addColorStop(.5,'#3a7a30');g.addColorStop(1,'#2a5a20');
     ctx.fillStyle=g;ctx.beginPath();ctx.ellipse(x*sz,y*sz,w*sz*.55,h*sz*.6,Math.random(),0,Math.PI*2);ctx.fill();
   });
-  // clouds
   for(let i=0;i<14;i++){ctx.fillStyle=`rgba(255,255,255,${.15+Math.random()*.18})`;ctx.beginPath();ctx.ellipse(Math.random()*sz,Math.random()*sz,Math.random()*sz*.18,Math.random()*sz*.06,Math.random()*Math.PI,0,Math.PI*2);ctx.fill()}
 });
 
-// Red desert (Mars-like)
 const texMars = makePlanetTexture((ctx,sz)=>{
   const g=ctx.createRadialGradient(sz*.4,sz*.35,sz*.05,sz*.5,sz*.5,sz*.52);
   g.addColorStop(0,'#e0603a');g.addColorStop(.5,'#c04020');g.addColorStop(1,'#7a2810');
   ctx.fillStyle=g;ctx.fillRect(0,0,sz,sz);
   for(let i=0;i<180;i++){ctx.beginPath();ctx.arc(Math.random()*sz,Math.random()*sz,Math.random()*sz*.025,0,Math.PI*2);ctx.fillStyle=`rgba(${Math.random()<.5?'0,0,0':'255,180,120'},${Math.random()*.2})`;ctx.fill()}
-  // polar cap
   ctx.fillStyle='rgba(240,240,255,0.55)';ctx.beginPath();ctx.ellipse(sz*.5,sz*.06,sz*.14,sz*.06,0,0,Math.PI*2);ctx.fill();
 });
 
-// Gas giant banded (Jupiter-like)
 const texJupiter = makePlanetTexture((ctx,sz)=>{
   const bands=[['#c8a06a',0],['#e0c89a',.08],['#b07840',.18],['#d4a870',.28],['#884428',.38],['#c89060',.5],['#a86838',.6],['#ddb870',.72],['#8a5020',.84],['#c09060',1]];
   bands.forEach(([col,stop],idx)=>{if(idx<bands.length-1){const [nc,ns]=bands[idx+1];const gr=ctx.createLinearGradient(0,stop*sz,0,ns*sz);gr.addColorStop(0,col);gr.addColorStop(1,nc);ctx.fillStyle=gr;ctx.fillRect(0,stop*sz,sz,(ns-stop)*sz)}});
-  // turbulence swirls
   for(let i=0;i<8;i++){ctx.strokeStyle=`rgba(${Math.random()<.5?'180,120,60':'255,220,140'},.18)`;ctx.lineWidth=2+Math.random()*4;ctx.beginPath();ctx.ellipse(Math.random()*sz,Math.random()*sz*.9+sz*.05,Math.random()*sz*.2,sz*.025+Math.random()*sz*.02,0,0,Math.PI*2);ctx.stroke()}
-  // Great Red Spot
   ctx.fillStyle='rgba(160,40,20,.7)';ctx.beginPath();ctx.ellipse(sz*.35,sz*.55,sz*.09,sz*.055,-.2,0,Math.PI*2);ctx.fill();
   ctx.fillStyle='rgba(200,80,40,.3)';ctx.beginPath();ctx.ellipse(sz*.35,sz*.55,sz*.12,sz*.075,-.2,0,Math.PI*2);ctx.fill();
 });
 
-// Ice blue (Neptune-like)
 const texNeptune = makePlanetTexture((ctx,sz)=>{
   const g=ctx.createRadialGradient(sz*.38,sz*.35,sz*.04,sz*.5,sz*.5,sz*.52);
   g.addColorStop(0,'#60b0ff');g.addColorStop(.4,'#2060c0');g.addColorStop(1,'#0a1e6a');
@@ -538,7 +1104,6 @@ const texNeptune = makePlanetTexture((ctx,sz)=>{
   ctx.fillStyle='rgba(200,230,255,.4)';ctx.beginPath();ctx.ellipse(sz*.58,sz*.42,sz*.07,sz*.045,.3,0,Math.PI*2);ctx.fill();
 });
 
-// Yellow-cream (Venus-like)
 const texVenus = makePlanetTexture((ctx,sz)=>{
   const g=ctx.createRadialGradient(sz*.42,sz*.38,sz*.04,sz*.5,sz*.5,sz*.52);
   g.addColorStop(0,'#f5e090');g.addColorStop(.5,'#d4a840');g.addColorStop(1,'#8a6010');
@@ -546,7 +1111,6 @@ const texVenus = makePlanetTexture((ctx,sz)=>{
   for(let i=0;i<12;i++){ctx.fillStyle=`rgba(255,245,180,${.1+Math.random()*.12})`;ctx.beginPath();ctx.ellipse(Math.random()*sz,Math.random()*sz,sz*(.12+Math.random()*.1),sz*.03,Math.random()*.5,0,Math.PI*2);ctx.fill()}
 });
 
-// Saturn ring texture
 function makeSaturnRingTex() {
   const cv=document.createElement('canvas');cv.width=512;cv.height=1;
   const ctx=cv.getContext('2d'),g=ctx.createLinearGradient(0,0,512,0);
@@ -563,13 +1127,10 @@ function makeSaturnRingTex() {
   return new THREE.CanvasTexture(cv);
 }
 
-// Saturn body texture
 const texSaturn = makePlanetTexture((ctx,sz)=>{
   const bands=[['#d4b870',0],['#c4a858',.12],['#e8d090',.25],['#b89040',.4],['#d8c078',.55],['#a87828',.7],['#c8a860',.85],['#b89050',1]];
   bands.forEach(([col,stop],idx)=>{if(idx<bands.length-1){const[nc,ns]=bands[idx+1];const gr=ctx.createLinearGradient(0,stop*sz,0,ns*sz);gr.addColorStop(0,col);gr.addColorStop(1,nc);ctx.fillStyle=gr;ctx.fillRect(0,stop*sz,sz,(ns-stop)*sz)}});
 });
-
-// ── Build planets ────────────────────────────────────
 
 function createGlowSprite(color, size) {
   const cv=document.createElement('canvas');cv.width=cv.height=128;
@@ -598,7 +1159,6 @@ const planetData = [
 const planets = planetData.map((pd, idx) => {
   const group = new THREE.Group();
 
-  // Planet sphere
   const sphere = new THREE.Mesh(
     new THREE.SphereGeometry(pd.radius, 48, 48),
     new THREE.MeshStandardMaterial({ map:pd.tex, roughness:.85, metalness:.05 })
@@ -606,7 +1166,6 @@ const planets = planetData.map((pd, idx) => {
   sphere.rotation.z = pd.tilt;
   group.add(sphere);
 
-  // Atmosphere haze
   const atmoMat = new THREE.MeshBasicMaterial({
     color: new THREE.Color(pd.glowCol),
     transparent:true, opacity:.12,
@@ -614,15 +1173,12 @@ const planets = planetData.map((pd, idx) => {
   });
   group.add(new THREE.Mesh(new THREE.SphereGeometry(pd.radius*1.08,32,32), atmoMat));
 
-  // Glow sprite
   const glow = createGlowSprite(pd.glowCol, pd.glowSz * 2.2);
   group.add(glow);
 
-  // Saturn rings
   if (pd.hasRings) {
     const ringTex = makeSaturnRingTex();
     const ringGeo = new THREE.RingGeometry(pd.radius*1.3, pd.radius*2.6, 128);
-    // UV remap for ring texture
     const uv = ringGeo.attributes.uv;
     const pos = ringGeo.attributes.position;
     for(let i=0;i<uv.count;i++){
@@ -636,7 +1192,6 @@ const planets = planetData.map((pd, idx) => {
     ring.rotation.z = .15;
     group.add(ring);
 
-    // Ring shadow hint
     const shadowRing = new THREE.Mesh(
       new THREE.RingGeometry(pd.radius*1.28,pd.radius*2.62,128),
       new THREE.MeshBasicMaterial({color:0x000000,transparent:true,opacity:.18,side:THREE.DoubleSide,depthWrite:false})
@@ -645,10 +1200,8 @@ const planets = planetData.map((pd, idx) => {
     group.add(shadowRing);
   }
 
-  // Orbit ring
   scene.add(makeOrbitRing(pd.orbitR));
 
-  // Initial position
   const startAngle = (idx / planetData.length) * Math.PI * 2;
   group.position.set(Math.cos(startAngle)*pd.orbitR, pd.orbitY*(Math.random()-.5)*.4, Math.sin(startAngle)*pd.orbitR);
 
@@ -656,7 +1209,6 @@ const planets = planetData.map((pd, idx) => {
   return { group, sphere, orbitR:pd.orbitR, orbitY:pd.orbitY, orbitAngle:startAngle, speed:pd.speed, rotSpeed:pd.rotSpeed, tilt:pd.tilt };
 });
 
-// Moon for Earth
 const moonTex = makePlanetTexture((ctx,sz)=>{
   const g=ctx.createRadialGradient(sz*.42,sz*.38,sz*.03,sz*.5,sz*.5,sz*.5);
   g.addColorStop(0,'#c8c8c8');g.addColorStop(.5,'#909090');g.addColorStop(1,'#606060');
@@ -664,12 +1216,11 @@ const moonTex = makePlanetTexture((ctx,sz)=>{
   for(let i=0;i<120;i++){ctx.beginPath();ctx.arc(Math.random()*sz,Math.random()*sz,Math.random()*sz*.03,0,Math.PI*2);ctx.fillStyle=`rgba(0,0,0,${Math.random()*.3})`;ctx.fill()}
 });
 const moon = new THREE.Mesh(new THREE.SphereGeometry(.22,32,32), new THREE.MeshStandardMaterial({map:moonTex,roughness:.95,metalness:0}));
-const earthPlanet = planets[2]; // earth
+const earthPlanet = planets[2];
 earthPlanet.moon = moon;
 earthPlanet.moonAngle = 0;
 scene.add(moon);
 
-// ── Camera orbit ─────────────────────────────────────
 let phi=1.05,theta0=0,radius0=42,targetPhi=1.05,targetTheta=0;
 let isMouseDown=false,lastMX=0,lastMY=0;
 canvas.addEventListener('mousedown',e=>{isMouseDown=true;lastMX=e.clientX;lastMY=e.clientY});
@@ -701,7 +1252,6 @@ function animate(){
   heroAsteroids.forEach(a=>{const d=a.userData;d.orbitAngle+=d.orbitSpeed;a.position.x=Math.cos(d.orbitAngle)*d.orbitRadius;a.position.z=Math.sin(d.orbitAngle)*d.orbitRadius;a.position.y=d.yOff;a.rotation.x+=d.rotX;a.rotation.y+=d.rotY;a.rotation.z+=d.rotZ});
   chipMesh.rotation.y+=.00005;
 
-  // Orbit planets
   planets.forEach(p=>{
     p.orbitAngle+=p.speed;
     p.group.position.x=Math.cos(p.orbitAngle)*p.orbitR;
@@ -709,7 +1259,6 @@ function animate(){
     p.group.position.y=Math.sin(p.orbitAngle*.7)*p.orbitY*.3;
     p.sphere.rotation.y+=p.rotSpeed;
 
-    // Moon orbit around Earth
     if(p.moon!==undefined){
       p.moonAngle+=.012;
       const ex=p.group.position.x,ez=p.group.position.z,ey=p.group.position.y;
