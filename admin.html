@@ -1,1 +1,1491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="StayHappy Solutions">
+    <title>Admin Dashboard | StayHappy Solutions</title>
 
+    <style>
+        :root {
+            --bg-1: #0b0f19;
+            --bg-2: #161b2e;
+            --accent: #6366f1;
+            --accent-2: #8b5cf6;
+            --text-primary: #ffffff;
+            --text-secondary: #d8dfe9;
+            --border: rgba(255,255,255,0.08);
+            --glass: rgba(255,255,255,0.04);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at 20% 20%, #1e2540 0%, var(--bg-1) 50%, #05070d 100%);
+            color: var(--text-primary);
+            padding: 24px;
+        }
+
+        #signInDiv, #messagesDiv {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+            padding: 40px;
+            width: 440px;
+            max-width: 100%;
+        }
+
+        #messagesDiv { width: 640px; }
+
+        h2 {
+            margin: 0 0 28px 0;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #fff, var(--text-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .field { margin-bottom: 18px; }
+
+        label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.03);
+            color: var(--text-primary);
+            font-size: 15px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input::placeholder { color: #dbe0e6; font-weight: bold; }
+
+        input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(99,102,241,0.15);
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: white;
+            border: none;
+            padding: 13px 24px;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 15px;
+            font-weight: 600;
+            margin-top: 8px;
+            transition: transform 0.15s, box-shadow 0.2s, opacity 0.2s;
+            box-shadow: 0 8px 24px rgba(99,102,241,0.35);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(99,102,241,0.45);
+        }
+
+        button:active { transform: translateY(0); }
+
+        .secondary-btn {
+            background: rgba(255,255,255,0.05);
+            box-shadow: none;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .secondary-btn:hover {
+            background: rgba(255,255,255,0.08);
+            box-shadow: none;
+            color: var(--text-primary);
+        }
+
+        #messages {
+            max-height: 480px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding-right: 6px;
+        }
+
+        #messages::-webkit-scrollbar { width: 6px; }
+        #messages::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+        #messages::-webkit-scrollbar-track { background: transparent; }
+
+        #messages ul { list-style: none; padding: 0; margin: 0; }
+
+        .msg-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin-bottom: 12px;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .msg-card:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(99,102,241,0.3);
+        }
+
+        .msg-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 6px;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .msg-name {
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--text-primary);
+        }
+
+        .msg-time {
+            font-size: 12px;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        .msg-meta {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .msg-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: rgba(99,102,241,0.15);
+            color: #a5b4fc;
+            padding: 4px 10px;
+            border-radius: 100px;
+            margin-bottom: 10px;
+        }
+
+        .msg-body {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+
+        .empty-state, .loading-state {
+            text-align: center;
+            color: var(--text-secondary);
+            padding: 40px 0;
+            font-size: 14px;
+        }
+
+        .spinner {
+            width: 28px;
+            height: 28px;
+            border: 3px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            margin: 0 auto 12px;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        @media (max-width: 600px) {
+            #signInDiv, #messagesDiv { width: 100%; padding: 28px 20px; }
+            h2 { font-size: 22px; }
+        }
+
+        #c{position:fixed;inset:0;width:100%;height:100%}
+        .vignette{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse 80% 80% at 50% 50%,transparent 0%,rgba(0,0,0,.08) 50%,rgba(0,0,0,.70) 100%)}
+
+        @media (max-width:1024px){
+        .vignette{background:radial-gradient(ellipse 90% 90% at 50% 50%,transparent 0%,rgba(0,0,0,.10) 50%,rgba(0,0,0,.75) 100%)}
+        }
+
+        @media (max-width:768px){
+        .vignette{background:radial-gradient(ellipse 100% 100% at 50% 50%,transparent 0%,rgba(0,0,0,.12) 45%,rgba(0,0,0,.80) 100%)}
+        }
+
+        .forhomeback {
+            background: rgba(255,255,255,0.05);
+            box-shadow: none;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            margin-top: 10px;
+        }
+
+        .forhomeback:hover {
+            background: rgba(255,255,255,0.08);
+            box-shadow: none;
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .forhomeback a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+                
+        /* ── Tasks & Notes tab bar ─────────────────────────── */
+        .shs-tabbar{
+            display:flex;
+            gap:6px;
+            background:rgba(255,255,255,.03);
+            border:1px solid var(--border);
+            border-radius:12px;
+            padding:5px;
+            margin-bottom:22px;
+            width:fit-content;
+            max-width:100%;
+            overflow-x:auto;
+            scrollbar-width:none;
+        }
+
+        .shs-tabbar::-webkit-scrollbar{
+            display:none;
+        }
+
+        .shs-tabbtn{
+            border:none;
+            background:transparent;
+            width:auto;
+            margin:0;
+            padding:8px 18px;
+            font-size:12.5px;
+            font-weight:600;
+            text-transform:uppercase;
+            letter-spacing:.06em;
+            color:var(--text-secondary);
+            border-radius:8px;
+            cursor:pointer;
+            box-shadow:none;
+            transform:none;
+            transition:background .2s,color .2s;
+            white-space:nowrap;
+            flex-shrink:0;
+        }
+
+        .shs-tabbtn:hover{
+            transform:none;
+            box-shadow:none;
+            background:rgba(255,255,255,.05);
+            color:var(--text-primary);
+        }
+
+        .shs-tabbtn.is-active{
+            background:linear-gradient(135deg,var(--accent),var(--accent-2));
+            color:#fff;
+            box-shadow:0 6px 18px rgba(99,102,241,.35);
+        }
+
+        .shs-panel{
+            display:none;
+        }
+
+        .shs-panel.is-active{
+            display:block;
+        }
+
+        /* ── Shared input row ──────────────────────────────── */
+
+        .shs-input-row{
+            display:flex;
+            gap:10px;
+            margin-bottom:18px;
+        }
+
+        .shs-input{
+            flex:1;
+            min-width:0;
+            padding:12px 16px;
+            border:1px solid var(--border);
+            border-radius:10px;
+            background:rgba(255,255,255,.03);
+            color:var(--text-primary);
+            font-size:14px;
+            font-family:inherit;
+            outline:none;
+            transition:border-color .2s,box-shadow .2s;
+        }
+
+        .shs-input::placeholder{
+            color:#8890a0;
+            font-weight:400;
+        }
+
+        .shs-input:focus{
+            border-color:var(--accent);
+            box-shadow:0 0 0 4px rgba(99,102,241,.15);
+        }
+
+        textarea.shs-input{
+            resize:vertical;
+            min-height:46px;
+            line-height:1.5;
+            font-family:inherit;
+        }
+
+        .shs-addbtn{
+            width:auto;
+            margin-top:0;
+            padding:0 20px;
+            white-space:nowrap;
+            font-size:13.5px;
+        }
+
+        /* ── Task rows ─────────────────────────────────────── */
+
+        .shs-task-row{
+            display:flex;
+            align-items:center;
+            gap:12px;
+        }
+
+        .shs-check{
+            width:20px;
+            height:20px;
+            min-width:20px;
+            min-height:20px;
+            flex-shrink:0;
+            border:1.5px solid var(--text-secondary);
+            border-radius:6px;
+            cursor:pointer;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background:transparent;
+            padding:0;
+            transition:background .15s,border-color .15s;
+        }
+
+        .shs-check.is-checked{
+            background:linear-gradient(135deg,var(--accent),var(--accent-2));
+            border-color:var(--accent);
+        }
+
+        .shs-check.is-checked::after{
+            content:'';
+            width:5px;
+            height:9px;
+            border-right:2px solid #fff;
+            border-bottom:2px solid #fff;
+            transform:rotate(45deg) translate(-1px,-1px);
+        }
+
+        .shs-task-text,
+        .shs-note-text{
+            flex:1;
+            min-width:0;
+            font-size:14px;
+            line-height:1.6;
+            color:#cbd5e1;
+            outline:none;
+            word-break:break-word;
+            overflow-wrap:anywhere;
+        }
+
+        .shs-task-row.is-done .shs-task-text{
+            color:var(--text-secondary);
+            text-decoration:line-through;
+            opacity:.6;
+        }
+
+        .shs-icon-btn{
+            border:none;
+            background:transparent;
+            color:var(--text-secondary);
+            cursor:pointer;
+            width:30px;
+            height:30px;
+            min-width:30px;
+            min-height:30px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            flex-shrink:0;
+        }
+
+        .shs-icon-btn:hover{
+            background:rgba(239,68,68,.15);
+            color:#f87171;
+        }
+
+        .shs-icon-btn svg{
+            width:15px;
+            height:15px;
+            display:block;
+            flex:0 0 15px;
+        }
+
+        /* ── Notes ─────────────────────────────────────────── */
+
+        .shs-notes-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+            gap:12px;
+        }
+
+        .shs-note-card{
+            background:rgba(255,255,255,.03);
+            border:1px solid var(--border);
+            border-left:3px solid var(--accent);
+            border-radius:14px;
+            padding:16px 18px;
+            display:flex;
+            flex-direction:column;
+            gap:10px;
+            min-height:110px;
+            transition:background .2s,border-color .2s;
+        }
+
+        .shs-note-card:hover{
+            background:rgba(255,255,255,.06);
+            border-left-color:var(--accent-2);
+        }
+
+        .shs-note-footer{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:10px;
+        }
+
+        .shs-note-date{
+            font-size:11px;
+            color:var(--text-secondary);
+        }
+
+      
+        /* ── Progress ring ─────────────────────────────────── */
+
+        .shs-head-row{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:16px;
+        }
+
+        .shs-ring-wrap{
+            position:relative;
+            width:50px;
+            height:50px;
+            flex-shrink:0;
+            margin-bottom:28px;
+        }
+
+        .shs-ring-wrap svg{
+            width:100%;
+            height:100%;
+            transform:rotate(-90deg);
+        }
+
+        .shs-ring-track{
+            stroke:rgba(255,255,255,.08);
+            fill:none;
+            stroke-width:5;
+        }
+
+        .shs-ring-progress{
+            stroke:url(#shsRingGradient);
+            fill:none;
+            stroke-width:5;
+            stroke-linecap:round;
+            transition:stroke-dashoffset .4s ease;
+        }
+
+        .shs-ring-label{
+            position:absolute;
+            inset:0;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:11px;
+            font-weight:700;
+            color:var(--text-primary);
+        }
+
+        /* ───────────── Tablet ───────────── */
+
+        @media (max-width:768px){
+
+            .shs-input-row{
+                display: flex;
+                flex-direction: row;   /* keep on same line */
+                align-items: stretch;
+                gap: 10px;
+            }
+
+            .shs-input{
+                flex: 1;
+                min-width: 0;
+            }
+
+            .shs-addbtn{
+                width: auto;
+                min-width: 80px;
+                height: 44px;
+                flex-shrink: 0;
+            }
+
+            .shs-notes-grid{
+                grid-template-columns:1fr;
+            }
+
+            .shs-ring-wrap{
+                width:42px;
+                height:42px;
+                margin-bottom:14px;
+            }
+
+            .shs-ring-label{
+                font-size:10px;
+            }
+
+            .shs-ring-track,
+            .shs-ring-progress{
+                stroke-width:4.5;
+            }
+        }
+
+        /* ───────────── Mobile ───────────── */
+
+        @media (max-width:480px){
+
+            .shs-addbtn{
+                width:auto;
+                min-width:80px;
+                height:44px;
+                flex-shrink:0;
+            }
+
+            .shs-tabbtn{
+                padding:8px 14px;
+                font-size:11px;
+            }
+
+            .shs-task-row{
+                gap:8px;
+            }
+
+            .shs-task-text,
+            .shs-note-text{
+                font-size:13px;
+            }
+
+            .shs-note-card{
+                padding:14px;
+            }
+
+            .shs-icon-btn{
+                width:28px;
+                height:28px;
+                min-width:28px;
+                min-height:28px;
+            }
+
+            .shs-ring-wrap{
+                width:36px;
+                height:36px;
+                margin-bottom:10px;
+            }
+
+            .shs-ring-label{
+                font-size:9px;
+            }
+
+            .shs-ring-track,
+            .shs-ring-progress{
+                stroke-width:4;
+            }
+
+        }
+        /* ───────────── Small Mobile (360px & below) ───────────── */
+
+        @media (max-width:360px){
+
+            .shs-tabbtn{
+                padding:7px 10px;
+                font-size:10px;
+            }
+
+            .shs-input{
+                padding:10px 12px;
+                font-size:13px;
+            }
+
+            .shs-addbtn{
+                min-width:70px;
+                height:40px;
+                padding:0 14px;
+                font-size:12px;
+            }
+
+            .shs-task-row{
+                gap:6px;
+            }
+
+            .shs-task-text,
+            .shs-note-text{
+                font-size:12px;
+                line-height:1.5;
+            }
+
+            .shs-note-card{
+                padding:12px;
+                min-height:95px;
+            }
+
+            .shs-icon-btn{
+                width:24px;
+                height:24px;
+                min-width:24px;
+                min-height:24px;
+            }
+
+            .shs-icon-btn svg{
+                width:13px;
+                height:13px;
+            }
+
+            .shs-ring-wrap{
+                width:32px;
+                height:32px;
+                margin-bottom:8px;
+            }
+
+            .shs-ring-label{
+                font-size:8px;
+            }
+
+            .shs-ring-track,
+            .shs-ring-progress{
+                stroke-width:3.5;
+            }
+
+        }
+    </style>
+    
+</head>
+<body>
+    <canvas id="c"></canvas>
+    <div class="vignette"></div>
+    
+    <div id="signInDiv">
+    <h2>Quote Requests</h2>
+        <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="you@example.com"/>
+        </div>
+        <div class="field">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="••••••••"/>
+        </div>
+        <button onclick="signIn()">Sign In</button>
+    </div>
+
+    <div id="messagesDiv" style="display:none;">
+        <h2>Dashboard</h2>
+
+        <div class="shs-tabbar">
+            <button class="shs-tabbtn is-active" data-tab="enquiries" id="shsTabEnquiries">Enquiries</button>
+            <button class="shs-tabbtn" data-tab="tasks" id="shsTabTasks">Tasks</button>
+            <button class="shs-tabbtn" data-tab="notes" id="shsTabNotes">Notes</button>
+        </div>
+
+        <!-- ENQUIRIES PANEL (existing Firestore feed) -->
+        <div class="shs-panel is-active" id="shsPanelEnquiries">
+            <div id="messages"><div class="loading-state"><div class="spinner"></div>Loading messages…</div></div>
+        </div>
+
+        <!-- TASKS PANEL -->
+        <div class="shs-panel" id="shsPanelTasks">
+            <div class="shs-head-row">
+                <div class="shs-input-row" style="flex:1;">
+                    <input type="text" class="shs-input" id="shsTaskInput" placeholder="Add a task and press Enter…" maxlength="200">
+                    <button class="shs-addbtn" id="shsTaskAddBtn">Add</button>
+                </div>
+                <div class="shs-ring-wrap">
+                    <svg width="50" height="50" viewBox="0 0 50 50">
+                        <defs>
+                            <linearGradient id="shsRingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#6366f1"/>
+                                <stop offset="100%" stop-color="#8b5cf6"/>
+                            </linearGradient>
+                        </defs>
+                        <circle class="shs-ring-track" cx="25" cy="25" r="21"></circle>
+                        <circle class="shs-ring-progress" id="shsRing" cx="25" cy="25" r="21" stroke-dasharray="132" stroke-dashoffset="132"></circle>
+                    </svg>
+                    <div class="shs-ring-label" id="shsRingLabel">0%</div>
+                </div>
+            </div>
+            <ul id="shsTaskList" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;"></ul>
+            <div class="empty-state" id="shsTaskEmpty">No tasks yet — add your first one above.</div>
+        </div>
+
+        <!-- NOTES PANEL -->
+        <div class="shs-panel" id="shsPanelNotes">
+            <div class="shs-input-row">
+                <textarea class="shs-input" id="shsNoteInput" placeholder="Write a note… (Ctrl/Cmd + Enter to save)" rows="2"></textarea>
+                <button class="shs-addbtn" id="shsNoteAddBtn">Add</button>
+            </div>
+            <div class="shs-notes-grid" id="shsNoteGrid"></div>
+            <div class="empty-state" id="shsNoteEmpty">No notes yet — jot something down above.</div>
+        </div>
+
+        <button class="secondary-btn" onclick="signOut()">Sign Out</button>
+        <button class="forhomeback"><a  style="text-decoration: none; color: inherit;" href="index.html">Home</a></button>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-auth.js";
+        import {getFirestore,collection,addDoc,getDocs,updateDoc,deleteDoc,doc,serverTimestamp,query,orderBy} from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+        
+      const firebaseConfig = {
+            apiKey: "AIzaSyCGyyKBomw_ZZibi5X8VB80JQoBTkOKP34",
+            authDomain: "stayhappy-solution-database.firebaseapp.com",
+            projectId: "stayhappy-solution-database",
+            storageBucket: "stayhappy-solution-database.firebasestorage.app",
+            messagingSenderId: "578043913796",
+            appId: "1:578043913796:web:bb04188aeda8fbeecbbe11",
+            measurementId: "G-Q2CLPR4027"
+        };
+
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+     
+
+        window.signIn = async function() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+            } catch (error) {
+                alert("Error signing in: " + error.message);
+            }
+        }
+
+        window.signOut = function() {
+            signOut(auth).then(() => {
+                document.getElementById('messagesDiv').style.display = 'none';
+                document.getElementById('signInDiv').style.display = 'block';
+            }).catch((error) => {
+                alert("Error signing out: " + error.message);
+            });
+        };
+
+     
+       (function () {
+        // ── Tab switching ────────────────────────────────────
+        var tabs = {
+            enquiries: { btn: document.getElementById('shsTabEnquiries'), panel: document.getElementById('shsPanelEnquiries') },
+            tasks:     { btn: document.getElementById('shsTabTasks'),     panel: document.getElementById('shsPanelTasks') },
+            notes:     { btn: document.getElementById('shsTabNotes'),     panel: document.getElementById('shsPanelNotes') }
+        };
+
+        function switchTab(name) {
+            Object.keys(tabs).forEach(function (key) {
+                var active = key === name;
+                tabs[key].btn.classList.toggle('is-active', active);
+                tabs[key].panel.classList.toggle('is-active', active);
+            });
+        }
+
+        Object.keys(tabs).forEach(function (key) {
+            tabs[key].btn.addEventListener('click', function () { switchTab(key); });
+        });
+
+        var tasks = [];
+        var notes = [];
+
+        const TASK_COLLECTION = "admin_tasks";
+        const NOTE_COLLECTION = "admin_notes";  
+
+        var el = {
+            taskInput: document.getElementById('shsTaskInput'),
+            taskAddBtn: document.getElementById('shsTaskAddBtn'),
+            taskList: document.getElementById('shsTaskList'),
+            taskEmpty: document.getElementById('shsTaskEmpty'),
+            noteInput: document.getElementById('shsNoteInput'),
+            noteAddBtn: document.getElementById('shsNoteAddBtn'),
+            noteGrid: document.getElementById('shsNoteGrid'),
+            noteEmpty: document.getElementById('shsNoteEmpty'),
+            ring: document.getElementById('shsRing'),
+            ringLabel: document.getElementById('shsRingLabel')
+        };
+
+        var TRASH_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6h16Z"/></svg>';
+        
+        async function loadTasks() {
+
+            tasks = [];
+
+            const q = query(
+                collection(db, TASK_COLLECTION),
+                orderBy("createdAt", "desc")
+            );
+
+            const snapshot = await getDocs(q);
+
+            snapshot.forEach((document) => {
+
+                tasks.push({
+                    id: document.id,
+                    ...document.data()
+                });
+
+            });
+
+            renderTasks();
+            updateProgress();
+        }
+
+
+        async function loadNotes() {
+
+            notes = [];
+
+            const q = query(
+                collection(db, NOTE_COLLECTION),
+                orderBy("createdAt", "desc")
+            );
+
+            const snapshot = await getDocs(q);
+
+            snapshot.forEach((document) => {
+
+                const data = document.data();
+
+                notes.push({
+                    id: document.id,
+                    text: data.text,
+                    date: data.createdAt
+                        ? new Date(data.createdAt.seconds * 1000).toLocaleDateString(undefined, {
+                            month: "short",
+                            day: "numeric"
+                        })
+                        : ""
+                });
+
+            });
+
+            renderNotes();
+
+        } 
+
+        // ── Tasks ────────────────────────────────────────────
+        function renderTasks() {
+            el.taskList.innerHTML = '';
+            el.taskEmpty.style.display = tasks.length ? 'none' : 'block';
+
+            tasks.forEach(function (task) {
+                var li = document.createElement('li');
+                li.className = 'msg-card shs-task-row' + (task.done ? ' is-done' : '');
+
+                var check = document.createElement('button');
+                check.className = 'shs-check' + (task.done ? ' is-checked' : '');
+                check.setAttribute('aria-label', 'Toggle complete');
+
+                check.addEventListener("click", async function () {
+
+                await updateDoc(
+                            doc(db, TASK_COLLECTION, task.id),
+                            { done: !task.done }
+                        );
+                        await loadTasks();
+                    });
+
+                var text = document.createElement('span');
+                text.className = 'shs-task-text';
+                text.contentEditable = 'true';
+                text.textContent = task.text;
+
+                text.addEventListener("blur", async function () {
+
+                    var val = text.textContent.trim();
+
+                    if (!val) {
+                        text.textContent = task.text;
+                        return;
+                    }
+
+                    await updateDoc(
+                        doc(db, TASK_COLLECTION, task.id),
+                        {
+                            text: val
+                        }
+                    );
+
+                    await loadTasks();
+
+                });
+
+
+                text.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter') { e.preventDefault(); text.blur(); }
+                });
+
+                var del = document.createElement('button');
+                del.className = 'shs-icon-btn';
+                del.innerHTML = TRASH_ICON;
+                del.setAttribute('aria-label', 'Delete task');
+
+                del.addEventListener("click", async function () {
+                    await deleteDoc(
+                        doc(db, TASK_COLLECTION, task.id)
+                    );
+                    await loadTasks();
+                    });
+
+                li.appendChild(check);
+                li.appendChild(text);
+                li.appendChild(del);
+                el.taskList.appendChild(li);
+            });
+        }
+
+        async function addTask() {
+
+            var val = el.taskInput.value.trim();
+
+            if (!val) return;
+
+            await addDoc(
+                collection(db, TASK_COLLECTION),
+                {
+                    text: val,
+                    done: false,
+                    createdAt: serverTimestamp()
+                }
+            );
+
+            el.taskInput.value = "";
+
+            await loadTasks();
+
+            el.taskInput.focus();
+
+        }
+
+
+        el.taskAddBtn.addEventListener("click", addTask);
+
+        el.taskInput.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") addTask();
+        });
+
+        // ── Notes ────────────────────────────────────────────
+        function formatDate(d) {
+            return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+        }
+
+        function renderNotes() {
+            el.noteGrid.innerHTML = '';
+            el.noteEmpty.style.display = notes.length ? 'none' : 'block';
+
+            notes.forEach(function (note) {
+                var card = document.createElement('div');
+                card.className = 'shs-note-card';
+
+                var text = document.createElement('div');
+                text.className = 'shs-note-text';
+                text.contentEditable = 'true';
+                text.textContent = note.text;
+                
+
+                text.addEventListener("blur", async function () {
+                    var val = text.textContent.trim();
+                    if (!val) {
+                            text.textContent = note.text;
+                            return;
+                        }
+                    await updateDoc(
+                      doc(db, NOTE_COLLECTION, note.id),
+                        {
+                            text: val
+                        }
+                    );
+                    await loadNotes();
+                    });
+
+                var footer = document.createElement('div');
+                footer.className = 'shs-note-footer';
+
+                var date = document.createElement('span');
+                date.className = 'shs-note-date';
+                date.textContent = note.date;
+
+                var del = document.createElement('button');
+                del.className = 'shs-icon-btn';
+                del.innerHTML = TRASH_ICON;
+                del.setAttribute('aria-label', 'Delete note');
+
+                del.addEventListener("click", async function () {
+
+                await deleteDoc(
+                    doc(db, NOTE_COLLECTION, note.id)
+                );
+
+                await loadNotes();
+
+                });
+
+                footer.appendChild(date);
+                footer.appendChild(del);
+                card.appendChild(text);
+                card.appendChild(footer);
+                el.noteGrid.appendChild(card);
+            });
+        }
+
+        async function addNote() {
+
+                var val = el.noteInput.value.trim();
+
+                if (!val) return;
+
+                await addDoc(
+                    collection(db, NOTE_COLLECTION),
+                    {
+                        text: val,
+                        createdAt: serverTimestamp()
+                    }
+                );
+
+                el.noteInput.value = "";
+
+                await loadNotes();
+
+                el.noteInput.focus();
+
+            }
+
+        el.noteAddBtn.addEventListener('click', addNote);
+        el.noteInput.addEventListener('keydown', function (e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') addNote();
+        });
+
+        // ── Progress ring ────────────────────────────────────
+        function updateProgress() {
+            var total = tasks.length;
+            var done = tasks.filter(function (t) { return t.done; }).length;
+            var pct = total ? Math.round((done / total) * 100) : 0;
+            var circumference = 132; // 2 * PI * 21, matches r=21 in the SVG
+            el.ring.style.strokeDashoffset = circumference - (circumference * pct / 100);
+            el.ringLabel.textContent = pct + '%';
+        }
+
+                          onAuthStateChanged(auth, async (user) => {
+            if (user) {
+
+                document.getElementById('signInDiv').style.display = 'none';
+                document.getElementById('messagesDiv').style.display = 'block';
+
+                try {
+
+                    const querySnapshot = await getDocs(collection(db, 'website_enquiries'));
+                    let messagesArray = [];
+
+                    querySnapshot.forEach((doc) => {
+                        const data = doc.data();
+                        data.id = doc.id;
+                        messagesArray.push(data);
+                    });
+
+                    messagesArray.sort((a, b) => {
+                        if (a.timestamp && b.timestamp) {
+                            return b.timestamp.seconds - a.timestamp.seconds;
+                        }
+                        return 0;
+                    });
+
+                    const messagesEl = document.getElementById('messages');
+
+                    if (messagesArray.length === 0) {
+                        messagesEl.innerHTML = '<div class="empty-state">No enquiries yet.</div>';
+                    } else {
+
+                        let messagesHtml = '<ul>';
+
+                        messagesArray.forEach((data) => {
+                            const timestamp = data.timestamp
+                                ? new Date(data.timestamp.seconds * 1000).toLocaleString()
+                                : 'No timestamp';
+
+                            const phoneNumber = data.phoneNumber
+                                ? data.phoneNumber
+                                : 'No phone provided';
+
+                            messagesHtml += `
+                                <li class="msg-card">
+                                    <div class="msg-header">
+                                        <span class="msg-name">${data.name}</span>
+                                        <span class="msg-time">${timestamp}</span>
+                                    </div>
+                                    <div class="msg-meta">${data.email} • ${phoneNumber}</div>
+                                    <div class="msg-tag">${data.projectType}</div>
+                                    <div class="msg-body">${data.message}</div>
+                                </li>`;
+                        });
+
+                        messagesHtml += '</ul>';
+                        messagesEl.innerHTML = messagesHtml;
+                    }
+
+                    await loadTasks(); 
+                    await loadNotes();
+
+                } catch (error) {
+                    document.getElementById('messages').innerHTML =
+                        '<div class="empty-state">Error loading messages.</div>';
+                    console.error(error);
+                }
+
+            } else {
+
+                document.getElementById('messagesDiv').style.display = 'none';
+                document.getElementById('signInDiv').style.display = 'block';
+
+            }
+        });
+
+    })();
+</script>
+
+<script type="module">
+import * as THREE from 'https://unpkg.com/three@0.155.0/build/three.module.js';
+
+const canvas = document.getElementById('c');
+const W = () => window.innerWidth, H = () => window.innerHeight;
+
+const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:false, powerPreference:'high-performance' });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(W(), H());
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.4;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, W()/H(), 0.1, 2000);
+camera.position.set(0, 18, 42);
+camera.lookAt(0, 0, 0);
+
+const fogGeo = new THREE.PlaneGeometry(200,200);
+const fogMat = new THREE.MeshBasicMaterial({color:0x050a2a,transparent:true,opacity:.18,side:THREE.DoubleSide,depthWrite:false});
+for(let i=0;i<3;i++){const f=new THREE.Mesh(fogGeo,fogMat.clone());f.rotation.x=Math.PI/2+(i-1)*.3;f.position.y=(i-1)*1.5;scene.add(f)}
+
+const bgCount=8000,bgPos=new Float32Array(bgCount*3),bgCol=new Float32Array(bgCount*3);
+for(let i=0;i<bgCount;i++){const i3=i*3,t=Math.random()*Math.PI*2,p=Math.acos(2*Math.random()-1),r=300+Math.random()*200;bgPos[i3]=r*Math.sin(p)*Math.cos(t);bgPos[i3+1]=r*Math.sin(p)*Math.sin(t);bgPos[i3+2]=r*Math.cos(p);const g=.6+Math.random()*.4;bgCol[i3]=g;bgCol[i3+1]=g;bgCol[i3+2]=g+.1}
+const bgG=new THREE.BufferGeometry();bgG.setAttribute('position',new THREE.BufferAttribute(bgPos,3));bgG.setAttribute('color',new THREE.BufferAttribute(bgCol,3));
+scene.add(new THREE.Points(bgG,new THREE.PointsMaterial({size:.9,vertexColors:true,transparent:true,opacity:.6,sizeAttenuation:false})));
+
+const COUNT=140000,ARMS=5,gPos=new Float32Array(COUNT*3),gCol=new Float32Array(COUNT*3);
+for(let i=0;i<COUNT;i++){const i3=i*3,arm=Math.floor(Math.random()*ARMS),t=Math.pow(Math.random(),1.5),radius=1+t*28,aAngle=(arm/ARMS)*Math.PI*2,spin=radius*1.8,scatter=Math.pow(1-t,2)*3+.3;gPos[i3]=Math.cos(aAngle+spin)*radius+(Math.random()-.5)*scatter;gPos[i3+1]=(Math.random()-.5)*(1.5*(1-t*.7));gPos[i3+2]=Math.sin(aAngle+spin)*radius+(Math.random()-.5)*scatter;const dn=radius/28,rnd=Math.random();if(dn<.15){gCol[i3]=1;gCol[i3+1]=.95;gCol[i3+2]=.75}else if(rnd<.18){gCol[i3]=.75+Math.random()*.25;gCol[i3+1]=.85+Math.random()*.15;gCol[i3+2]=1}else if(rnd<.55){gCol[i3]=1;gCol[i3+1]=1;gCol[i3+2]=1}else if(rnd<.78){gCol[i3]=1;gCol[i3+1]=.9;gCol[i3+2]=.6}else{gCol[i3]=.8+Math.random()*.2;gCol[i3+1]=.7;gCol[i3+2]=1}}
+const galaxyGeo=new THREE.BufferGeometry();galaxyGeo.setAttribute('position',new THREE.BufferAttribute(gPos,3));galaxyGeo.setAttribute('color',new THREE.BufferAttribute(gCol,3));
+const galaxyMat=new THREE.PointsMaterial({size:.045,vertexColors:true,transparent:true,opacity:.92,blending:THREE.AdditiveBlending,depthWrite:false,sizeAttenuation:true});
+const galaxy=new THREE.Points(galaxyGeo,galaxyMat);scene.add(galaxy);
+
+[[0xfff4cc,.9,.8],[0xffd580,.35,2.0],[0xffb347,.12,4.5]].forEach(([col,op,sz])=>{scene.add(new THREE.Mesh(new THREE.SphereGeometry(sz,32,32),new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:op,blending:THREE.AdditiveBlending,depthWrite:false})))});
+const coreCount=1200,cPos=new Float32Array(coreCount*3),cCol=new Float32Array(coreCount*3);
+for(let i=0;i<coreCount;i++){const i3=i*3,r=Math.random()*1.8,t=Math.random()*Math.PI*2,p=Math.acos(2*Math.random()-1);cPos[i3]=r*Math.sin(p)*Math.cos(t);cPos[i3+1]=r*Math.sin(p)*Math.sin(t)*.3;cPos[i3+2]=r*Math.sin(p)*Math.sin(t);cCol[i3]=1;cCol[i3+1]=.95;cCol[i3+2]=.7}
+const cG=new THREE.BufferGeometry();cG.setAttribute('position',new THREE.BufferAttribute(cPos,3));cG.setAttribute('color',new THREE.BufferAttribute(cCol,3));
+scene.add(new THREE.Points(cG,new THREE.PointsMaterial({size:.15,vertexColors:true,transparent:true,opacity:.95,blending:THREE.AdditiveBlending,depthWrite:false})));
+
+[[6,-3,.4,0x2244ff,.025],[-5,4,1.2,0xff4488,.018],[0,0,0,0x6633cc,.022],[10,6,2.1,0x0055ff,.015]].forEach(([x,z,rot,col,op])=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(22,10),new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:op,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,depthWrite:false}));m.position.set(x,-.2,z);m.rotation.x=Math.PI/2;m.rotation.z=rot;scene.add(m)});
+
+const dC=18000,dPos=new Float32Array(dC*3),dCol=new Float32Array(dC*3);
+for(let i=0;i<dC;i++){const i3=i*3,r=1+Math.random()*24,t=Math.random()*Math.PI*2;dPos[i3]=Math.cos(t)*r+(Math.random()-.5)*6;dPos[i3+1]=(Math.random()-.5)*.6;dPos[i3+2]=Math.sin(t)*r+(Math.random()-.5)*6;dCol[i3]=.3+Math.random()*.3;dCol[i3+1]=.25+Math.random()*.25;dCol[i3+2]=.5+Math.random()*.4}
+const dG=new THREE.BufferGeometry();dG.setAttribute('position',new THREE.BufferAttribute(dPos,3));dG.setAttribute('color',new THREE.BufferAttribute(dCol,3));
+scene.add(new THREE.Points(dG,new THREE.PointsMaterial({size:.025,vertexColors:true,transparent:true,opacity:.45,blending:THREE.AdditiveBlending,depthWrite:false})));
+
+scene.add(new THREE.AmbientLight(0x334466,1.2));
+const sun=new THREE.DirectionalLight(0xfff4cc,3.5);sun.position.set(30,20,10);scene.add(sun);
+const rim=new THREE.DirectionalLight(0x4466ff,0.6);rim.position.set(-20,-10,-20);scene.add(rim);
+
+function makeAsteroidGeo(){
+  const b=new THREE.IcosahedronGeometry(1,2),p=b.attributes.position;
+  for(let i=0;i<p.count;i++){const v=new THREE.Vector3().fromBufferAttribute(p,i);v.normalize().multiplyScalar(1+(Math.random()-.5)*.55);p.setXYZ(i,v.x,v.y,v.z)}
+  p.needsUpdate=true;b.computeVertexNormals();return b;
+}
+const aMats=[new THREE.MeshStandardMaterial({color:0x7a7060,roughness:.95,metalness:.05}),new THREE.MeshStandardMaterial({color:0x6a6455,roughness:1,metalness:0}),new THREE.MeshStandardMaterial({color:0x8a8070,roughness:.9,metalness:.08}),new THREE.MeshStandardMaterial({color:0x5a5448,roughness:1,metalness:0})];
+const aGeos=Array.from({length:6},makeAsteroidGeo);
+const asteroids=[];
+for(let i=0;i<90;i++){
+  const mesh=new THREE.Mesh(aGeos[i%aGeos.length],aMats[i%aMats.length]);
+  const br=32+Math.random()*16,angle=Math.random()*Math.PI*2,y=(Math.random()-.5)*2.5;
+  mesh.position.set(Math.cos(angle)*br,y,Math.sin(angle)*br);
+  const s=.08+Math.random()*.38;mesh.scale.set(s,s*(.7+Math.random()*.5),s*(.7+Math.random()*.6));
+  mesh.rotation.set(Math.random()*Math.PI*2,Math.random()*Math.PI*2,Math.random()*Math.PI*2);
+  mesh.userData={orbitRadius:br,orbitAngle:angle,orbitSpeed:.00008+Math.random()*.00014,yOff:y,rotX:(Math.random()-.5)*.012,rotY:(Math.random()-.5)*.015,rotZ:(Math.random()-.5)*.010};
+  scene.add(mesh);asteroids.push(mesh);
+}
+const heroAsteroids=[[36,.8,.00006,.55,1.2],[40,2.5,.00009,.72,-.8],[34,4.2,.00007,.48,.4]].map(([r,a,s,sc,y])=>{
+  const mesh=new THREE.Mesh(aGeos[0],new THREE.MeshStandardMaterial({color:0x8a8272,roughness:.92,metalness:.06}));
+  mesh.scale.setScalar(sc);mesh.userData={orbitRadius:r,orbitAngle:a,orbitSpeed:s,yOff:y,rotX:.008,rotY:.011,rotZ:.007};scene.add(mesh);return mesh;
+});
+const chipC=3000,chipPos=new Float32Array(chipC*3),chipCol=new Float32Array(chipC*3);
+for(let i=0;i<chipC;i++){const i3=i*3,r=30+Math.random()*22,a=Math.random()*Math.PI*2;chipPos[i3]=Math.cos(a)*r+(Math.random()-.5)*2;chipPos[i3+1]=(Math.random()-.5)*3;chipPos[i3+2]=Math.sin(a)*r+(Math.random()-.5)*2;const g=.4+Math.random()*.25;chipCol[i3]=g+.05;chipCol[i3+1]=g;chipCol[i3+2]=g-.05}
+const chipG=new THREE.BufferGeometry();chipG.setAttribute('position',new THREE.BufferAttribute(chipPos,3));chipG.setAttribute('color',new THREE.BufferAttribute(chipCol,3));
+const chipMesh=new THREE.Points(chipG,new THREE.PointsMaterial({size:.04,vertexColors:true,transparent:true,opacity:.55,sizeAttenuation:true,depthWrite:false}));
+scene.add(chipMesh);
+
+function makePlanetTexture(fn, size=512) {
+  const cv = document.createElement('canvas'); cv.width=cv.height=size;
+  const ctx = cv.getContext('2d'); fn(ctx, size);
+  return new THREE.CanvasTexture(cv);
+}
+
+function makeOrbitRing(radius, color=0x334466, opacity=0.18) {
+  const pts = [];
+  for(let i=0;i<=128;i++) pts.push(new THREE.Vector3(Math.cos(i/128*Math.PI*2)*radius,0,Math.sin(i/128*Math.PI*2)*radius));
+  const g=new THREE.BufferGeometry().setFromPoints(pts);
+  const m=new THREE.LineBasicMaterial({color,transparent:true,opacity,depthWrite:false});
+  return new THREE.Line(g,m);
+}
+
+const texMercury = makePlanetTexture((ctx,sz)=>{
+  const g=ctx.createRadialGradient(sz*.4,sz*.38,sz*.05,sz*.5,sz*.5,sz*.5);
+  g.addColorStop(0,'#c8b89a');g.addColorStop(.4,'#a0886a');g.addColorStop(1,'#6e5840');
+  ctx.fillStyle=g;ctx.fillRect(0,0,sz,sz);
+  for(let i=0;i<220;i++){ctx.beginPath();ctx.arc(Math.random()*sz,Math.random()*sz,Math.random()*sz*.03,0,Math.PI*2);ctx.fillStyle=`rgba(0,0,0,${Math.random()*.25})`;ctx.fill()}
+});
+
+const texEarth = makePlanetTexture((ctx,sz)=>{
+  ctx.fillStyle='#1a4a8a';ctx.fillRect(0,0,sz,sz);
+  [[.2,.3,.35,.28],[.55,.2,.3,.25],[.1,.6,.4,.3],[.6,.55,.35,.3],[.35,.65,.25,.2]].forEach(([x,y,w,h])=>{
+    const g=ctx.createRadialGradient(x*sz,y*sz,0,(x+w*.5)*sz,(y+h*.5)*sz,w*sz*.7);
+    g.addColorStop(0,'#4a9a4a');g.addColorStop(.5,'#3a7a30');g.addColorStop(1,'#2a5a20');
+    ctx.fillStyle=g;ctx.beginPath();ctx.ellipse(x*sz,y*sz,w*sz*.55,h*sz*.6,Math.random(),0,Math.PI*2);ctx.fill();
+  });
+  for(let i=0;i<14;i++){ctx.fillStyle=`rgba(255,255,255,${.15+Math.random()*.18})`;ctx.beginPath();ctx.ellipse(Math.random()*sz,Math.random()*sz,Math.random()*sz*.18,Math.random()*sz*.06,Math.random()*Math.PI,0,Math.PI*2);ctx.fill()}
+});
+
+const texMars = makePlanetTexture((ctx,sz)=>{
+  const g=ctx.createRadialGradient(sz*.4,sz*.35,sz*.05,sz*.5,sz*.5,sz*.52);
+  g.addColorStop(0,'#e0603a');g.addColorStop(.5,'#c04020');g.addColorStop(1,'#7a2810');
+  ctx.fillStyle=g;ctx.fillRect(0,0,sz,sz);
+  for(let i=0;i<180;i++){ctx.beginPath();ctx.arc(Math.random()*sz,Math.random()*sz,Math.random()*sz*.025,0,Math.PI*2);ctx.fillStyle=`rgba(${Math.random()<.5?'0,0,0':'255,180,120'},${Math.random()*.2})`;ctx.fill()}
+  ctx.fillStyle='rgba(240,240,255,0.55)';ctx.beginPath();ctx.ellipse(sz*.5,sz*.06,sz*.14,sz*.06,0,0,Math.PI*2);ctx.fill();
+});
+
+const texJupiter = makePlanetTexture((ctx,sz)=>{
+  const bands=[['#c8a06a',0],['#e0c89a',.08],['#b07840',.18],['#d4a870',.28],['#884428',.38],['#c89060',.5],['#a86838',.6],['#ddb870',.72],['#8a5020',.84],['#c09060',1]];
+  bands.forEach(([col,stop],idx)=>{if(idx<bands.length-1){const [nc,ns]=bands[idx+1];const gr=ctx.createLinearGradient(0,stop*sz,0,ns*sz);gr.addColorStop(0,col);gr.addColorStop(1,nc);ctx.fillStyle=gr;ctx.fillRect(0,stop*sz,sz,(ns-stop)*sz)}});
+  for(let i=0;i<8;i++){ctx.strokeStyle=`rgba(${Math.random()<.5?'180,120,60':'255,220,140'},.18)`;ctx.lineWidth=2+Math.random()*4;ctx.beginPath();ctx.ellipse(Math.random()*sz,Math.random()*sz*.9+sz*.05,Math.random()*sz*.2,sz*.025+Math.random()*sz*.02,0,0,Math.PI*2);ctx.stroke()}
+  ctx.fillStyle='rgba(160,40,20,.7)';ctx.beginPath();ctx.ellipse(sz*.35,sz*.55,sz*.09,sz*.055,-.2,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='rgba(200,80,40,.3)';ctx.beginPath();ctx.ellipse(sz*.35,sz*.55,sz*.12,sz*.075,-.2,0,Math.PI*2);ctx.fill();
+});
+
+const texNeptune = makePlanetTexture((ctx,sz)=>{
+  const g=ctx.createRadialGradient(sz*.38,sz*.35,sz*.04,sz*.5,sz*.5,sz*.52);
+  g.addColorStop(0,'#60b0ff');g.addColorStop(.4,'#2060c0');g.addColorStop(1,'#0a1e6a');
+  ctx.fillStyle=g;ctx.fillRect(0,0,sz,sz);
+  for(let i=0;i<8;i++){ctx.fillStyle=`rgba(140,200,255,${.08+Math.random()*.1})`;ctx.beginPath();ctx.ellipse(Math.random()*sz,Math.random()*sz,sz*(.15+Math.random()*.1),sz*.025,Math.random()*.3,0,Math.PI*2);ctx.fill()}
+  ctx.fillStyle='rgba(200,230,255,.4)';ctx.beginPath();ctx.ellipse(sz*.58,sz*.42,sz*.07,sz*.045,.3,0,Math.PI*2);ctx.fill();
+});
+
+const texVenus = makePlanetTexture((ctx,sz)=>{
+  const g=ctx.createRadialGradient(sz*.42,sz*.38,sz*.04,sz*.5,sz*.5,sz*.52);
+  g.addColorStop(0,'#f5e090');g.addColorStop(.5,'#d4a840');g.addColorStop(1,'#8a6010');
+  ctx.fillStyle=g;ctx.fillRect(0,0,sz,sz);
+  for(let i=0;i<12;i++){ctx.fillStyle=`rgba(255,245,180,${.1+Math.random()*.12})`;ctx.beginPath();ctx.ellipse(Math.random()*sz,Math.random()*sz,sz*(.12+Math.random()*.1),sz*.03,Math.random()*.5,0,Math.PI*2);ctx.fill()}
+});
+
+function makeSaturnRingTex() {
+  const cv=document.createElement('canvas');cv.width=512;cv.height=1;
+  const ctx=cv.getContext('2d'),g=ctx.createLinearGradient(0,0,512,0);
+  g.addColorStop(0,'rgba(0,0,0,0)');
+  g.addColorStop(.15,'rgba(180,150,100,.0)');
+  g.addColorStop(.25,'rgba(200,170,110,.55)');
+  g.addColorStop(.38,'rgba(160,130,80,.35)');
+  g.addColorStop(.5,'rgba(210,185,130,.7)');
+  g.addColorStop(.62,'rgba(170,140,90,.4)');
+  g.addColorStop(.75,'rgba(195,165,105,.6)');
+  g.addColorStop(.88,'rgba(140,110,70,.25)');
+  g.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=g;ctx.fillRect(0,0,512,1);
+  return new THREE.CanvasTexture(cv);
+}
+
+const texSaturn = makePlanetTexture((ctx,sz)=>{
+  const bands=[['#d4b870',0],['#c4a858',.12],['#e8d090',.25],['#b89040',.4],['#d8c078',.55],['#a87828',.7],['#c8a860',.85],['#b89050',1]];
+  bands.forEach(([col,stop],idx)=>{if(idx<bands.length-1){const[nc,ns]=bands[idx+1];const gr=ctx.createLinearGradient(0,stop*sz,0,ns*sz);gr.addColorStop(0,col);gr.addColorStop(1,nc);ctx.fillStyle=gr;ctx.fillRect(0,stop*sz,sz,(ns-stop)*sz)}});
+});
+
+function createGlowSprite(color, size) {
+  const cv=document.createElement('canvas');cv.width=cv.height=128;
+  const ctx=cv.getContext('2d'),cx=64,cy=64;
+  const g=ctx.createRadialGradient(cx,cy,0,cx,cy,64);
+  g.addColorStop(0,color.replace(')',',0.8)').replace('rgb','rgba'));
+  g.addColorStop(.4,color.replace(')',',0.3)').replace('rgb','rgba'));
+  g.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=g;ctx.fillRect(0,0,128,128);
+  const tex=new THREE.CanvasTexture(cv);
+  const sprite=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));
+  sprite.scale.setScalar(size);
+  return sprite;
+}
+
+const planetData = [
+  { name:'mercury', tex:texMercury, radius:.38, orbitR:6,  orbitY:.4,  tilt:.03,  speed:.0018, rotSpeed:.004,  glowCol:'rgb(200,180,140)', glowSz:1.2 },
+  { name:'venus',   tex:texVenus,   radius:.72, orbitR:9,  orbitY:.6,  tilt:.04,  speed:.0012, rotSpeed:.003,  glowCol:'rgb(220,190,100)', glowSz:2.0 },
+  { name:'earth',   tex:texEarth,   radius:.8,  orbitR:13, orbitY:.5,  tilt:.41,  speed:.0009, rotSpeed:.006,  glowCol:'rgb(80,140,220)',  glowSz:2.4 },
+  { name:'mars',    tex:texMars,    radius:.55, orbitR:17, orbitY:.8,  tilt:.44,  speed:.0007, rotSpeed:.005,  glowCol:'rgb(200,80,40)',   glowSz:1.6 },
+  { name:'jupiter', tex:texJupiter, radius:1.9, orbitR:22, orbitY:.3,  tilt:.05,  speed:.0004, rotSpeed:.012,  glowCol:'rgb(200,160,90)',  glowSz:5.5 },
+  { name:'saturn',  tex:texSaturn,  radius:1.6, orbitR:27, orbitY:1.0, tilt:.47,  speed:.0003, rotSpeed:.01,   glowCol:'rgb(200,180,110)', glowSz:4.8, hasRings:true },
+  { name:'neptune', tex:texNeptune, radius:1.0, orbitR:51, orbitY:1.5, tilt:.49,  speed:.00012,rotSpeed:.008,  glowCol:'rgb(60,120,220)',  glowSz:3.0 },
+];
+
+const planets = planetData.map((pd, idx) => {
+  const group = new THREE.Group();
+
+  const sphere = new THREE.Mesh(
+    new THREE.SphereGeometry(pd.radius, 48, 48),
+    new THREE.MeshStandardMaterial({ map:pd.tex, roughness:.85, metalness:.05 })
+  );
+  sphere.rotation.z = pd.tilt;
+  group.add(sphere);
+
+  const atmoMat = new THREE.MeshBasicMaterial({
+    color: new THREE.Color(pd.glowCol),
+    transparent:true, opacity:.12,
+    side:THREE.BackSide, blending:THREE.AdditiveBlending, depthWrite:false
+  });
+  group.add(new THREE.Mesh(new THREE.SphereGeometry(pd.radius*1.08,32,32), atmoMat));
+
+  const glow = createGlowSprite(pd.glowCol, pd.glowSz * 2.2);
+  group.add(glow);
+
+  if (pd.hasRings) {
+    const ringTex = makeSaturnRingTex();
+    const ringGeo = new THREE.RingGeometry(pd.radius*1.3, pd.radius*2.6, 128);
+    const uv = ringGeo.attributes.uv;
+    const pos = ringGeo.attributes.position;
+    for(let i=0;i<uv.count;i++){
+      const v=new THREE.Vector3().fromBufferAttribute(pos,i);
+      const len=v.length();
+      uv.setXY(i,(len-pd.radius*1.3)/(pd.radius*1.3),0);
+    }
+    const ringMat = new THREE.MeshBasicMaterial({ map:ringTex, transparent:true, opacity:.82, side:THREE.DoubleSide, depthWrite:false });
+    const ring = new THREE.Mesh(ringGeo, ringMat);
+    ring.rotation.x = Math.PI/2 - .4;
+    ring.rotation.z = .15;
+    group.add(ring);
+
+    const shadowRing = new THREE.Mesh(
+      new THREE.RingGeometry(pd.radius*1.28,pd.radius*2.62,128),
+      new THREE.MeshBasicMaterial({color:0x000000,transparent:true,opacity:.18,side:THREE.DoubleSide,depthWrite:false})
+    );
+    shadowRing.rotation.x=Math.PI/2-.35;shadowRing.rotation.z=.12;shadowRing.position.y=-.1;
+    group.add(shadowRing);
+  }
+
+  scene.add(makeOrbitRing(pd.orbitR));
+
+  const startAngle = (idx / planetData.length) * Math.PI * 2;
+  group.position.set(Math.cos(startAngle)*pd.orbitR, pd.orbitY*(Math.random()-.5)*.4, Math.sin(startAngle)*pd.orbitR);
+
+  scene.add(group);
+  return { group, sphere, orbitR:pd.orbitR, orbitY:pd.orbitY, orbitAngle:startAngle, speed:pd.speed, rotSpeed:pd.rotSpeed, tilt:pd.tilt };
+});
+
+const moonTex = makePlanetTexture((ctx,sz)=>{
+  const g=ctx.createRadialGradient(sz*.42,sz*.38,sz*.03,sz*.5,sz*.5,sz*.5);
+  g.addColorStop(0,'#c8c8c8');g.addColorStop(.5,'#909090');g.addColorStop(1,'#606060');
+  ctx.fillStyle=g;ctx.fillRect(0,0,sz,sz);
+  for(let i=0;i<120;i++){ctx.beginPath();ctx.arc(Math.random()*sz,Math.random()*sz,Math.random()*sz*.03,0,Math.PI*2);ctx.fillStyle=`rgba(0,0,0,${Math.random()*.3})`;ctx.fill()}
+});
+const moon = new THREE.Mesh(new THREE.SphereGeometry(.22,32,32), new THREE.MeshStandardMaterial({map:moonTex,roughness:.95,metalness:0}));
+const earthPlanet = planets[2];
+earthPlanet.moon = moon;
+earthPlanet.moonAngle = 0;
+scene.add(moon);
+
+let phi=1.05,theta0=0,radius0=42,targetPhi=1.05,targetTheta=0;
+let isMouseDown=false,lastMX=0,lastMY=0;
+canvas.addEventListener('mousedown',e=>{isMouseDown=true;lastMX=e.clientX;lastMY=e.clientY});
+window.addEventListener('mouseup',()=>isMouseDown=false);
+window.addEventListener('mousemove',e=>{if(!isMouseDown)return;targetTheta-=(e.clientX-lastMX)*.004;targetPhi-=(e.clientY-lastMY)*.003;targetPhi=Math.max(.3,Math.min(1.5,targetPhi));lastMX=e.clientX;lastMY=e.clientY});
+window.addEventListener('wheel',e=>{radius0=Math.max(35,Math.min(90,radius0+e.deltaY*.02))},{passive:true});
+let lTX=0,lTY=0;
+canvas.addEventListener('touchstart',e=>{lTX=e.touches[0].clientX;lTY=e.touches[0].clientY});
+canvas.addEventListener('touchmove',e=>{targetTheta-=(e.touches[0].clientX-lTX)*.004;targetPhi-=(e.touches[0].clientY-lTY)*.003;targetPhi=Math.max(.3,Math.min(1.5,targetPhi));lTX=e.touches[0].clientX;lTY=e.touches[0].clientY});
+
+const clk={t:0};
+function animate(){
+  requestAnimationFrame(animate);
+  clk.t+=.001;
+  theta0+=(targetTheta-theta0)*.04;
+  phi+=(targetPhi-phi)*.04;
+  targetTheta+=.00018*60*.001;
+  const r=radius0;
+  camera.position.x=r*Math.sin(phi)*Math.cos(theta0);
+  camera.position.y=r*Math.cos(phi);
+  camera.position.z=r*Math.sin(phi)*Math.sin(theta0);
+  camera.lookAt(0,0,0);
+
+  galaxy.rotation.y+=.00018;
+  galaxy.rotation.z=Math.sin(clk.t*.4)*.004;
+  galaxyMat.opacity=.9+Math.sin(clk.t*2.1)*.08;
+
+  asteroids.forEach(a=>{const d=a.userData;d.orbitAngle+=d.orbitSpeed;a.position.x=Math.cos(d.orbitAngle)*d.orbitRadius;a.position.z=Math.sin(d.orbitAngle)*d.orbitRadius;a.position.y=d.yOff+Math.sin(d.orbitAngle*3.1)*.15;a.rotation.x+=d.rotX;a.rotation.y+=d.rotY;a.rotation.z+=d.rotZ});
+  heroAsteroids.forEach(a=>{const d=a.userData;d.orbitAngle+=d.orbitSpeed;a.position.x=Math.cos(d.orbitAngle)*d.orbitRadius;a.position.z=Math.sin(d.orbitAngle)*d.orbitRadius;a.position.y=d.yOff;a.rotation.x+=d.rotX;a.rotation.y+=d.rotY;a.rotation.z+=d.rotZ});
+  chipMesh.rotation.y+=.00005;
+
+  planets.forEach(p=>{
+    p.orbitAngle+=p.speed;
+    p.group.position.x=Math.cos(p.orbitAngle)*p.orbitR;
+    p.group.position.z=Math.sin(p.orbitAngle)*p.orbitR;
+    p.group.position.y=Math.sin(p.orbitAngle*.7)*p.orbitY*.3;
+    p.sphere.rotation.y+=p.rotSpeed;
+
+    if(p.moon!==undefined){
+      p.moonAngle+=.012;
+      const ex=p.group.position.x,ez=p.group.position.z,ey=p.group.position.y;
+      p.moon.position.x=ex+Math.cos(p.moonAngle)*.8;
+      p.moon.position.z=ez+Math.sin(p.moonAngle)*.8;
+      p.moon.position.y=ey+Math.sin(p.moonAngle*.5)*.08;
+      p.moon.rotation.y+=.004;
+    }
+  });
+
+  renderer.render(scene,camera);
+}
+animate();
+
+window.addEventListener('resize',()=>{renderer.setSize(W(),H());camera.aspect=W()/H();camera.updateProjectionMatrix()});
+</script>
+ 
+</body>
+</html>
