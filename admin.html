@@ -590,81 +590,9 @@
             }).catch((error) => {
                 alert("Error signing out: " + error.message);
             });
-        }
+        };
 
-                       onAuthStateChanged(auth, async (user) => {
-            if (user) {
-
-                document.getElementById('signInDiv').style.display = 'none';
-                document.getElementById('messagesDiv').style.display = 'block';
-
-                try {
-
-                    const querySnapshot = await getDocs(collection(db, 'website_enquiries'));
-                    let messagesArray = [];
-
-                    querySnapshot.forEach((doc) => {
-                        const data = doc.data();
-                        data.id = doc.id;
-                        messagesArray.push(data);
-                    });
-
-                    messagesArray.sort((a, b) => {
-                        if (a.timestamp && b.timestamp) {
-                            return b.timestamp.seconds - a.timestamp.seconds;
-                        }
-                        return 0;
-                    });
-
-                    const messagesEl = document.getElementById('messages');
-
-                    if (messagesArray.length === 0) {
-                        messagesEl.innerHTML = '<div class="empty-state">No enquiries yet.</div>';
-                    } else {
-
-                        let messagesHtml = '<ul>';
-
-                        messagesArray.forEach((data) => {
-                            const timestamp = data.timestamp
-                                ? new Date(data.timestamp.seconds * 1000).toLocaleString()
-                                : 'No timestamp';
-
-                            const phoneNumber = data.phoneNumber
-                                ? data.phoneNumber
-                                : 'No phone provided';
-
-                            messagesHtml += `
-                                <li class="msg-card">
-                                    <div class="msg-header">
-                                        <span class="msg-name">${data.name}</span>
-                                        <span class="msg-time">${timestamp}</span>
-                                    </div>
-                                    <div class="msg-meta">${data.email} • ${phoneNumber}</div>
-                                    <div class="msg-tag">${data.projectType}</div>
-                                    <div class="msg-body">${data.message}</div>
-                                </li>`;
-                        });
-
-                        messagesHtml += '</ul>';
-                        messagesEl.innerHTML = messagesHtml;
-                    }
-
-                } catch (error) {
-                    document.getElementById('messages').innerHTML =
-                        '<div class="empty-state">Error loading messages.</div>';
-                    console.error(error);
-                }
-
-            } else {
-
-                document.getElementById('messagesDiv').style.display = 'none';
-                document.getElementById('signInDiv').style.display = 'block';
-
-            }
-        });
-
-
-
+     
        (function () {
         // ── Tab switching ────────────────────────────────────
         var tabs = {
@@ -964,8 +892,81 @@
             el.ring.style.strokeDashoffset = circumference - (circumference * pct / 100);
             el.ringLabel.textContent = pct + '%';
         }
-        loadTasks();
-        loadNotes();
+
+                          onAuthStateChanged(auth, async (user) => {
+            if (user) {
+
+                document.getElementById('signInDiv').style.display = 'none';
+                document.getElementById('messagesDiv').style.display = 'block';
+
+                try {
+
+                    const querySnapshot = await getDocs(collection(db, 'website_enquiries'));
+                    let messagesArray = [];
+
+                    querySnapshot.forEach((doc) => {
+                        const data = doc.data();
+                        data.id = doc.id;
+                        messagesArray.push(data);
+                    });
+
+                    messagesArray.sort((a, b) => {
+                        if (a.timestamp && b.timestamp) {
+                            return b.timestamp.seconds - a.timestamp.seconds;
+                        }
+                        return 0;
+                    });
+
+                    const messagesEl = document.getElementById('messages');
+
+                    if (messagesArray.length === 0) {
+                        messagesEl.innerHTML = '<div class="empty-state">No enquiries yet.</div>';
+                    } else {
+
+                        let messagesHtml = '<ul>';
+
+                        messagesArray.forEach((data) => {
+                            const timestamp = data.timestamp
+                                ? new Date(data.timestamp.seconds * 1000).toLocaleString()
+                                : 'No timestamp';
+
+                            const phoneNumber = data.phoneNumber
+                                ? data.phoneNumber
+                                : 'No phone provided';
+
+                            messagesHtml += `
+                                <li class="msg-card">
+                                    <div class="msg-header">
+                                        <span class="msg-name">${data.name}</span>
+                                        <span class="msg-time">${timestamp}</span>
+                                    </div>
+                                    <div class="msg-meta">${data.email} • ${phoneNumber}</div>
+                                    <div class="msg-tag">${data.projectType}</div>
+                                    <div class="msg-body">${data.message}</div>
+                                </li>`;
+                        });
+
+                        messagesHtml += '</ul>';
+                        messagesEl.innerHTML = messagesHtml;
+                    }
+
+                    await loadTasks(); 
+                    await loadNotes();
+
+                } catch (error) {
+                    document.getElementById('messages').innerHTML =
+                        '<div class="empty-state">Error loading messages.</div>';
+                    console.error(error);
+                }
+
+            } else {
+
+                document.getElementById('messagesDiv').style.display = 'none';
+                document.getElementById('signInDiv').style.display = 'block';
+
+            }
+        });
+
     })();
 </script>
 
