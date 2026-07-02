@@ -254,345 +254,445 @@
             width: 100%;
             height: 100%;
         }
-/* ── Tasks & Notes tab bar ─────────────────────────── */
-.shs-tabbar{
-    display:flex;
-    gap:6px;
-    background:rgba(255,255,255,.03);
-    border:1px solid var(--border);
-    border-radius:12px;
-    padding:5px;
-    margin-bottom:22px;
-    width:fit-content;
-    max-width:100%;
-    overflow-x:auto;
-    scrollbar-width:none;
-}
+                
+        /* ── Tasks & Notes tab bar ─────────────────────────── */
+        .shs-tabbar{
+            display:flex;
+            gap:6px;
+            background:rgba(255,255,255,.03);
+            border:1px solid var(--border);
+            border-radius:12px;
+            padding:5px;
+            margin-bottom:22px;
+            width:fit-content;
+            max-width:100%;
+            overflow-x:auto;
+            scrollbar-width:none;
+        }
 
-.shs-tabbar::-webkit-scrollbar{
-    display:none;
-}
+        .shs-tabbar::-webkit-scrollbar{
+            display:none;
+        }
 
-.shs-tabbtn{
-    border:none;
-    background:transparent;
-    width:auto;
-    margin:0;
-    padding:8px 18px;
-    font-size:12.5px;
-    font-weight:600;
-    text-transform:uppercase;
-    letter-spacing:.06em;
-    color:var(--text-secondary);
-    border-radius:8px;
-    cursor:pointer;
-    box-shadow:none;
-    transform:none;
-    transition:background .2s,color .2s;
-    white-space:nowrap;
-    flex-shrink:0;
-}
+        .shs-tabbtn{
+            border:none;
+            background:transparent;
+            width:auto;
+            margin:0;
+            padding:8px 18px;
+            font-size:12.5px;
+            font-weight:600;
+            text-transform:uppercase;
+            letter-spacing:.06em;
+            color:var(--text-secondary);
+            border-radius:8px;
+            cursor:pointer;
+            box-shadow:none;
+            transform:none;
+            transition:background .2s,color .2s;
+            white-space:nowrap;
+            flex-shrink:0;
+        }
 
-.shs-tabbtn:hover{
-    transform:none;
-    box-shadow:none;
-    background:rgba(255,255,255,.05);
-    color:var(--text-primary);
-}
+        .shs-tabbtn:hover{
+            transform:none;
+            box-shadow:none;
+            background:rgba(255,255,255,.05);
+            color:var(--text-primary);
+        }
 
-.shs-tabbtn.is-active{
-    background:linear-gradient(135deg,var(--accent),var(--accent-2));
-    color:#fff;
-    box-shadow:0 6px 18px rgba(99,102,241,.35);
-}
+        .shs-tabbtn.is-active{
+            background:linear-gradient(135deg,var(--accent),var(--accent-2));
+            color:#fff;
+            box-shadow:0 6px 18px rgba(99,102,241,.35);
+        }
 
-.shs-panel{
-    display:none;
-}
+        .shs-panel{
+            display:none;
+        }
 
-.shs-panel.is-active{
-    display:block;
-}
+        .shs-panel.is-active{
+            display:block;
+        }
 
-/* ── Shared input row ──────────────────────────────── */
+        /* ── Shared input row ──────────────────────────────── */
 
-.shs-input-row{
-    display:flex;
-    gap:10px;
-    margin-bottom:18px;
-}
+        .shs-input-row{
+            display:flex;
+            gap:10px;
+            margin-bottom:18px;
+        }
 
-.shs-input{
-    flex:1;
-    min-width:0;
-    padding:12px 16px;
-    border:1px solid var(--border);
-    border-radius:10px;
-    background:rgba(255,255,255,.03);
-    color:var(--text-primary);
-    font-size:14px;
-    font-family:inherit;
-    outline:none;
-    transition:border-color .2s,box-shadow .2s;
-}
+        .shs-input{
+            flex:1;
+            min-width:0;
+            padding:12px 16px;
+            border:1px solid var(--border);
+            border-radius:10px;
+            background:rgba(255,255,255,.03);
+            color:var(--text-primary);
+            font-size:14px;
+            font-family:inherit;
+            outline:none;
+            transition:border-color .2s,box-shadow .2s;
+        }
 
-.shs-input::placeholder{
-    color:#8890a0;
-    font-weight:400;
-}
+        .shs-input::placeholder{
+            color:#8890a0;
+            font-weight:400;
+        }
 
-.shs-input:focus{
-    border-color:var(--accent);
-    box-shadow:0 0 0 4px rgba(99,102,241,.15);
-}
+        .shs-input:focus{
+            border-color:var(--accent);
+            box-shadow:0 0 0 4px rgba(99,102,241,.15);
+        }
 
-textarea.shs-input{
-    resize:vertical;
-    min-height:46px;
-    line-height:1.5;
-    font-family:inherit;
-}
+        textarea.shs-input{
+            resize:vertical;
+            min-height:46px;
+            line-height:1.5;
+            font-family:inherit;
+        }
 
-.shs-addbtn{
-    width:auto;
-    margin-top:0;
-    padding:0 20px;
-    white-space:nowrap;
-    font-size:13.5px;
-}
+        .shs-addbtn{
+            width:auto;
+            margin-top:0;
+            padding:0 20px;
+            white-space:nowrap;
+            font-size:13.5px;
+        }
 
-/* ── Task rows ─────────────────────────────────────── */
+        /* ── Task rows ─────────────────────────────────────── */
 
-.shs-task-row{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
+        .shs-task-row{
+            display:flex;
+            align-items:center;
+            gap:12px;
+        }
 
-.shs-check{
-    width:20px;
-    height:20px;
-    min-width:20px;
-    min-height:20px;
-    flex-shrink:0;
-    border:1.5px solid var(--text-secondary);
-    border-radius:6px;
-    cursor:pointer;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:transparent;
-    padding:0;
-    transition:background .15s,border-color .15s;
-}
+        .shs-check{
+            width:20px;
+            height:20px;
+            min-width:20px;
+            min-height:20px;
+            flex-shrink:0;
+            border:1.5px solid var(--text-secondary);
+            border-radius:6px;
+            cursor:pointer;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background:transparent;
+            padding:0;
+            transition:background .15s,border-color .15s;
+        }
 
-.shs-check.is-checked{
-    background:linear-gradient(135deg,var(--accent),var(--accent-2));
-    border-color:var(--accent);
-}
+        .shs-check.is-checked{
+            background:linear-gradient(135deg,var(--accent),var(--accent-2));
+            border-color:var(--accent);
+        }
 
-.shs-check.is-checked::after{
-    content:'';
-    width:5px;
-    height:9px;
-    border-right:2px solid #fff;
-    border-bottom:2px solid #fff;
-    transform:rotate(45deg) translate(-1px,-1px);
-}
+        .shs-check.is-checked::after{
+            content:'';
+            width:5px;
+            height:9px;
+            border-right:2px solid #fff;
+            border-bottom:2px solid #fff;
+            transform:rotate(45deg) translate(-1px,-1px);
+        }
 
-.shs-task-text,
-.shs-note-text{
-    flex:1;
-    min-width:0;
-    font-size:14px;
-    line-height:1.6;
-    color:#cbd5e1;
-    outline:none;
-    word-break:break-word;
-    overflow-wrap:anywhere;
-}
+        .shs-task-text,
+        .shs-note-text{
+            flex:1;
+            min-width:0;
+            font-size:14px;
+            line-height:1.6;
+            color:#cbd5e1;
+            outline:none;
+            word-break:break-word;
+            overflow-wrap:anywhere;
+        }
 
-.shs-task-row.is-done .shs-task-text{
-    color:var(--text-secondary);
-    text-decoration:line-through;
-    opacity:.6;
-}
+        .shs-task-row.is-done .shs-task-text{
+            color:var(--text-secondary);
+            text-decoration:line-through;
+            opacity:.6;
+        }
 
-.shs-icon-btn{
-    border:none;
-    background:transparent;
-    color:var(--text-secondary);
-    cursor:pointer;
-    width:30px;
-    height:30px;
-    min-width:30px;
-    min-height:30px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-shrink:0;
-}
+        .shs-icon-btn{
+            border:none;
+            background:transparent;
+            color:var(--text-secondary);
+            cursor:pointer;
+            width:30px;
+            height:30px;
+            min-width:30px;
+            min-height:30px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            flex-shrink:0;
+        }
 
-.shs-icon-btn:hover{
-    background:rgba(239,68,68,.15);
-    color:#f87171;
-}
+        .shs-icon-btn:hover{
+            background:rgba(239,68,68,.15);
+            color:#f87171;
+        }
 
-.shs-icon-btn svg{
-    width:15px;
-    height:15px;
-    display:block;
-    flex:0 0 15px;
-}
+        .shs-icon-btn svg{
+            width:15px;
+            height:15px;
+            display:block;
+            flex:0 0 15px;
+        }
 
-/* ── Notes ─────────────────────────────────────────── */
+        /* ── Notes ─────────────────────────────────────────── */
 
-.shs-notes-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
-    gap:12px;
-}
+        .shs-notes-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+            gap:12px;
+        }
 
-.shs-note-card{
-    background:rgba(255,255,255,.03);
-    border:1px solid var(--border);
-    border-left:3px solid var(--accent);
-    border-radius:14px;
-    padding:16px 18px;
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    min-height:110px;
-    transition:background .2s,border-color .2s;
-}
+        .shs-note-card{
+            background:rgba(255,255,255,.03);
+            border:1px solid var(--border);
+            border-left:3px solid var(--accent);
+            border-radius:14px;
+            padding:16px 18px;
+            display:flex;
+            flex-direction:column;
+            gap:10px;
+            min-height:110px;
+            transition:background .2s,border-color .2s;
+        }
 
-.shs-note-card:hover{
-    background:rgba(255,255,255,.06);
-    border-left-color:var(--accent-2);
-}
+        .shs-note-card:hover{
+            background:rgba(255,255,255,.06);
+            border-left-color:var(--accent-2);
+        }
 
-.shs-note-footer{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
-}
+        .shs-note-footer{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:10px;
+        }
 
-.shs-note-date{
-    font-size:11px;
-    color:var(--text-secondary);
-}
+        .shs-note-date{
+            font-size:11px;
+            color:var(--text-secondary);
+        }
 
-/* ── Progress ring ─────────────────────────────────── */
+      
+        /* ── Progress ring ─────────────────────────────────── */
 
-.shs-head-row{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:16px;
-}
+        .shs-head-row{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:16px;
+        }
 
-.shs-ring-wrap{
-    position:relative;
-    width:50px;
-    height:50px;
-    flex-shrink:0;
-    margin-bottom:28px;
-}
+        .shs-ring-wrap{
+            position:relative;
+            width:50px;
+            height:50px;
+            flex-shrink:0;
+            margin-bottom:28px;
+        }
 
-.shs-ring-wrap svg{
-    transform:rotate(-90deg);
-}
+        .shs-ring-wrap svg{
+            width:100%;
+            height:100%;
+            transform:rotate(-90deg);
+        }
 
-.shs-ring-track{
-    stroke:rgba(255,255,255,.08);
-    fill:none;
-    stroke-width:5;
-}
+        .shs-ring-track{
+            stroke:rgba(255,255,255,.08);
+            fill:none;
+            stroke-width:5;
+        }
 
-.shs-ring-progress{
-    stroke:url(#shsRingGradient);
-    fill:none;
-    stroke-width:5;
-    stroke-linecap:round;
-    transition:stroke-dashoffset .4s ease;
-}
+        .shs-ring-progress{
+            stroke:url(#shsRingGradient);
+            fill:none;
+            stroke-width:5;
+            stroke-linecap:round;
+            transition:stroke-dashoffset .4s ease;
+        }
 
-.shs-ring-label{
-    position:absolute;
-    inset:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:11px;
-    font-weight:700;
-    color:var(--text-primary);
-}
+        .shs-ring-label{
+            position:absolute;
+            inset:0;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:11px;
+            font-weight:700;
+            color:var(--text-primary);
+        }
 
-/* ───────────── Tablet ───────────── */
+        /* ───────────── Tablet ───────────── */
 
-@media (max-width:768px){
+        @media (max-width:768px){
 
-    .shs-head-row{
-        flex-direction:column;
-        align-items:flex-start;
-    }
+            .shs-input-row{
+                display: flex;
+                flex-direction: row;   /* keep on same line */
+                align-items: stretch;
+                gap: 10px;
+            }
 
-    .shs-ring-wrap{
-        margin-bottom:12px;
-    }
+            .shs-input{
+                flex: 1;
+                min-width: 0;
+            }
 
-    .shs-input-row{
-        flex-direction:column;
-    }
+            .shs-addbtn{
+                width: auto;
+                min-width: 80px;
+                height: 44px;
+                flex-shrink: 0;
+            }
 
-    .shs-addbtn{
-        width:100%;
-        height:44px;
-    }
+            .shs-notes-grid{
+                grid-template-columns:1fr;
+            }
 
-    .shs-notes-grid{
-        grid-template-columns:1fr;
-    }
+            .shs-ring-wrap{
+                width:42px;
+                height:42px;
+                margin-bottom:14px;
+            }
 
-}
+            .shs-ring-label{
+                font-size:10px;
+            }
 
-/* ───────────── Mobile ───────────── */
+            .shs-ring-track,
+            .shs-ring-progress{
+                stroke-width:4.5;
+            }
+        }
 
-@media (max-width:480px){
+        /* ───────────── Mobile ───────────── */
 
-    .shs-tabbtn{
-        padding:8px 14px;
-        font-size:11px;
-    }
+        @media (max-width:480px){
 
-    .shs-task-row{
-        gap:8px;
-    }
+            .shs-addbtn{
+                width:auto;
+                min-width:80px;
+                height:44px;
+                flex-shrink:0;
+            }
 
-    .shs-task-text,
-    .shs-note-text{
-        font-size:13px;
-    }
+            .shs-tabbtn{
+                padding:8px 14px;
+                font-size:11px;
+            }
 
-    .shs-note-card{
-        padding:14px;
-    }
+            .shs-task-row{
+                gap:8px;
+            }
 
-    .shs-icon-btn{
-        width:28px;
-        height:28px;
-        min-width:28px;
-        min-height:28px;
-    }
+            .shs-task-text,
+            .shs-note-text{
+                font-size:13px;
+            }
 
-    .shs-ring-wrap{
-        width:44px;
-        height:44px;
-    }
+            .shs-note-card{
+                padding:14px;
+            }
 
-}
-</style>
+            .shs-icon-btn{
+                width:28px;
+                height:28px;
+                min-width:28px;
+                min-height:28px;
+            }
+
+            .shs-ring-wrap{
+                width:36px;
+                height:36px;
+                margin-bottom:10px;
+            }
+
+            .shs-ring-label{
+                font-size:9px;
+            }
+
+            .shs-ring-track,
+            .shs-ring-progress{
+                stroke-width:4;
+            }
+
+        }
+        /* ───────────── Small Mobile (360px & below) ───────────── */
+
+        @media (max-width:360px){
+
+            .shs-tabbtn{
+                padding:7px 10px;
+                font-size:10px;
+            }
+
+            .shs-input{
+                padding:10px 12px;
+                font-size:13px;
+            }
+
+            .shs-addbtn{
+                min-width:70px;
+                height:40px;
+                padding:0 14px;
+                font-size:12px;
+            }
+
+            .shs-task-row{
+                gap:6px;
+            }
+
+            .shs-task-text,
+            .shs-note-text{
+                font-size:12px;
+                line-height:1.5;
+            }
+
+            .shs-note-card{
+                padding:12px;
+                min-height:95px;
+            }
+
+            .shs-icon-btn{
+                width:24px;
+                height:24px;
+                min-width:24px;
+                min-height:24px;
+            }
+
+            .shs-icon-btn svg{
+                width:13px;
+                height:13px;
+            }
+
+            .shs-ring-wrap{
+                width:32px;
+                height:32px;
+                margin-bottom:8px;
+            }
+
+            .shs-ring-label{
+                font-size:8px;
+            }
+
+            .shs-ring-track,
+            .shs-ring-progress{
+                stroke-width:3.5;
+            }
+
+        }
+    </style>
     
 </head>
 <body>
