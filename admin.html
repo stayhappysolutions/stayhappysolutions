@@ -7,8 +7,7 @@
     <meta name="author" content="StayHappy Solutions">
     <title>Admin Dashboard | StayHappy Solutions</title>
 
-
-<style>
+    <style>
         :root {
             --bg-1: #0b0f19;
             --bg-2: #161b2e;
@@ -22,29 +21,25 @@
 
         * { box-sizing: border-box; }
 
-        html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-
         body {
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             margin: 0;
             min-height: 100vh;
-            min-height: 100dvh; /* fixes mobile browser URL-bar height jump */
             display: flex;
             justify-content: center;
             align-items: center;
             background: radial-gradient(circle at 20% 20%, #1e2540 0%, var(--bg-1) 50%, #05070d 100%);
             color: var(--text-primary);
-            padding: clamp(12px, 4vw, 24px);
+            padding: 24px;
         }
 
         #signInDiv, #messagesDiv {
             background: var(--glass);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border);
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
-            padding: clamp(20px, 5vw, 40px);
+            padding: 40px;
             width: 440px;
             max-width: 100%;
         }
@@ -52,8 +47,8 @@
         #messagesDiv { width: 640px; }
 
         h2 {
-            margin: 0 0 clamp(18px, 4vw, 28px) 0;
-            font-size: clamp(20px, 5vw, 26px);
+            margin: 0 0 28px 0;
+            font-size: 26px;
             font-weight: 700;
             letter-spacing: -0.02em;
             background: linear-gradient(135deg, #fff, var(--text-secondary));
@@ -81,9 +76,8 @@
             border-radius: 10px;
             background: rgba(255,255,255,0.03);
             color: var(--text-primary);
-            font-size: 16px; /* 16px minimum prevents iOS Safari auto-zoom on focus */
+            font-size: 15px;
             transition: border-color 0.2s, box-shadow 0.2s;
-            min-height: 44px; /* comfortable touch target */
         }
 
         input::placeholder { color: #dbe0e6; font-weight: bold; }
@@ -105,10 +99,8 @@
             font-size: 15px;
             font-weight: 600;
             margin-top: 8px;
-            min-height: 46px; /* touch target */
             transition: transform 0.15s, box-shadow 0.2s, opacity 0.2s;
             box-shadow: 0 8px 24px rgba(99,102,241,0.35);
-            touch-action: manipulation;
         }
 
         button:hover {
@@ -132,11 +124,10 @@
         }
 
         #messages {
-            max-height: min(480px, 60vh);
+            max-height: 480px;
             overflow-y: auto;
             margin-bottom: 20px;
             padding-right: 6px;
-            -webkit-overflow-scrolling: touch;
         }
 
         #messages::-webkit-scrollbar { width: 6px; }
@@ -152,7 +143,7 @@
             background: rgba(255,255,255,0.03);
             border: 1px solid var(--border);
             border-radius: 14px;
-            padding: clamp(14px, 3vw, 18px) clamp(14px, 4vw, 20px);
+            padding: 18px 20px;
             margin-bottom: 12px;
             transition: background 0.2s, border-color 0.2s;
         }
@@ -206,7 +197,6 @@
             font-size: 14px;
             line-height: 1.6;
             color: #cbd5e1;
-            word-break: break-word;
         }
 
         .empty-state, .loading-state {
@@ -228,8 +218,21 @@
 
         @keyframes spin { to { transform: rotate(360deg); } }
 
+        @media (max-width: 600px) {
+            #signInDiv, #messagesDiv { width: 100%; padding: 28px 20px; }
+            h2 { font-size: 22px; }
+        }
+
         #c{position:fixed;inset:0;width:100%;height:100%}
         .vignette{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse 80% 80% at 50% 50%,transparent 0%,rgba(0,0,0,.08) 50%,rgba(0,0,0,.70) 100%)}
+
+        @media (max-width:1024px){
+        .vignette{background:radial-gradient(ellipse 90% 90% at 50% 50%,transparent 0%,rgba(0,0,0,.10) 50%,rgba(0,0,0,.75) 100%)}
+        }
+
+        @media (max-width:768px){
+        .vignette{background:radial-gradient(ellipse 100% 100% at 50% 50%,transparent 0%,rgba(0,0,0,.12) 45%,rgba(0,0,0,.80) 100%)}
+        }
 
         .forhomeback {
             background: rgba(255,255,255,0.05);
@@ -251,370 +254,345 @@
             width: 100%;
             height: 100%;
         }
+/* ── Tasks & Notes tab bar ─────────────────────────── */
+.shs-tabbar{
+    display:flex;
+    gap:6px;
+    background:rgba(255,255,255,.03);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:5px;
+    margin-bottom:22px;
+    width:fit-content;
+    max-width:100%;
+    overflow-x:auto;
+    scrollbar-width:none;
+}
 
-        /* ── Tasks & Notes tab bar ─────────────────────────── */
-        .shs-tabbar {
-            display: flex;
-            gap: 6px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 5px;
-            margin-bottom: 22px;
-            width: fit-content;
-            max-width: 100%;
-            overflow-x: auto;
-        }
+.shs-tabbar::-webkit-scrollbar{
+    display:none;
+}
 
-        .shs-tabbtn {
-            border: none;
-            background: transparent;
-            width: auto;
-            margin: 0;
-            padding: 8px 18px;
-            font-size: 12.5px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: var(--text-secondary);
-            border-radius: 8px;
-            cursor: pointer;
-            box-shadow: none;
-            transform: none;
-            white-space: nowrap;
-            min-height: 40px;
-            transition: background 0.2s, color 0.2s;
-        }
+.shs-tabbtn{
+    border:none;
+    background:transparent;
+    width:auto;
+    margin:0;
+    padding:8px 18px;
+    font-size:12.5px;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--text-secondary);
+    border-radius:8px;
+    cursor:pointer;
+    box-shadow:none;
+    transform:none;
+    transition:background .2s,color .2s;
+    white-space:nowrap;
+    flex-shrink:0;
+}
 
-        .shs-tabbtn:hover {
-            transform: none;
-            box-shadow: none;
-            background: rgba(255,255,255,0.05);
-            color: var(--text-primary);
-        }
+.shs-tabbtn:hover{
+    transform:none;
+    box-shadow:none;
+    background:rgba(255,255,255,.05);
+    color:var(--text-primary);
+}
 
-        .shs-tabbtn.is-active {
-            background: linear-gradient(135deg, var(--accent), var(--accent-2));
-            color: #fff;
-            box-shadow: 0 6px 18px rgba(99,102,241,0.35);
-        }
+.shs-tabbtn.is-active{
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    color:#fff;
+    box-shadow:0 6px 18px rgba(99,102,241,.35);
+}
 
-        .shs-panel { display: none; }
-        .shs-panel.is-active { display: block; }
+.shs-panel{
+    display:none;
+}
 
-        /* ── Shared input row ──────────────────────────────── */
-        .shs-input-row {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 18px;
-            flex-wrap: wrap;
-        }
+.shs-panel.is-active{
+    display:block;
+}
 
-        .shs-input {
-            flex: 1;
-            min-width: 0; /* prevents flex overflow on narrow screens */
-            padding: 12px 16px;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            background: rgba(255,255,255,0.03);
-            color: var(--text-primary);
-            font-size: 16px; /* prevents iOS zoom-on-focus */
-            font-family: inherit;
-            outline: none;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
+/* ── Shared input row ──────────────────────────────── */
 
-        .shs-input::placeholder { color: #8890a0; font-weight: 400; }
+.shs-input-row{
+    display:flex;
+    gap:10px;
+    margin-bottom:18px;
+}
 
-        .shs-input:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 4px rgba(99,102,241,0.15);
-        }
+.shs-input{
+    flex:1;
+    min-width:0;
+    padding:12px 16px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:rgba(255,255,255,.03);
+    color:var(--text-primary);
+    font-size:14px;
+    font-family:inherit;
+    outline:none;
+    transition:border-color .2s,box-shadow .2s;
+}
 
-        textarea.shs-input {
-            resize: vertical;
-            min-height: 46px;
-            line-height: 1.5;
-            font-family: inherit;
-        }
+.shs-input::placeholder{
+    color:#8890a0;
+    font-weight:400;
+}
 
-        .shs-addbtn {
-            width: auto;
-            margin-top: 0;
-            padding: 0 20px;
-            min-height: 46px;
-            white-space: nowrap;
-            font-size: 13.5px;
-        }
+.shs-input:focus{
+    border-color:var(--accent);
+    box-shadow:0 0 0 4px rgba(99,102,241,.15);
+}
 
-        /* ── Task rows (reuses .msg-card look) ─────────────── */
-        .shs-task-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+textarea.shs-input{
+    resize:vertical;
+    min-height:46px;
+    line-height:1.5;
+    font-family:inherit;
+}
 
-        .shs-check {
-            width: 22px;
-            height: 22px;
-            flex-shrink: 0;
-            border: 1.5px solid var(--text-secondary);
-            border-radius: 6px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-            padding: 0;
-            transition: background 0.15s, border-color 0.15s;
-        }
+.shs-addbtn{
+    width:auto;
+    margin-top:0;
+    padding:0 20px;
+    white-space:nowrap;
+    font-size:13.5px;
+}
 
-        .shs-check.is-checked {
-            background: linear-gradient(135deg, var(--accent), var(--accent-2));
-            border-color: var(--accent);
-        }
+/* ── Task rows ─────────────────────────────────────── */
 
-        .shs-check.is-checked::after {
-            content: '';
-            width: 5px;
-            height: 9px;
-            border-right: 2px solid #fff;
-            border-bottom: 2px solid #fff;
-            transform: rotate(45deg) translate(-1px, -1px);
-        }
+.shs-task-row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
 
-        .shs-task-text, .shs-note-text {
-            flex: 1;
-            min-width: 0;
-            font-size: 14px;
-            line-height: 1.6;
-            color: #cbd5e1;
-            outline: none;
-            word-break: break-word;
-        }
+.shs-check{
+    width:20px;
+    height:20px;
+    min-width:20px;
+    min-height:20px;
+    flex-shrink:0;
+    border:1.5px solid var(--text-secondary);
+    border-radius:6px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:transparent;
+    padding:0;
+    transition:background .15s,border-color .15s;
+}
 
-        .shs-task-row.is-done .shs-task-text {
-            color: var(--text-secondary);
-            text-decoration: line-through;
-            opacity: 0.6;
-        }
+.shs-check.is-checked{
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    border-color:var(--accent);
+}
 
-        .shs-icon-btn {
-            border: none;
-            background: transparent;
-            color: var(--text-secondary);
-            cursor: pointer;
-            width: 34px;
-            height: 34px;
+.shs-check.is-checked::after{
+    content:'';
+    width:5px;
+    height:9px;
+    border-right:2px solid #fff;
+    border-bottom:2px solid #fff;
+    transform:rotate(45deg) translate(-1px,-1px);
+}
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+.shs-task-text,
+.shs-note-text{
+    flex:1;
+    min-width:0;
+    font-size:14px;
+    line-height:1.6;
+    color:#cbd5e1;
+    outline:none;
+    word-break:break-word;
+    overflow-wrap:anywhere;
+}
 
-            flex-shrink: 0;
-            touch-action: manipulation;
-        }
+.shs-task-row.is-done .shs-task-text{
+    color:var(--text-secondary);
+    text-decoration:line-through;
+    opacity:.6;
+}
 
-        .shs-icon-btn:hover { background: rgba(239,68,68,0.15); color: #f87171; }
-        .shs-icon-btn svg { width: 15px; height: 15px; }
+.shs-icon-btn{
+    border:none;
+    background:transparent;
+    color:var(--text-secondary);
+    cursor:pointer;
+    width:30px;
+    height:30px;
+    min-width:30px;
+    min-height:30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+}
 
-        /* ── Notes grid ─────────────────────────────────────── */
-        .shs-notes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(min(230px, 100%), 1fr));
-            gap: 12px;
-        }
+.shs-icon-btn:hover{
+    background:rgba(239,68,68,.15);
+    color:#f87171;
+}
 
-        .shs-note-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid var(--border);
-            border-left: 3px solid var(--accent);
-            border-radius: 14px;
-            padding: 16px 18px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            min-height: 110px;
-            transition: background 0.2s, border-color 0.2s;
-        }
+.shs-icon-btn svg{
+    width:15px;
+    height:15px;
+    display:block;
+    flex:0 0 15px;
+}
 
-        .shs-note-card:hover {
-            background: rgba(255,255,255,0.06);
-            border-left-color: var(--accent-2);
-        }
+/* ── Notes ─────────────────────────────────────────── */
 
-        .shs-note-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.shs-notes-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+    gap:12px;
+}
 
-        .shs-note-date {
-            font-size: 11px;
-            color: var(--text-secondary);
-        }
+.shs-note-card{
+    background:rgba(255,255,255,.03);
+    border:1px solid var(--border);
+    border-left:3px solid var(--accent);
+    border-radius:14px;
+    padding:16px 18px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    min-height:110px;
+    transition:background .2s,border-color .2s;
+}
 
-        /* ── Progress ring in header ────────────────────────── */
-        .shs-head-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
+.shs-note-card:hover{
+    background:rgba(255,255,255,.06);
+    border-left-color:var(--accent-2);
+}
 
-        .shs-ring-wrap { position: relative; width: 50px; height: 50px; flex-shrink: 0; margin-bottom: 28px; }
-        .shs-ring-wrap svg { transform: rotate(-90deg); width: 100%; height: 100%; }
-        .shs-ring-track { stroke: rgba(255,255,255,0.08); fill: none; stroke-width: 5; }
-        .shs-ring-progress {
-            stroke: url(#shsRingGradient);
-            fill: none;
-            stroke-width: 5;
-            stroke-linecap: round;
-            transition: stroke-dashoffset 0.4s ease;
-        }
-        .shs-ring-label {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
+.shs-note-footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
 
-        /* ═══════════════════════════════════════════════════════
-           RESPONSIVE BREAKPOINTS
-           Covers: large desktops, laptops, tablets (portrait/
-           landscape), large phones, standard phones, small/
-           older phones, and short-viewport landscape phones.
-           ═══════════════════════════════════════════════════════ */
+.shs-note-date{
+    font-size:11px;
+    color:var(--text-secondary);
+}
 
-        /* Large desktop / wide monitors ------------------------ */
-        @media (min-width: 1440px) {
-            #messagesDiv { width: 720px; }
-        }
+/* ── Progress ring ─────────────────────────────────── */
 
-        /* Laptops & small desktops ------------------------------ */
-        @media (max-width: 1200px) {
-            #messagesDiv { width: 600px; }
-        }
+.shs-head-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+}
 
-        /* Tablets (portrait & landscape) ------------------------ */
-        @media (max-width: 1024px) {
-            .vignette{background:radial-gradient(ellipse 90% 90% at 50% 50%,transparent 0%,rgba(0,0,0,.10) 50%,rgba(0,0,0,.75) 100%)}
-            #messagesDiv { width: 100%; max-width: 560px; }
-        }
+.shs-ring-wrap{
+    position:relative;
+    width:50px;
+    height:50px;
+    flex-shrink:0;
+    margin-bottom:28px;
+}
 
-        /* Small tablets / large phones (landscape) --------------- */
-        @media (max-width: 768px) {
-            .vignette{background:radial-gradient(ellipse 100% 100% at 50% 50%,transparent 0%,rgba(0,0,0,.12) 45%,rgba(0,0,0,.80) 100%)}
+.shs-ring-wrap svg{
+    transform:rotate(-90deg);
+}
 
-            #signInDiv, #messagesDiv { width: 100%; padding: 28px 20px; border-radius: 18px; }
-            h2 { font-size: 22px; margin-bottom: 20px; }
+.shs-ring-track{
+    stroke:rgba(255,255,255,.08);
+    fill:none;
+    stroke-width:5;
+}
 
-            .shs-head-row { gap: 10px; }
-            .shs-ring-wrap { width: 42px; height: 42px; margin-bottom: 20px; }
+.shs-ring-progress{
+    stroke:url(#shsRingGradient);
+    fill:none;
+    stroke-width:5;
+    stroke-linecap:round;
+    transition:stroke-dashoffset .4s ease;
+}
 
-            .shs-notes-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
-        }
+.shs-ring-label{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:11px;
+    font-weight:700;
+    color:var(--text-primary);
+}
 
-        /* Standard phones (portrait) ----------------------------- */
-        @media (max-width: 480px) {
-            body { padding: 14px; align-items: flex-start; }
+/* ───────────── Tablet ───────────── */
 
-            #signInDiv, #messagesDiv {
-                padding: 22px 16px;
-                border-radius: 16px;
-                margin: 10px 0;
-            }
+@media (max-width:768px){
 
-            h2 { font-size: 20px; margin-bottom: 16px; }
+    .shs-head-row{
+        flex-direction:column;
+        align-items:flex-start;
+    }
 
-            .field { margin-bottom: 14px; }
+    .shs-ring-wrap{
+        margin-bottom:12px;
+    }
 
-            input[type="email"], input[type="password"] {
-                padding: 12px 14px;
-            }
+    .shs-input-row{
+        flex-direction:column;
+    }
 
-            button { padding: 12px 18px; font-size: 14.5px; }
+    .shs-addbtn{
+        width:100%;
+        height:44px;
+    }
 
-            .msg-card { padding: 14px 14px; border-radius: 12px; }
-            .msg-header { flex-direction: column; align-items: flex-start; gap: 4px; }
-            .msg-name { font-size: 15px; }
-            .msg-body { font-size: 13.5px; }
+    .shs-notes-grid{
+        grid-template-columns:1fr;
+    }
 
-            .shs-tabbar { width: 100%; }
-            .shs-tabbtn { flex: 1; padding: 8px 10px; font-size: 11.5px; text-align: center; }
+}
 
-            .shs-input-row { flex-direction: column; gap: 8px; }
-            .shs-addbtn { width: 100%; padding: 12px; }
+/* ───────────── Mobile ───────────── */
 
-            .shs-notes-grid { grid-template-columns: 1fr; }
+@media (max-width:480px){
 
-            .shs-check { width: 24px; height: 24px; }
-            .shs-icon-btn { width: 38px; height: 38px; }
-        }
+    .shs-tabbtn{
+        padding:8px 14px;
+        font-size:11px;
+    }
 
-        /* Small / older phones (e.g. iPhone SE, ~375px & below) -- */
-        @media (max-width: 380px) {
-            body { padding: 10px; }
+    .shs-task-row{
+        gap:8px;
+    }
 
-            #signInDiv, #messagesDiv {
-                padding: 18px 14px;
-                border-radius: 14px;
-            }
+    .shs-task-text,
+    .shs-note-text{
+        font-size:13px;
+    }
 
-            h2 { font-size: 18px; }
+    .shs-note-card{
+        padding:14px;
+    }
 
-            label { font-size: 11px; }
+    .shs-icon-btn{
+        width:28px;
+        height:28px;
+        min-width:28px;
+        min-height:28px;
+    }
 
-            input[type="email"], input[type="password"],
-            .shs-input { padding: 11px 12px; }
+    .shs-ring-wrap{
+        width:44px;
+        height:44px;
+    }
 
-            button, .shs-addbtn { font-size: 14px; padding: 11px 14px; }
-
-            .msg-tag { font-size: 10px; padding: 3px 8px; }
-            .msg-time { font-size: 11px; }
-
-            .shs-tabbtn { padding: 7px 6px; font-size: 10.5px; }
-        }
-
-        /* Extra-narrow devices (foldables closed, ~280–320px) ---- */
-        @media (max-width: 320px) {
-            #signInDiv, #messagesDiv { padding: 16px 12px; }
-            h2 { font-size: 17px; }
-            .shs-notes-grid { gap: 8px; }
-        }
-
-        /* Short-height viewports: landscape phones --------------- */
-        @media (max-height: 480px) and (orientation: landscape) {
-            body { align-items: flex-start; padding: 10px; }
-            #signInDiv, #messagesDiv { padding: 16px 20px; }
-            h2 { margin-bottom: 12px; font-size: 18px; }
-            .field { margin-bottom: 10px; }
-            #messages { max-height: 50vh; }
-        }
-
-        /* Touch devices: remove hover-only affordances, enlarge targets */
-        @media (hover: none) and (pointer: coarse) {
-            button, .shs-icon-btn, .shs-tabbtn, .shs-check { min-height: 44px; }
-            .shs-icon-btn { width: 40px; height: 40px; }
-            button:hover, .secondary-btn:hover, .forhomeback:hover,
-            .msg-card:hover, .shs-note-card:hover {
-                transform: none;
-            }
-        }
-
-        /* Respect reduced-motion preference ---------------------- */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.001ms !important;
-                transition-duration: 0.001ms !important;
-            }
-        }
-    </style>
+}
+</style>
     
 </head>
 <body>
