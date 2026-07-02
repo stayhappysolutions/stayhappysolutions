@@ -7,6 +7,7 @@
     <meta name="author" content="StayHappy Solutions">
     <title>Admin Dashboard | StayHappy Solutions</title>
 
+   
     <style>
         :root {
             --bg-1: #0b0f19;
@@ -124,18 +125,9 @@
         }
 
         #messages {
-            max-height: 480px;
-            overflow-y: auto;
             margin-bottom: 20px;
             padding-right: 6px;
         }
-
-        #messages::-webkit-scrollbar { width: 6px; }
-        #messages::-webkit-scrollbar-thumb {
-            background: var(--accent);
-            border-radius: 10px;
-        }
-        #messages::-webkit-scrollbar-track { background: transparent; }
 
         #messages ul { list-style: none; padding: 0; margin: 0; }
 
@@ -307,12 +299,28 @@
             box-shadow:0 6px 18px rgba(99,102,241,.35);
         }
 
-        .shs-panel{
-            display:none;
+        .shs-panel {
+            display: none;
+            max-height: 480px;
+            overflow-y: auto;
+            padding-right: 6px;
         }
 
-        .shs-panel.is-active{
-            display:block;
+        .shs-panel.is-active {
+            display: block;
+        }
+
+        .shs-panel::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .shs-panel::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+
+        .shs-panel::-webkit-scrollbar-track {
+            background: transparent;
         }
 
         /* ── Shared input row ──────────────────────────────── */
